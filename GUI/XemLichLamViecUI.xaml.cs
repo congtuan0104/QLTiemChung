@@ -23,5 +23,15 @@ namespace GUI
         {
             InitializeComponent();
         }
+
+        private void btnDong_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnXem_Lich_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
