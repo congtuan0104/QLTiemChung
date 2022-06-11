@@ -25,7 +25,7 @@
                 </TransformGroup>
             </Button.RenderTransform>
         </Button>
-        <DataGrid Name="DSDichVu" HorizontalAlignment="Left" Height="214" Margin="390,97,0,0" VerticalAlignment="Top" Width="323"   SelectionChanged="DataGrid_SelectionChanged"/>
+        <DataGrid Name="DSDichVu" HorizontalAlignment="Left" Height="214" Margin="390,97,0,0" VerticalAlignment="Top" Width="323"/>
         <Button Content="Xuất hóa đơn" HorizontalAlignment="Left" Height="42" Margin="214,351,0,0" VerticalAlignment="Top" Width="125" FontSize="14"/>
         <TextBlock HorizontalAlignment="Left" Height="18" Margin="390,64,0,0" TextWrapping="Wrap" Text="Chi tiết hóa đơn" VerticalAlignment="Top" Width="180" FontSize="14" FontWeight="Bold" FontStyle="Italic"/>
         <TextBlock HorizontalAlignment="Left" Height="19" Margin="116,64,0,0" TextWrapping="Wrap" Text="Thông tin hóa đơn" VerticalAlignment="Top" Width="184" FontWeight="Bold" FontStyle="Italic" FontSize="14"/>

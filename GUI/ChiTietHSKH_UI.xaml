@@ -29,7 +29,19 @@
                   CanUserAddRows="False"
                   SelectionMode="Single"
                   SelectionUnit="FullRow"
-                  IsReadOnly="True"/>
+                  AutoGenerateColumns="False"
+                  IsReadOnly="True"
+                  SelectionChanged="dgvDS_HSTC_Selected">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Mã HS"
+                                    Binding="{Binding MaHS}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Ngày đăng ký"
+                                    Binding="{Binding NgayLapHS, StringFormat='dd-MM-yyyy'}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Ngày hẹn tiêm"
+                                    Binding="{Binding NgayHenTiem, StringFormat='dd-MM-yyyy'}"></DataGridTextColumn>
+                
+            </DataGrid.Columns>
+        </DataGrid>
         <TextBlock HorizontalAlignment="Left"
                    Margin="39,100,0,0"
                    FontSize="14"
