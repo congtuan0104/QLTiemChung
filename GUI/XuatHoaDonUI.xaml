@@ -9,6 +9,38 @@
         WindowStartupLocation="CenterScreen"
         Title="Xuất hoá đơn" Height="480" Width="800">
     <Grid>
-        
+
+        <TextBlock HorizontalAlignment="Left" Margin="338,20,0,0" TextWrapping="Wrap" Text="HÓA ĐƠN" VerticalAlignment="Top" FontWeight="Bold" FontSize="22" Foreground="#FFEB0D0D"/>
+        <TextBlock HorizontalAlignment="Left" Margin="116,185,0,0" TextWrapping="Wrap" Text="Chưa thanh toán" VerticalAlignment="Top" FontSize="14" RenderTransformOrigin="-0.701,0.55"/>
+        <TextBlock HorizontalAlignment="Left" Margin="116,236,0,0" TextWrapping="Wrap" Text="Số đợt thanh toán" VerticalAlignment="Top" FontSize="14"/>
+        <TextBlock HorizontalAlignment="Left" Margin="116,292,0,0" TextWrapping="Wrap" Text="Số tiền trả mỗi đợt" VerticalAlignment="Top" FontSize="14"/>
+        <TextBlock HorizontalAlignment="Left" Margin="116,132,0,0" TextWrapping="Wrap" Text="Tổng tiền" VerticalAlignment="Top" FontSize="14"/>
+        <Button Content="Đóng" HorizontalAlignment="Left" Margin="463,350,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Width="100" Height="42" FontSize="14" Background="#FFB41616">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-0.336"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Button.RenderTransform>
+        </Button>
+        <DataGrid Name="DSDichVu" HorizontalAlignment="Left" Height="214" Margin="390,97,0,0" VerticalAlignment="Top" Width="323"   SelectionChanged="DataGrid_SelectionChanged"/>
+        <Button Content="Xuất hóa đơn" HorizontalAlignment="Left" Height="42" Margin="214,351,0,0" VerticalAlignment="Top" Width="125" FontSize="14"/>
+        <TextBlock HorizontalAlignment="Left" Height="18" Margin="390,64,0,0" TextWrapping="Wrap" Text="Chi tiết hóa đơn" VerticalAlignment="Top" Width="180" FontSize="14" FontWeight="Bold" FontStyle="Italic"/>
+        <TextBlock HorizontalAlignment="Left" Height="19" Margin="116,64,0,0" TextWrapping="Wrap" Text="Thông tin hóa đơn" VerticalAlignment="Top" Width="184" FontWeight="Bold" FontStyle="Italic" FontSize="14"/>
+        <ComboBox HorizontalAlignment="Left" Height="27" Margin="246,236,0,0" VerticalAlignment="Top" Width="66">
+            <Button Content="1"/>
+            <Button Content="2"/>
+            <Button Content="3"/>
+            <Button Content="4"/>
+        </ComboBox>
+        <TextBlock HorizontalAlignment="Left" Height="24" Margin="246,132,0,0" TextWrapping="Wrap" Text="1,413,000" VerticalAlignment="Top" Width="66" FontSize="14" Background="#FFF6CD95"/>
+        <TextBlock HorizontalAlignment="Left" Height="24" Margin="246,182,0,0" TextWrapping="Wrap" Text="1,413,000" VerticalAlignment="Top" Width="66" FontSize="14" Background="#FFF6CD95" RenderTransformOrigin="0.448,2.518"/>
+        <TextBlock HorizontalAlignment="Left" Height="24" Margin="246,292,0,0" TextWrapping="Wrap" Text="353250" VerticalAlignment="Top" Width="66" FontSize="14" Background="#FFF6CD95"/>
+        <RadioButton Content="Trả đủ" HorizontalAlignment="Left" Margin="246,97,0,0" VerticalAlignment="Top" FontSize="14"/>
+        <RadioButton Content="Trả góp" HorizontalAlignment="Left" Margin="116,97,0,0" VerticalAlignment="Top" FontSize="14" IsChecked="True"/>
+
+
     </Grid>
 </Window>
