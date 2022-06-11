@@ -22,7 +22,7 @@
         <DataGrid x:Name="dgvDSKH"
                   HorizontalAlignment="Left"
                   Height="234"
-                  FontSize="16"
+                  FontSize="14"
                   Margin="45,126,0,0"
                   VerticalAlignment="Top"
                   CanUserAddRows="False"
@@ -30,7 +30,21 @@
                   SelectionUnit="FullRow"
                   IsReadOnly="True"
                   Width="707"
-                  SelectionChanged="dgvDSKH_Selected" />
+                  AutoGenerateColumns="False"
+                  SelectionChanged="dgvDSKH_Selected">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Mã KH"
+                                    Binding="{Binding MaKH}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Tên khách hàng"
+                                    Binding="{Binding TenKH}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Số điện thoại"
+                                    Binding="{Binding SDT}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Giới tính"
+                                    Binding="{Binding GioiTinh}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Địa chỉ"
+                                    Binding="{Binding DiaChi}"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
         <TextBlock HorizontalAlignment="Left"
                    Margin="45,74,0,0"
                    FontSize="14"

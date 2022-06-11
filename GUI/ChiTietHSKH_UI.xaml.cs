@@ -72,7 +72,7 @@ namespace GUI
 
         private void btnChiTiet_Click(object sender, RoutedEventArgs e)
         {
-            // Hiển thị giao diện xem chi tiết hồ sơ tiêm chủng
+            // Hiển thị giao diện xem chi tiết hồ sơ tiêm chủng 
         }
 
         private void btnXoa_Click(object sender, RoutedEventArgs e)
@@ -86,6 +86,20 @@ namespace GUI
             TraCuuHSKH_UI traCuuHSKH_UI = new TraCuuHSKH_UI();
             traCuuHSKH_UI.Show();
             this.Close();
+        }
+
+        private void dgvDS_HSTC_Selected(object sender, SelectionChangedEventArgs e)
+        {
+            // Cho phép chọn xem hoặc xoá hồ sơ khi chọn khách hàng và ngược lại
+            if (dgvDS_HSTC.SelectedIndex < 0)
+            {
+                btnChiTiet.IsEnabled = false;
+                btnXoa.IsEnabled = false;
+                return;
+            }
+            btnChiTiet.IsEnabled = true;
+            btnXoa.IsEnabled = true;
+            return;
         }
     }
 }
