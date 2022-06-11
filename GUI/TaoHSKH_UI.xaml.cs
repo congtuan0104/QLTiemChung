@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using DTO;
+using BUS;
 
 namespace GUI
 {
@@ -19,6 +21,9 @@ namespace GUI
     /// </summary>
     public partial class TaoHSKH_UI : Window
     {
+        // Khai báo các nghiệp vụ liên quan đến giao diện tra cứu hồ sơ khách hàng
+        HSKH_BUS hskhBussiness = new HSKH_BUS();
+        GiamHo_BUS ghBussiness = new GiamHo_BUS();
         public TaoHSKH_UI()
         {
             InitializeComponent();
@@ -45,6 +50,103 @@ namespace GUI
         private void btnLuu_Click(object sender, RoutedEventArgs e)
         {
             // Lưu hồ sơ khách hàng
+
+            if (KiemTraThongTinNhap())
+            {
+                // Lưu thông tin người tiêm
+                HSKH KH = new HSKH();
+                KH.TenKH = tbHoTen.Text;
+                KH.SDT = tbSDT.Text;
+                KH.DiaChi = tbDiaChi.Text;
+                KH.NgaySinh = dpNgaySinh.SelectedDate.Value;
+                KH.GioiTinh = rbNam.IsChecked == true ? "Nam" : "Nữ";
+
+                // Thêm thông tin người tiêm thành công
+                if (hskhBussiness.ThemKH(KH))
+                {
+                    // Lưu thông tin người giám hộ (nếu có)
+                    if (checkTreEm.IsChecked == true)
+                    {
+                        GiamHo GH = new GiamHo();
+                        GH.MaKH = hskhBussiness.TraCuuKH(KH.TenKH, KH.SDT)[0].MaKH;
+                        GH.TenNGH = tbNguoiGiamHo.Text;
+                        GH.QuanHe = tbQuanHe.Text;
+
+                        if (!ghBussiness.ThemNGH(GH))
+                        {
+                            MessageBox.Show("Thêm thông tin người giám hộ không thành công");
+                            this.Close();
+                            return;
+                        }
+                    }
+                    MessageBox.Show("Tạo hồ sơ thành công");
+                    this.Close();
+                    return;
+                }
+
+                MessageBox.Show("Tạo hồ sơ thất bại");
+                this.Close();
+                return;
+            }           
+        }
+
+        private bool KiemTraThongTinNhap()
+        {
+            // Kiếm tra xem thông tin đã được nhập đầy đủ chưa
+            if (tbHoTen.Text =="")
+            {
+                MessageBox.Show("Bạn chưa nhập tên khách hàng", "Thông báo", 
+                    MessageBoxButton.OK, MessageBoxImage.Information);
+                tbHoTen.Focus();
+                return false;
+            }
+
+            if (tbSDT.Text=="")
+            {
+                MessageBox.Show("Bạn chưa nhập số điện thoại", "Thông báo",
+                    MessageBoxButton.OK, MessageBoxImage.Information);
+                tbSDT.Focus();
+                return false;
+            }
+
+            if (tbDiaChi.Text == "")
+            {
+                MessageBox.Show("Bạn chưa nhập địa chỉ", "Thông báo",
+                    MessageBoxButton.OK, MessageBoxImage.Information);
+                tbSDT.Focus();
+                return false;
+            }
+
+            if (dpNgaySinh.SelectedDate == null)
+            {
+                MessageBox.Show("Bạn chưa chọn ngày sinh", "Thông báo",
+                    MessageBoxButton.OK, MessageBoxImage.Information);
+                dpNgaySinh.Focus();
+                return false;
+            }
+
+            if (checkTreEm.IsChecked == true)
+            {
+                if (tbNguoiGiamHo.Text == "")
+                {
+                    MessageBox.Show("Bạn chưa nhập tên người giám hộ", "Thông báo",
+                    MessageBoxButton.OK, MessageBoxImage.Information);
+                    tbNguoiGiamHo.Focus();
+                    return false;
+                }
+
+                if (tbQuanHe.Text == "")
+                {
+                    MessageBox.Show("Bạn chưa nhập mối quan hệ", "Thông báo",
+                    MessageBoxButton.OK, MessageBoxImage.Information);
+                    tbQuanHe.Focus();
+                    return false;
+                }
+            }
+
+            // Kiểm tra xem số điện thoại có hợp lệ không
+
+            return true;
         }
 
         private void btnHuy_Click(object sender, RoutedEventArgs e)

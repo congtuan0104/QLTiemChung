@@ -9,6 +9,31 @@
         WindowStartupLocation="CenterScreen"
         Title="Hoá đơn" Height="480" Width="800">
     <Grid>
-        
+        <TextBlock HorizontalAlignment="Left" Margin="338,20,0,0" TextWrapping="Wrap" Text="HÓA ĐƠN" VerticalAlignment="Top" FontWeight="Bold" FontSize="22" Foreground="#FFEB0D0D"/>
+        <TextBlock HorizontalAlignment="Left" Margin="88,211,0,0" TextWrapping="Wrap" Text="Chưa thanh toán" VerticalAlignment="Top" FontSize="14" RenderTransformOrigin="-0.701,0.55"/>
+        <TextBlock HorizontalAlignment="Left" Margin="88,258,0,0" TextWrapping="Wrap" Text="Số đợt thanh toán" VerticalAlignment="Top" FontSize="14"/>
+        <TextBlock HorizontalAlignment="Left" Margin="88,304,0,0" TextWrapping="Wrap" Text="Số tiền trả mỗi đợt" VerticalAlignment="Top" FontSize="14"/>
+        <TextBlock HorizontalAlignment="Left" Margin="88,161,0,0" TextWrapping="Wrap" Text="Tổng tiền" VerticalAlignment="Top" FontSize="14"/>
+        <Button Content="Đóng" HorizontalAlignment="Left" Margin="441,347,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Width="100" Height="42" FontSize="14"  Background="#FFB41616">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-0.336"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Button.RenderTransform>
+        </Button>
+        <DataGrid Name="DSDichVu1" HorizontalAlignment="Left" Height="197" Margin="390,114,0,0" VerticalAlignment="Top" Width="323"   SelectionChanged="DataGrid_SelectionChanged"/>
+        <Button Content="Thanh Toán" HorizontalAlignment="Left" Height="42" Margin="265,346,0,0" VerticalAlignment="Top" Width="105" FontSize="14" />
+        <TextBlock HorizontalAlignment="Left" Height="18" Margin="390,73,0,0" TextWrapping="Wrap" Text="Chi tiết hóa đơn" VerticalAlignment="Top" Width="180" FontSize="14" FontWeight="Bold" FontStyle="Italic"/>
+        <TextBlock HorizontalAlignment="Left" Height="19" Margin="88,73,0,0" TextWrapping="Wrap" Text="Thông tin hóa đơn" VerticalAlignment="Top" Width="184" FontWeight="Bold" FontStyle="Italic" FontSize="14"/>
+        <TextBlock HorizontalAlignment="Left" Height="24" Margin="246,158,0,0" TextWrapping="Wrap" Text="1,413,000" VerticalAlignment="Top" Width="66" FontSize="14" Background="#FFF6CD95" RenderTransformOrigin="0.43,1.243"/>
+        <TextBlock HorizontalAlignment="Left" Height="24" Margin="246,255,0,0" TextWrapping="Wrap" Text="4" VerticalAlignment="Top" Width="16" FontSize="14" Background="#FFF6CD95" RenderTransformOrigin="0.43,1.243"/>
+        <TextBlock HorizontalAlignment="Left" Height="24" Margin="246,208,0,0" TextWrapping="Wrap" Text="1,059,750" VerticalAlignment="Top" Width="66" FontSize="14" Background="#FFF6CD95" RenderTransformOrigin="0.448,2.518"/>
+        <TextBlock HorizontalAlignment="Left" Height="24" Margin="246,301,0,0" TextWrapping="Wrap" Text="353250" VerticalAlignment="Top" Width="66" FontSize="14" Background="#FFF6CD95" RenderTransformOrigin="0.491,1.102"/>
+        <TextBlock HorizontalAlignment="Left" Height="24" Margin="246,114,0,0" TextWrapping="Wrap" Text="Trả góp" VerticalAlignment="Top" Width="51" FontSize="14" Background="#FFF6CD95" RenderTransformOrigin="0.43,1.243"/>
+        <TextBlock HorizontalAlignment="Left" Margin="88,114,0,0" TextWrapping="Wrap" Text="Hình thức thanh toán" VerticalAlignment="Top" FontSize="14"/>
+
     </Grid>
 </Window>
