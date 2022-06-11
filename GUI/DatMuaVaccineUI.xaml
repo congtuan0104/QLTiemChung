@@ -9,6 +9,64 @@
         WindowStartupLocation="CenterScreen"
         Title="Đặt mua vaccine" Height="480" Width="800">
     <Grid>
-        
+        <Label Content="Mã Đơn Đặt Hàng"  HorizontalAlignment="Left" Margin="29,83,0,0" VerticalAlignment="Top"/>
+
+
+        <Label Content="Ngày đặt" HorizontalAlignment="Left" Margin="53,129,0,0" VerticalAlignment="Top" Width="60" Height="30"/>
+        <Button Content="Mua" HorizontalAlignment="Left" Margin="142,359,0,0" VerticalAlignment="Top" Height="40" Width="120"/>
+        <Button Content="Đóng" HorizontalAlignment="Left" Margin="561,354,0,0" VerticalAlignment="Top" Height="40" Width="120"/>
+        <Label Content="Mã khách hàng" HorizontalAlignment="Left" Margin="37,178,0,0" VerticalAlignment="Top"/>
+        <Label Content="Họ tên khách hàng" HorizontalAlignment="Left" Margin="18,229,0,0" VerticalAlignment="Top"/>
+        <Label Content="Số điện thoại" HorizontalAlignment="Left" Margin="43,288,0,0" VerticalAlignment="Top"/>
+
+
+
+        <TextBlock HorizontalAlignment="Center"
+                   Margin="0,20,0,0"
+                   Foreground="Red"
+                   TextWrapping="Wrap"
+                   Text="Đơn Đặt Hàng"
+                   VerticalAlignment="Top"
+                   FontSize="22"
+                   FontWeight="Bold" />
+
+
+        <TextBlock HorizontalAlignment="Left"
+                   Margin="365,69,0,0"
+                   FontSize="14"
+                   TextWrapping="Wrap"
+                   Text="Các loại vaccine "
+                   VerticalAlignment="Top"
+                   FontStyle="Italic"
+                   FontWeight="Bold" />
+        <DataGrid x:Name="dgvDichVuDangKy"
+                  HorizontalAlignment="Left"
+                  Height="228"
+                  FontSize="14"
+                  Margin="365,96,0,0"
+                  VerticalAlignment="Top"
+                  Width="417"
+                  DataGridRow.Selected="dgvDichVuDangKy_Selected"
+                  
+                  d:ItemsSource="{d:SampleData ItemCount=3}" RenderTransformOrigin="0.5,0.5" >
+            <DataGrid.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0.449"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </DataGrid.RenderTransform>
+        </DataGrid>
+        <CheckBox Content="Mua" HorizontalAlignment="Left" Margin="704,129,0,0" VerticalAlignment="Top" />
+        <CheckBox Content="Mua" HorizontalAlignment="Left" Margin="704,149,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.481,1.99"/>
+        <CheckBox Content="Mua" HorizontalAlignment="Left" Margin="704,170,0,0" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="174,88,0,0" TextWrapping="Wrap" Text="DH123" VerticalAlignment="Top" Background="#FFF6CD95" />
+        <TextBlock HorizontalAlignment="Left" Margin="165,137,0,0" TextWrapping="Wrap" Text="26/5/2015" VerticalAlignment="Top" Background="#FFF6CD95"/>
+        <TextBlock HorizontalAlignment="Left" Margin="182,188,0,0" TextWrapping="Wrap" Text="123" VerticalAlignment="Top" Background="#FFF6CD95"/>
+        <TextBlock HorizontalAlignment="Left" Margin="167,234,0,0" TextWrapping="Wrap" Text="Trần Văn B" VerticalAlignment="Top" Width="70" Foreground="#FF0C0E09" Background="#FFF6CD95"/>
+        <TextBlock HorizontalAlignment="Left" Margin="164,292,0,0" TextWrapping="Wrap" Text="0123456789" VerticalAlignment="Top" FontSize="12" Background="#FFF6CD95" />
+
+
     </Grid>
 </Window>
