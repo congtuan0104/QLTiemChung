@@ -21,12 +21,14 @@ namespace GUI
     /// </summary>
     public partial class TraCuuHSKH_UI : Window
     {
+        // Khai báo các nghiệp vụ liên quan đến giao diện tra cứu hồ sơ khách hàng
         HSKH_BUS hskhBussiness = new HSKH_BUS();
+
         public TraCuuHSKH_UI()
         {
             InitializeComponent();           
             btnXemHS.IsEnabled = false;
-            btnXoaKH.IsEnabled = false;
+            btnXoaKH.IsEnabled = false;         
             HienThiDSKH();
         }
 
@@ -34,7 +36,7 @@ namespace GUI
         {
             // Lấy ds khách hàng đổ vào dgvDSKH
             List<HSKH> dsHSKH = hskhBussiness.LayDSKH();
-            dgvDSKH.ItemsSource = dsHSKH;
+            dgvDSKH.ItemsSource = dsHSKH;          
             dgvDSKH.Items.Refresh();
         }
 
@@ -42,18 +44,31 @@ namespace GUI
         {
             // Chuyển sang giao diện tạo hồ sơ khách hàng
             TaoHSKH_UI taoHSKH_UI = new TaoHSKH_UI();
-            taoHSKH_UI.ShowDialog();
+            taoHSKH_UI.ShowDialog();           
         }
 
         private void btnXemHS_Click(object sender, RoutedEventArgs e)
         {
             // Chuyển sang giao diện xem chi tiết hồ sơ khách hàng 
-
+            HSKH KH_Selected = dgvDSKH.SelectedItem as HSKH;
+            ChiTietHSKH_UI chiTietHSKH_UI = new ChiTietHSKH_UI(KH_Selected.MaKH);
+            chiTietHSKH_UI.Show();
+            this.Close();
         }
 
         private void btnXoaKH_Click(object sender, RoutedEventArgs e)
         {
-            // Thực hiện xoá khách hàng và các dữ liệu liên quan
+            HSKH KH_Selected = dgvDSKH.SelectedItem as HSKH;
+            string message = "Bạn có chắc muốn xoá khách hàng " + KH_Selected.TenKH;
+            // Thực hiện xoá khách hàng
+            if (MessageBox.Show(message, "Cảnh báo", MessageBoxButton.YesNo,
+                MessageBoxImage.Warning) == MessageBoxResult.Yes)
+            {      
+                hskhBussiness.XoaKH(KH_Selected.MaKH);
+                HienThiDSKH();
+            }
+            return;
+            
         }
 
         private void btnTimKiemKH_Click(object sender, RoutedEventArgs e)
