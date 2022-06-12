@@ -44,6 +44,7 @@
     <Compile Include="GiamHo.cs" />
     <Compile Include="HSKH.cs" />
     <Compile Include="HSTiemChung.cs" />
+    <Compile Include="LICHLAMVIEC.cs" />
     <Compile Include="PhieuDatMua.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

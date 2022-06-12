@@ -45,6 +45,7 @@
     <Compile Include="HSKH_BUS.cs" />
     <Compile Include="HSTiemChung_BUS.cs" />
     <Compile Include="PhieuDatMua_BUS.cs" />
+    <Compile Include="LICHLAMVIEC_BUS.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
