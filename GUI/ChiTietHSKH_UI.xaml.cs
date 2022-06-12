@@ -25,7 +25,7 @@ namespace GUI
         HSKH_BUS hskhBussiness = new HSKH_BUS();
         GiamHo_BUS giamHoBussuness = new GiamHo_BUS();
         HSTiemChung_BUS hstcBussiness = new HSTiemChung_BUS();
-
+        
         public ChiTietHSKH_UI(int MaKH)
         {
             InitializeComponent();
@@ -38,6 +38,7 @@ namespace GUI
         {
             // Hiển thị thông tin khách hàng (người được tiêm)
             HSKH kh = hskhBussiness.LayThongTinKH(MaKH);
+            txtMaKH.Text = MaKH.ToString();
             txtHoTen.Text = kh.TenKH;
             txtDiaChi.Text = kh.DiaChi;
             txtNgaySinh.Text = kh.NgaySinh.ToShortDateString();
@@ -73,11 +74,30 @@ namespace GUI
         private void btnChiTiet_Click(object sender, RoutedEventArgs e)
         {
             // Hiển thị giao diện xem chi tiết hồ sơ tiêm chủng 
+            HSTiemChung HS_Selected = dgvDS_HSTC.SelectedItem as HSTiemChung;
+            ChiTietHSTiemChungUI CTHSTC_UI  = new ChiTietHSTiemChungUI(HS_Selected.MaHS);
+            CTHSTC_UI.ShowDialog();
+            this.Close();
         }
 
         private void btnXoa_Click(object sender, RoutedEventArgs e)
         {
             // Thực hiện chức năng xoá hồ sơ tiêm chủng
+            HSTiemChung HS_Selected = dgvDS_HSTC.SelectedItem as HSTiemChung;
+
+            // Thực hiện xoá khách hàng
+            if (MessageBox.Show("Bạn có chắc muốn xoá hồ sơ này ", "Cảnh báo", MessageBoxButton.YesNo,
+                MessageBoxImage.Warning) == MessageBoxResult.Yes)
+            {
+                if (hstcBussiness.XoaHS(HS_Selected.MaHS))
+                {
+                    MessageBox.Show("Xoá hồ sơ thành công");
+                    HienThiDS_HSTCCuaKH(Int32.Parse(txtMaKH.Text));
+                    return;
+                }
+                MessageBox.Show("Xoá hồ sơ thất bại");
+            }
+            return;
         }
 
         private void btnQuayLai_Click(object sender, RoutedEventArgs e)
@@ -101,5 +121,6 @@ namespace GUI
             btnXoa.IsEnabled = true;
             return;
         }
+
     }
 }

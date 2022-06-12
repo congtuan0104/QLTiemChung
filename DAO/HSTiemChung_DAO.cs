@@ -41,5 +41,18 @@ namespace DAO
             reader.Close();
             return DS_HSTC;
         }
+
+        public bool XoaHSTC_DB(int maHS)
+        {
+            MoKetNoi();
+            string sql = "update HOSOTIEMCHUNG set DaXoa = GETDATE()" +
+                " where MaHS = " + maHS;
+            SqlCommand command = new SqlCommand();
+            command.CommandType = CommandType.Text;
+            command.CommandText = sql;
+            command.Connection = conec;
+            int kq = command.ExecuteNonQuery();
+            return kq > 0;
+        }
     }
 }

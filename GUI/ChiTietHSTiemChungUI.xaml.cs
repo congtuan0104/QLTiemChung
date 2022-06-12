@@ -19,9 +19,29 @@ namespace GUI
     /// </summary>
     public partial class ChiTietHSTiemChungUI : Window
     {
-        public ChiTietHSTiemChungUI()
+        public ChiTietHSTiemChungUI(int MaHS)
         {
             InitializeComponent();
+        }
+
+        private void btnCapNhat_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnXuatHoaDon_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnXemHoaDon_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnQuayLai_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }
