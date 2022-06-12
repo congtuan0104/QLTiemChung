@@ -7,30 +7,30 @@
         mc:Ignorable="d"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
-        Title="Lịch làm việc" Height="450" Width="700">
+        Title="Lịch làm việc" Height="480" Width="800">
     <Grid>
-        <Label Content="XEM LỊCH LÀM VIỆC" HorizontalAlignment="Left" Margin="208,20,0,0" VerticalAlignment="Top" Height="38" Width="264" FontFamily="Times New Roman" FontSize="24" FontWeight="Bold" Foreground="Red"/>
+        <Label Content="XEM LỊCH LÀM VIỆC" HorizontalAlignment="Left" Margin="263,26,0,0" VerticalAlignment="Top" Height="38" Width="264" FontFamily="Times New Roman" FontSize="24" FontWeight="Bold" Foreground="Red"/>
         <DataGrid x:Name="dgvLichLamViec" 
                   HorizontalAlignment="Left" 
-                  Height="205" Margin="321,85,0,0" 
+                  Height="268" Margin="321,85,0,0" 
                   VerticalAlignment="Top" 
-                  Width="315" 
-                  FontSize="18"
+                  Width="400" 
+                  FontSize="16"
                   CanUserAddRows="False"
                   SelectionMode="Single"
                   SelectionUnit="FullRow"
                   IsReadOnly="True"
                   AutoGenerateColumns="False">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Mã NV"
+                <DataGridTextColumn Header="Mã NV" Width="120"
                                     Binding="{Binding MaNV}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Ca"
+                <DataGridTextColumn Header="Ca" Width="120"
                                     Binding="{Binding Ca}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Ngày"
+                <DataGridTextColumn Header="Ngày" Width="120"
                                     Binding="{Binding Ngay, StringFormat='dd-MM-yyyy'}"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <DatePicker x:Name="dataPicker_ngayKetThuc" HorizontalAlignment="Left" Margin="188,162,0,0" VerticalAlignment="Top" Width="100" DisplayDate="01-01-2099"/>
+        <DatePicker x:Name="dataPicker_ngayKetThuc" HorizontalAlignment="Left" Margin="188,162,0,0" VerticalAlignment="Top" Width="100" />
         <TextBlock HorizontalAlignment="Left" Margin="63,163,0,0" TextWrapping="Wrap" Text="ĐẾN NGÀY" VerticalAlignment="Top" Height="23" Width="86" FontSize="14"/>
         <TextBlock HorizontalAlignment="Left" Margin="63,206,0,0" TextWrapping="Wrap" Text="CHỌN CA" VerticalAlignment="Top" Height="21" Width="67" FontSize="14"/>
         <TextBlock HorizontalAlignment="Left" Margin="63,257,0,0" TextWrapping="Wrap" Text="NHÂN VIÊN" VerticalAlignment="Top" Height="18" Width="79" FontSize="14"/>
@@ -40,12 +40,12 @@
             <ComboBoxItem Content="Tối"/>
             <ComboBoxItem Content="Chiều"/>
         </ComboBox>
-        <Button x:Name="btnDong" Content="ĐÓNG" HorizontalAlignment="Left" Margin="491,353,0,0" VerticalAlignment="Top" Width="137" Height="37" FontWeight="Bold" Background="#FFBABAE2" Click="btnDong_Click"/>
-        <DatePicker x:Name="dataPicker_ngayBatDau" HorizontalAlignment="Left" Margin="187,112,0,0" VerticalAlignment="Top" Width="101" DisplayDate = "01-01-2022" />
+        <Button x:Name="btnDong" Content="QUAY LẠI" HorizontalAlignment="Left" Margin="590,379,0,0" VerticalAlignment="Top" Width="155" Height="37" FontWeight="Bold"  Click="btnDong_Click"/>
+        <DatePicker x:Name="dataPicker_ngayBatDau" HorizontalAlignment="Left" Margin="187,112,0,0" VerticalAlignment="Top" Width="101" />
         <TextBlock HorizontalAlignment="Left" Margin="62,114,0,0" TextWrapping="Wrap" Text="TỪ NGÀY" VerticalAlignment="Top" Height="23" Width="86" FontSize="14"/>
-        <Button x:Name="btnChinhSua" Content="CHỈNH SỬA LỊCH" HorizontalAlignment="Left" Margin="207,353,0,0" VerticalAlignment="Top" Width="137" Height="37" FontWeight="Bold" Background="#FFBABAE2" RenderTransformOrigin="0.683,0.422" Click="btnChinhSua_Click"/>
-        <Button x:Name="btnDangKy" Content="ĐĂNG KÝ LỊCH" HorizontalAlignment="Left" Margin="349,353,0,0" VerticalAlignment="Top" Width="137" Height="37" FontWeight="Bold" Background="#FFBABAE2" Click="btnDangKy_Click"/>
-        <Button x:Name="btnXem_Lich" Content="XEM" HorizontalAlignment="Left" Margin="62,353,0,0" VerticalAlignment="Top" Width="138" Height="37" FontWeight="Bold" Background="#FFBABAE2" Click="btnXem_Lich_Click"/>
+        <Button x:Name="btnChinhSua" Content="CHỈNH SỬA LỊCH" HorizontalAlignment="Left" Margin="228,379,0,0" VerticalAlignment="Top" Width="155" Height="37" FontWeight="Bold"  RenderTransformOrigin="0.683,0.422" Click="btnChinhSua_Click"/>
+        <Button x:Name="btnDangKy" Content="ĐĂNG KÝ LỊCH" HorizontalAlignment="Left" Margin="408,379,0,0" VerticalAlignment="Top" Width="155" Height="37" FontWeight="Bold"  Click="btnDangKy_Click"/>
+        <Button x:Name="btnXem_Lich" Content="XEM" HorizontalAlignment="Left" Margin="50,379,0,0" VerticalAlignment="Top" Width="155" Height="37" FontWeight="Bold"  Click="btnXem_Lich_Click"/>
 
 
     </Grid>

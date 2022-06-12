@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using DTO;
+using BUS;
 
 namespace GUI
 {
@@ -19,12 +21,19 @@ namespace GUI
     /// </summary>
     public partial class ChinhSuaLichLamViec_UI : Window
     {
+        LICHLAMVIEC_BUS lichLamViecBussiness = new LICHLAMVIEC_BUS();
         public ChinhSuaLichLamViec_UI()
         {
             InitializeComponent();
+            HienThiLichLamViec();
         }
 
-        
+        private void HienThiLichLamViec()
+        {
+            List<LICHLAMVIEC> lichLamViec = lichLamViecBussiness.layLichLamViec();
+            dgvLichLamViec.ItemsSource = lichLamViec;
+            dgvLichLamViec.Items.Refresh();
+        }
 
         private void btnDong_Click(object sender, RoutedEventArgs e)
         {

@@ -7,15 +7,20 @@
         mc:Ignorable="d"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
-        Title="ChinhSuaLichLamViec_UI" Height="450" Width="800">
+        Title="ChinhSuaLichLamViec_UI" Height="480" Width="800">
     <Grid>
-        <Label Content="CHỈNH SỬA LỊCH LÀM VIỆC" HorizontalAlignment="Left" Margin="229,27,0,0" VerticalAlignment="Top" Height="38" Width="356" FontFamily="Times New Roman" FontSize="24" FontWeight="Bold" Foreground="Red"/>
+        <Label Content="CHỈNH SỬA LỊCH LÀM VIỆC" HorizontalAlignment="Left" Margin="224,26,0,0" VerticalAlignment="Top" Height="38" Width="341" FontFamily="Times New Roman" FontSize="24" FontWeight="Bold" Foreground="Red"/>
         <DataGrid x:Name="dgvLichLamViec" 
                   HorizontalAlignment="Left" 
-                  Height="235" Margin="35,112,0,0" 
+                  Height="235" Margin="59,112,0,0" 
                   VerticalAlignment="Top" 
-                  Width="229" 
-                  FontSize="18">
+                  Width="297" 
+                  FontSize="16"
+                  CanUserAddRows="False"
+                  SelectionMode="Single"
+                  SelectionUnit="FullRow"
+                  IsReadOnly="True"
+                  AutoGenerateColumns="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Mã NV"
                                     Binding="{Binding MaNV}"></DataGridTextColumn>
@@ -25,19 +30,19 @@
                                     Binding="{Binding Ngay, StringFormat='dd-MM-yyyy'}"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <DatePicker HorizontalAlignment="Left" Margin="404,128,0,0" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="299,131,0,0" TextWrapping="Wrap" Text="CHỌN NGÀY" VerticalAlignment="Top" Height="23" Width="86" FontSize="14"/>
-        <TextBlock HorizontalAlignment="Left" Margin="299,175,0,0" TextWrapping="Wrap" Text="CHỌN CA" VerticalAlignment="Top" Height="21" Width="67" FontSize="14"/>
-        <TextBlock HorizontalAlignment="Left" Margin="299,222,0,0" TextWrapping="Wrap" Text="NHÂN VIÊN" VerticalAlignment="Top" Height="18" Width="79" FontSize="14"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="405,219,0,0" TextWrapping="Wrap" Text="TN0003" VerticalAlignment="Top" Width="101" FontWeight="Bold" FontSize="16"/>
-        <ComboBox HorizontalAlignment="Left" Margin="405,174,0,0" VerticalAlignment="Top" Width="101"/>
-        <Button Content="XÓA KHỎI LỊCH" HorizontalAlignment="Left" Margin="418,320,0,0" VerticalAlignment="Top" Width="101" Height="27" FontWeight="Bold" Background="#FFBABAE2"/>
-        <Button Content="THÊM VÀO LỊCH" HorizontalAlignment="Left" Margin="283,320,0,0" VerticalAlignment="Top" Width="103" Height="27" FontWeight="Bold" Background="#FFBABAE2" RenderTransformOrigin="1.786,0.119"/>
-        <Button Content="XÁC NHẬN" HorizontalAlignment="Left" Margin="349,365,0,0" VerticalAlignment="Top" Width="103" Height="27" FontWeight="Bold" Background="#FFBABAE2" />
-        <TextBlock HorizontalAlignment="Left" Margin="34,85,0,0" TextWrapping="Wrap" Text="LỊCH LÀM VIỆC" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
-        <DataGrid x:Name="dgvPhieuDangKy" HorizontalAlignment="Left" Height="235" Margin="534,112,0,0" VerticalAlignment="Top" Width="229" FontSize="18"/>
-        <TextBlock HorizontalAlignment="Left" Margin="534,85,0,0" TextWrapping="Wrap" Text="PHIẾU ĐĂNG KÝ" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
-        <Button x:Name="btnDong" Content="QUAY LẠI" HorizontalAlignment="Left" Margin="482,365,0,0" VerticalAlignment="Top" Width="103" Height="27" FontWeight="Bold" Background="#FFBABAE2" Click="btnDong_Click" RenderTransformOrigin="-0.901,0.227"/>
-        <Button Content="HỦY" HorizontalAlignment="Left" Margin="216,365,0,0" VerticalAlignment="Top" Width="103" Height="27" FontWeight="Bold" Background="#FFBABAE2" />
+        <DatePicker HorizontalAlignment="Left" Margin="164,366,0,0" VerticalAlignment="Top" Width="70"/>
+        <TextBlock HorizontalAlignment="Left" Margin="59,369,0,0" TextWrapping="Wrap" Text="CHỌN NGÀY" VerticalAlignment="Top" Height="23" Width="86" FontSize="14"/>
+        <TextBlock HorizontalAlignment="Left" Margin="302,367,0,0" TextWrapping="Wrap" Text="CHỌN CA" VerticalAlignment="Top" Height="21" Width="67" FontSize="14"/>
+        <TextBlock HorizontalAlignment="Left" Margin="552,372,0,0" TextWrapping="Wrap" Text="NHÂN VIÊN" VerticalAlignment="Top" Height="18" Width="79" FontSize="14"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="658,369,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="69" FontWeight="Bold" FontSize="16"/>
+        <ComboBox HorizontalAlignment="Left" Margin="408,366,0,0" VerticalAlignment="Top" Width="69"/>
+        <Button Content="XÓA KHỎI LỊCH" HorizontalAlignment="Left" Margin="349,404,0,0" VerticalAlignment="Top" Width="101" Height="27" FontWeight="Bold"/>
+        <Button Content="THÊM VÀO LỊCH" HorizontalAlignment="Left" Margin="30,404,0,0" VerticalAlignment="Top" Width="103" Height="27" FontWeight="Bold" RenderTransformOrigin="1.786,0.119"/>
+        <Button Content="XÁC NHẬN" HorizontalAlignment="Left" Margin="502,404,0,0" VerticalAlignment="Top" Width="103" Height="27" FontWeight="Bold" />
+        <TextBlock HorizontalAlignment="Left" Margin="59,84,0,0" TextWrapping="Wrap" Text="LỊCH LÀM VIỆC" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
+        <DataGrid x:Name="dgvPhieuDangKy" HorizontalAlignment="Left" Height="235" Margin="435,112,0,0" VerticalAlignment="Top" Width="292" FontSize="18"/>
+        <TextBlock HorizontalAlignment="Left" Margin="604,84,0,0" TextWrapping="Wrap" Text="PHIẾU ĐĂNG KÝ" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
+        <Button x:Name="btnDong" Content="QUAY LẠI" HorizontalAlignment="Left" Margin="658,404,0,0" VerticalAlignment="Top" Width="103" Height="27" FontWeight="Bold" Click="btnDong_Click" RenderTransformOrigin="-0.901,0.227"/>
+        <Button Content="HỦY" HorizontalAlignment="Left" Margin="189,404,0,0" VerticalAlignment="Top" Width="103" Height="27" FontWeight="Bold" />
     </Grid>
 </Window>

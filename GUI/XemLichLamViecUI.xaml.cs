@@ -28,6 +28,7 @@ namespace GUI
         {
             InitializeComponent();
             //btnDong.IsEnabled = false;
+            
             HienThiLichLamViec();
         }
 
@@ -47,60 +48,62 @@ namespace GUI
 
         private void btnXem_Lich_Click(object sender, RoutedEventArgs e)
         {
-            string ngayBatDau = dataPicker_ngayBatDau.SelectedDate.Value.ToString("yyyy-MM-dd"),
-            ngayKetThuc = dataPicker_ngayKetThuc.SelectedDate.Value.ToString("yyyy-MM-dd"),
-                Ca = comboBox_caLamViec.Text, MaNV = textBox_MaNV.Text;
+            string Ca , MaNV,
+                    ngayBatDau , ngayKetThuc ;
+                    //ngayBatDau = dataPicker_ngayBatDau.SelectedDate.Value.ToString("yyyy-MM-dd"),
+                    //ngayKetThuc = dataPicker_ngayKetThuc.SelectedDate.Value.ToString("yyyy-MM-dd");
+            if(dataPicker_ngayBatDau.SelectedDate == null) { 
+                ngayBatDau = "2000-01-01"; 
+            } else { 
+                ngayBatDau = dataPicker_ngayBatDau.SelectedDate.Value.ToString("yyyy-MM-dd"); 
+            };
+            if (dataPicker_ngayKetThuc.SelectedDate == null)
+            {
+                ngayKetThuc = "3000-01-01";
+            }
+            else {
+                ngayKetThuc = dataPicker_ngayKetThuc.SelectedDate.Value.ToString("yyyy-MM-dd");
+            };
+            if (textBox_MaNV == null)
+            {
+                MaNV = "";
+            }
+            else
+            {
+                MaNV = textBox_MaNV.Text;
+            };
+            if (comboBox_caLamViec == null)
+            {
+                Ca = "";
+            }
+            else
+            {
+                Ca = comboBox_caLamViec.Text;
+            }
 
-            string dieukien = "where Ngay between '" + ngayBatDau + "' and '" + ngayKetThuc +
-                              "' and MaNV = " + MaNV +
-                              " and Ca = N'" + Ca + "'";
-
-
-
-
-            //if (ngayBatDau != "" || ngayKetThuc != "" || Ca != "" || MaNV != "")
-            //{
-            //    //dieukien = "where " + "Ngay between '" + ngayBatDau + "' and '" + ngayKetThuc +
-            //    //"' and MaNV = " + MaNV +
-            //    //" and Ca = N'" + Ca + "';";
-            //    dieukien = "where ";
-            //    if (ngayBatDau != "" || ngayKetThuc != "")
-            //    {
-            //        if (ngayBatDau != "" && ngayKetThuc != "")
-            //        {
-            //            dieukien = dieukien + "Ngay between '" + ngayBatDau + "' and '" + ngayKetThuc + "' ";
-            //        }
-            //        else if (ngayBatDau == "")
-            //        {
-            //            dieukien = dieukien + "Ngay < '" + ngayKetThuc + "' ";
-            //        }
-            //        else if (ngayKetThuc == "")
-            //        {
-            //            dieukien = dieukien + "Ngay > '" + ngayBatDau + "' ";
-            //        };
-
-            //    } 
-            //    if (Ca != "")
-            //    {
-            //        dieukien = dieukien + "Ca = N'" + Ca + "' ";
-            //        if (MaNV != "")
-            //        {
-            //            dieukien = dieukien + "and MaNV = " + MaNV;
-            //        };
-            //    }else if (MaNV != "")
-            //    {
-            //        dieukien = dieukien + "MaNV = " + MaNV;   
-            //    }
+            string dieukien = "";
 
 
-            //}
-            MessageBox.Show(dieukien);
-            this.Close();
-            //List < LICHLAMVIEC> lichLamViec = lichLamViecBussiness.layLichLamViec_1NhanVien(dieukien);
-            //dgvLichLamViec.ItemsSource = lichLamViec;
-            //dgvLichLamViec.Items.Refresh();
+            dieukien = "where Ngay >= '" + ngayBatDau + "' and Ngay <='" + ngayKetThuc + "' ";
+
+            if (Ca != "")
+            {
+                dieukien = dieukien + "and Ca = N'" + Ca + "' ";
+                
+            };
+            if (MaNV != "")
+            {
+                dieukien = dieukien + "and MaNV = " + MaNV;
+            };
+
+
+            //MessageBox.Show(dieukien);
+            //this.Close();
+            List<LICHLAMVIEC> lichLamViec = lichLamViecBussiness.layLichLamViec_1NhanVien(dieukien);
+            dgvLichLamViec.ItemsSource = lichLamViec;
+            dgvLichLamViec.Items.Refresh();
         }
-    
+
 
         private void btnChinhSua_Click(object sender, RoutedEventArgs e)
         {
