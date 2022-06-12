@@ -11,6 +11,7 @@
         Height="480"
         Width="800">
     <Grid>
+
         <TextBlock HorizontalAlignment="Center"
                    Margin="0,20,0,0"
                    Foreground="Red"
@@ -19,20 +20,38 @@
                    VerticalAlignment="Top"
                    FontSize="22"
                    FontWeight="Bold" />
+
+
         <DataGrid x:Name="dgvDDH"
                   HorizontalAlignment="Left"
                   Height="234"
                   FontSize="16"
-                  Margin="45,126,0,0"
+                  Margin="35,124,0,0"
+                  AutoGenerateColumns="False"
+                  IsReadOnly="True"
+                  CanUserAddRows="False"
+                  SelectionMode="Single"
+                  SelectionUnit="FullRow"
                   VerticalAlignment="Top"
-                  Width="707" />
+                  Width="707" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Mã Phiếu"
+                                    Binding="{Binding MaPhieu}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Mã Khách Hàng"
+                                    Binding="{Binding MaKH}"></DataGridTextColumn>
+                
+                <DataGridTextColumn Header="Ngày Đặt"
+                                    Binding="{Binding NgayDat}"></DataGridTextColumn>
+
+            </DataGrid.Columns>
+        </DataGrid>
         <TextBlock HorizontalAlignment="Left"
                    Margin="45,79,0,0"
                    FontSize="14"
                    TextWrapping="Wrap"
                    Text="Mã khách hàng"
                    VerticalAlignment="Top" />
-        <TextBox HorizontalAlignment="Left"
+        <TextBox x:Name="txbMaKH" HorizontalAlignment="Left"
                  Margin="161,71,0,0"
                  TextWrapping="Wrap"
                  FontSize="14"
@@ -67,14 +86,16 @@
                 Margin="499,389,0,0"
                 VerticalAlignment="Top"
                 Height="40"
-                Width="109" />
-        <Button Content="Quay lại"
+                Width="109"
+                Click="Button_ClickTKDDH"/>
+        <Button x:Name="btnQuayLai" Content="Quay lại"
                 Padding="15,10,15,10"
                 HorizontalAlignment="Left"
                 Margin="649,389,0,0"
                 VerticalAlignment="Top"
                 Height="40"
-                Width="109" />
+                Width="109"
+                Click="btnQuayLai_Click"/>
 
     </Grid>
 </Window>

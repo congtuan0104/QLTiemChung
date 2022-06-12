@@ -11,7 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
+using DTO;
+using BUS;
 namespace GUI
 {
     /// <summary>
@@ -19,9 +20,25 @@ namespace GUI
     /// </summary>
     public partial class ChiTietHSTiemChungUI : Window
     {
+        HoaDon_BUS HoaDonHSTC = new HoaDon_BUS();
         public ChiTietHSTiemChungUI(int MaHS)
         {
             InitializeComponent();
+            if (KiemTraHDTonTai(MaHS))
+            {
+                btnXuatHoaDon.IsEnabled = false;
+            }
+            else
+            {
+                btnXemHoaDon.IsEnabled = false;
+            }
+
+            txtMaHS.Text = MaHS.ToString();
+        }
+
+        private bool KiemTraHDTonTai(int MaHS)
+        {
+            return HoaDonHSTC.KiemTraHD(MaHS);
         }
 
         private void btnCapNhat_Click(object sender, RoutedEventArgs e)
@@ -31,12 +48,14 @@ namespace GUI
 
         private void btnXuatHoaDon_Click(object sender, RoutedEventArgs e)
         {
-
+            XuatHoaDonUI xuathoadon = new XuatHoaDonUI(Int32.Parse(txtMaHS.Text));
+            xuathoadon.ShowDialog();
         }
 
         private void btnXemHoaDon_Click(object sender, RoutedEventArgs e)
         {
-
+            XemHoaDonUI xemhoadon = new XemHoaDonUI(Int32.Parse(txtMaHS.Text));
+            xemhoadon.ShowDialog();
         }
 
         private void btnQuayLai_Click(object sender, RoutedEventArgs e)

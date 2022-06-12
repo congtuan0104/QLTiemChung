@@ -19,7 +19,7 @@ namespace GUI
     /// </summary>
     public partial class XuatHoaDonUI : Window
     {
-        public XuatHoaDonUI()
+        public XuatHoaDonUI(int MaHS)
         {
             InitializeComponent();
         }
