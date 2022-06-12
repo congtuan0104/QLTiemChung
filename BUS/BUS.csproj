@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GoiVaccine_BUS.cs" />
+    <Compile Include="Vaccine_BUS.cs" />
     <Compile Include="GiamHo_BUS.cs" />
     <Compile Include="HSKH_BUS.cs" />
     <Compile Include="HSTiemChung_BUS.cs" />
