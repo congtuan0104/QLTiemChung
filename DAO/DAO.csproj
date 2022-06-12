@@ -45,6 +45,7 @@
     <Compile Include="GiamHo_DAO.cs" />
     <Compile Include="HSKH_DAO.cs" />
     <Compile Include="HSTiemChung_DAO.cs" />
+    <Compile Include="LICHLAMVIEC_DAO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
