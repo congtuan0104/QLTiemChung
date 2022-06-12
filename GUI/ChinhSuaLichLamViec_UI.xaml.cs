@@ -15,15 +15,22 @@ using System.Windows.Shapes;
 namespace GUI
 {
     /// <summary>
-    /// Interaction logic for XuatHoaDonUI.xaml
+    /// Interaction logic for ChinhSuaLichLamViec_UI.xaml
     /// </summary>
-    public partial class XuatHoaDonUI : Window
+    public partial class ChinhSuaLichLamViec_UI : Window
     {
-        public XuatHoaDonUI(int MaHS)
+        public ChinhSuaLichLamViec_UI()
         {
             InitializeComponent();
         }
 
+        
 
+        private void btnDong_Click(object sender, RoutedEventArgs e)
+        {
+            XemLichLamViecUI xemLich = new XemLichLamViecUI();
+            xemLich.Show();
+            this.Close();
+        }
     }
 }

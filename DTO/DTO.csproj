@@ -44,8 +44,11 @@
     <Compile Include="GoiVaccine.cs" />
     <Compile Include="Vaccine.cs" />
     <Compile Include="GiamHo.cs" />
+    <Compile Include="HoaDon.cs" />
     <Compile Include="HSKH.cs" />
     <Compile Include="HSTiemChung.cs" />
+    <Compile Include="LICHLAMVIEC.cs" />
+    <Compile Include="PhieuDatMua.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
