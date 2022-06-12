@@ -16,5 +16,10 @@ namespace BUS
         {
             return hstc_DAO.LayTatCaHSTCCuaKH_DB(MaKH);
         }
+
+        public bool XoaHS(int maHS)
+        {
+            return hstc_DAO.XoaHSTC_DB(maHS);
+        }
     }
 }

@@ -7,8 +7,204 @@
         mc:Ignorable="d"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
-        Title="Đăng ký tiêm chủng" Height="480" Width="800">
+        Title="Đăng ký tiêm chủng"
+        Height="480"
+        Width="800">
     <Grid>
-        
+        <TextBox HorizontalAlignment="Center"
+                 Margin="0,10,0,0"
+                 TextWrapping="Wrap"
+                 VerticalAlignment="Top"
+                 Width="288"
+                 Height="39"
+                 Text="ĐĂNG KÝ TIÊM CHỦNG"
+                 FontWeight="Bold"
+                 FontSize="22"
+                 TextAlignment="Center"
+                 Foreground="#FFDF1515">
+            <TextBox.BorderBrush>
+                <SolidColorBrush Color="#FFF3F6FD"
+                                 Opacity="0" />
+            </TextBox.BorderBrush>
+        </TextBox>
+        <TextBox HorizontalAlignment="Left"
+                 Margin="122,54,0,0"
+                 Text="Mã Khách hàng"
+                 TextWrapping="Wrap"
+                 VerticalAlignment="Top"
+                 Width="120"
+                 FontSize="14">
+            <TextBox.BorderBrush>
+                <SolidColorBrush Color="#FFABADB3"
+                                 Opacity="0" />
+            </TextBox.BorderBrush>
+        </TextBox>
+        <TextBox HorizontalAlignment="Left"
+                 Margin="123,89,0,0"
+                 Text="Họ tên khách hàng "
+                 TextWrapping="Wrap"
+                 VerticalAlignment="Top"
+                 Width="150"
+                 FontSize="14">
+            <TextBox.BorderBrush>
+                <SolidColorBrush Color="#FFABADB3"
+                                 Opacity="0" />
+            </TextBox.BorderBrush>
+        </TextBox>
+        <TextBox HorizontalAlignment="Left"
+                 Margin="123,122,0,0"
+                 Text="Thông tin đăng ký tiêm chủng "
+                 TextWrapping="Wrap"
+                 VerticalAlignment="Top"
+                 Width="226"
+                 FontSize="14"
+                 FontStyle="Italic"
+                 FontWeight="Bold">
+            <TextBox.BorderBrush>
+                <SolidColorBrush Color="#FFABADB3"
+                                 Opacity="0" />
+            </TextBox.BorderBrush>
+        </TextBox>
+        <Button Content="Đăng ký"
+                HorizontalAlignment="Left"
+                Margin="224,434,0,0"
+                VerticalAlignment="Top"
+                Width="100"
+                Height="32" />
+        <Button Content="Hủy "
+                HorizontalAlignment="Left"
+                Margin="514,434,0,0"
+                Background="#FFC83838"
+                VerticalAlignment="Top"
+                Width="100"
+                Height="32"
+                RenderTransformOrigin="0.525,-1.567" />
+        <TextBox HorizontalAlignment="Left"
+                 Height="29"
+                 Margin="123,158,0,0"
+                 Text="Ngày muốn được tiêm "
+                 TextWrapping="Wrap"
+                 VerticalAlignment="Top"
+                 Width="180"
+                 FontSize="14">
+            <TextBox.BorderBrush>
+                <SolidColorBrush Color="#FFABADB3"
+                                 Opacity="0" />
+            </TextBox.BorderBrush>
+        </TextBox>
+        <DatePicker HorizontalAlignment="Left"
+                    Margin="331,158,0,0"
+                    VerticalAlignment="Top"
+                    Text="Hi"
+                    Width="158"
+                    FontSize="16" />
+        <ComboBox Height="27"
+                  Width="158"
+                  Margin="331,194,311,294"
+                  FontSize="14">
+            <ComboBoxItem Content="Trung tâm A" />
+            <ComboBoxItem IsSelected="True"
+                          Content="Trung tâm B" />
+            <ComboBoxItem Content="Trung tâm C" />
+        </ComboBox>
+        <RadioButton Content="Tiêm gói"
+                     HorizontalAlignment="Left"
+                     Margin="125,269,0,0"
+                     VerticalAlignment="Top"
+                     FontSize="14" />
+        <TextBox HorizontalAlignment="Left"
+                 Text="Hình thức đăng ký  tiêm"
+                 TextWrapping="Wrap"
+                 VerticalAlignment="Top"
+                 Width="168"
+                 FontSize="14"
+                 RenderTransformOrigin="0.501,-5.216"
+                 Margin="123,239,0,0">
+            <TextBox.BorderBrush>
+                <SolidColorBrush Color="#FFABADB3"
+                                 Opacity="0" />
+            </TextBox.BorderBrush>
+        </TextBox>
+        <CheckBox Content="Trẻ em từ 0-9 tháng"
+                  HorizontalAlignment="Left"
+                  Margin="146,302,0,0"
+                  VerticalAlignment="Top"
+                  FontSize="14" />
+        <CheckBox Content="Trẻ em từ 0-12 tháng"
+                  HorizontalAlignment="Left"
+                  Margin="146,334,0,0"
+                  VerticalAlignment="Top"
+                  FontSize="14" />
+        <CheckBox Content="Trẻ em từ 0-24 tháng"
+                  HorizontalAlignment="Left"
+                  Margin="147,368,0,0"
+                  VerticalAlignment="Top"
+                  FontSize="14" />
+        <CheckBox Content="Phụ nữ mang thai"
+                  HorizontalAlignment="Left"
+                  Margin="146,400,0,0"
+                  VerticalAlignment="Top"
+                  FontSize="14" />
+        <RadioButton Content="Tiêm lẻ"
+                     HorizontalAlignment="Left"
+                     Margin="443,269,0,0"
+                     VerticalAlignment="Top"
+                     RenderTransformOrigin="0.499,1.152"
+                     FontSize="14" />
+        <TextBox HorizontalAlignment="Left"
+                 Margin="306,54,0,0"
+                 Text="1234"
+                 TextWrapping="Wrap"
+                 VerticalAlignment="Top"                     
+                 FontSize="14">
+            <TextBox.BorderBrush>
+                <SolidColorBrush Color="#FFABADB3"
+                                 Opacity="0" />
+            </TextBox.BorderBrush>
+        </TextBox>
+        <TextBox HorizontalAlignment="Left"
+                 Margin="306,89,0,0"
+                 Text="Trần Văn A"
+                 TextWrapping="Wrap"
+                 VerticalAlignment="Top"
+                 FontSize="14">
+            <TextBox.BorderBrush>
+                <SolidColorBrush Color="#FFABADB3"
+                                 Opacity="0" />
+            </TextBox.BorderBrush>
+        </TextBox>
+        <TextBox HorizontalAlignment="Left"
+                 Height="29"
+                 Margin="121,194,0,0"
+                 Text="Trung tâm mong muốn tiêm "
+                 TextWrapping="Wrap"
+                 VerticalAlignment="Top"
+                 Width="203"
+                 FontSize="14">
+            <TextBox.BorderBrush>
+                <SolidColorBrush Color="#FFABADB3"
+                                 Opacity="0" />
+            </TextBox.BorderBrush>
+        </TextBox>
+        <CheckBox Content="Pfizer"
+                  HorizontalAlignment="Left"
+                  Margin="463,297,0,0"
+                  VerticalAlignment="Top"
+                  FontSize="14" />
+        <CheckBox Content="Mordena"
+                  HorizontalAlignment="Left"
+                  Margin="463,334,0,0"
+                  VerticalAlignment="Top"
+                  FontSize="14" />
+        <CheckBox Content="Verocell"
+                  HorizontalAlignment="Left"
+                  Margin="463,368,0,0"
+                  VerticalAlignment="Top"
+                  FontSize="14" />
+        <CheckBox Content="AstraAzenca"
+                  HorizontalAlignment="Left"
+                  Margin="463,400,0,0"
+                  VerticalAlignment="Top"
+                  FontSize="14" />
     </Grid>
 </Window>

@@ -7,8 +7,74 @@
         mc:Ignorable="d"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
-        Title="Tra cứu đơn đặt mua vaccine" Height="480" Width="800">
+        Title="Tra cứu đơn đặt mua vaccine"
+        Height="480"
+        Width="800">
     <Grid>
-        
+        <TextBlock HorizontalAlignment="Center"
+                   Margin="0,20,0,0"
+                   Foreground="Red"
+                   TextWrapping="Wrap"
+                   Text="TRA CỨU ĐƠN ĐẶT MUA VACCINE"
+                   VerticalAlignment="Top"
+                   FontSize="22"
+                   FontWeight="Bold" />
+        <DataGrid x:Name="dgvDDH"
+                  HorizontalAlignment="Left"
+                  Height="234"
+                  FontSize="16"
+                  Margin="45,126,0,0"
+                  VerticalAlignment="Top"
+                  Width="707" />
+        <TextBlock HorizontalAlignment="Left"
+                   Margin="45,79,0,0"
+                   FontSize="14"
+                   TextWrapping="Wrap"
+                   Text="Mã khách hàng"
+                   VerticalAlignment="Top" />
+        <TextBox HorizontalAlignment="Left"
+                 Margin="161,71,0,0"
+                 TextWrapping="Wrap"
+                 FontSize="14"
+                 VerticalAlignment="Top"
+                 Width="167"
+                 Height="26" />
+
+
+        <Button Content="Mua vaccine"
+                Padding="15,10,15,10"
+                HorizontalAlignment="Left"
+                Margin="45,389,0,0"
+                VerticalAlignment="Top"
+                Height="40" />
+        <Button Content="Huỷ đơn"
+                Padding="15,10,15,10"
+                HorizontalAlignment="Center"
+                Margin="0,389,0,0"
+                VerticalAlignment="Top"
+                Height="40"
+                Width="110" />
+        <Button Content="Xem chi tiết"
+                Padding="15,10,15,10"
+                HorizontalAlignment="Left"
+                Margin="191,389,0,0"
+                VerticalAlignment="Top"
+                Height="40"
+                Width="109" />
+        <Button Content="Tìm kiếm"
+                Padding="15,10,15,10"
+                HorizontalAlignment="Left"
+                Margin="499,389,0,0"
+                VerticalAlignment="Top"
+                Height="40"
+                Width="109" />
+        <Button Content="Quay lại"
+                Padding="15,10,15,10"
+                HorizontalAlignment="Left"
+                Margin="649,389,0,0"
+                VerticalAlignment="Top"
+                Height="40"
+                Width="109" />
+
     </Grid>
 </Window>
