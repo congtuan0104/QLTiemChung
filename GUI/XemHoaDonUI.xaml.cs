@@ -11,7 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
+using DTO;
+using BUS;
 namespace GUI
 {
     /// <summary>
@@ -19,9 +20,35 @@ namespace GUI
     /// </summary>
     public partial class XemHoaDonUI : Window
     {
-        public XemHoaDonUI()
+        HoaDon_BUS hoadonBussiness = new HoaDon_BUS();
+        public XemHoaDonUI(int MaHS)
         {
             InitializeComponent();
+            HienThiThongTinHoaDon(MaHS);
+        }
+        private void HienThiThongTinHoaDon(int MaHS)
+        {
+            // Hiển thị thông tin hóa đơn 
+            HoaDon hoadon = hoadonBussiness.LayThongTinHoaDon(MaHS);
+            txtTongTien.Text = hoadon.TongTien.ToString();
+            txtConLai.Text = hoadon.ConLai.ToString();
+            txtSoDotThanhToan.Text = hoadon.SoDotThanhToan.ToString();
+            txtSoTienTraMoiDot.Text = hoadon.TienTra_1Dot.ToString();
+            if(hoadon.SoDotThanhToan>1)
+            {
+                txtHinhThucThanhToan.Text = "Trả góp";
+            }    
+            else
+            {
+                txtHinhThucThanhToan.Text = "Thanh toán hết";
+                btnThanhToan.IsEnabled=false;
+            }
+            
+        }
+
+        private void btnThanhToan_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

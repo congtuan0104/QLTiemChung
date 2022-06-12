@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GiamHo.cs" />
+    <Compile Include="HoaDon.cs" />
     <Compile Include="HSKH.cs" />
     <Compile Include="HSTiemChung.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
