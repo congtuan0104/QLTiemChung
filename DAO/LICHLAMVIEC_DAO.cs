@@ -57,5 +57,25 @@ namespace DAO
             reader.Close();
             return DS_LICHLAMVIEC;
         }
+
+        public bool themLichLamViec(LICHLAMVIEC llv)
+        {
+
+            MoKetNoi();
+            string sql = "insert into LICHLAMVIEC(MaNV, Ca, Ngay)" +
+                " values(@manv, @ca, '" + llv.Ngay.ToString("yyyy-MM-dd") + "');";
+            SqlCommand command = new SqlCommand();
+            command.CommandType = CommandType.Text;
+            command.CommandText = sql;
+            command.Connection = conec;
+
+            command.Parameters.Add("@manv", SqlDbType.Int).Value = llv.MaNV;
+            
+            command.Parameters.Add("@ca", SqlDbType.NVarChar).Value = llv.Ca;
+            
+
+            int kq = command.ExecuteNonQuery();
+            return kq > 0;
+        }
     }
 }

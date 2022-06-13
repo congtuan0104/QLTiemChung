@@ -15,13 +15,20 @@ using System.Windows.Shapes;
 namespace GUI
 {
     /// <summary>
-    /// Interaction logic for DangKyLichLamViecUI.xaml
+    /// Interaction logic for DangKyLichLamViec_UI.xaml
     /// </summary>
-    public partial class DangKyLichLamViecUI : Window
+    public partial class DangKyLichLamViec_UI : Window
     {
-        public DangKyLichLamViecUI()
+        public DangKyLichLamViec_UI()
         {
             InitializeComponent();
+        }
+
+        private void btnQuayLai_Click(object sender, RoutedEventArgs e)
+        {
+            XemLichLamViecUI xemLichLamViecUI = new XemLichLamViecUI();
+            xemLichLamViecUI.Show();
+            this.Close();
         }
     }
 }

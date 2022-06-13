@@ -114,6 +114,8 @@ namespace GUI
 
         private void btnDangKy_Click(object sender, RoutedEventArgs e)
         {
+            DangKyLichLamViec_UI dangKyLichLamViecUI = new DangKyLichLamViec_UI();
+            dangKyLichLamViecUI.Show();
             this.Close();
         }
     }

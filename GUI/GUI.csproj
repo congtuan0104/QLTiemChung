@@ -87,8 +87,8 @@
     <Compile Include="ChiTietDonDatHangUI.xaml.cs">
       <DependentUpon>ChiTietDonDatHangUI.xaml</DependentUpon>
     </Compile>
-    <Compile Include="DangKyLichLamViecUI.xaml.cs">
-      <DependentUpon>DangKyLichLamViecUI.xaml</DependentUpon>
+    <Compile Include="DangKyLichLamViec_UI.xaml.cs">
+      <DependentUpon>DangKyLichLamViec_UI.xaml</DependentUpon>
     </Compile>
     <Compile Include="DatMuaVaccineUI.xaml.cs">
       <DependentUpon>DatMuaVaccineUI.xaml</DependentUpon>
@@ -124,7 +124,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="DangKyLichLamViecUI.xaml">
+    <Page Include="DangKyLichLamViec_UI.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
