@@ -22,9 +22,11 @@ namespace GUI
     public partial class TraCuuDonDatHangUI : Window
     {
         PhieuDatMua_BUS pdm = new PhieuDatMua_BUS();
+        
         public TraCuuDonDatHangUI()
         {
             InitializeComponent();
+            
             HienThiDSKH();
         }
         private void HienThiDSKH()
@@ -62,6 +64,30 @@ namespace GUI
             MenuUI menuUI = new MenuUI();
             menuUI.Show();
             this.Close();
+        }
+       
+        private void btnXemChiTietDon_Click(object sender, RoutedEventArgs e)
+        { int Maphieu;
+            PhieuDatMua PDM_Selected = dgvDDH.SelectedItem as PhieuDatMua;
+            Maphieu = PDM_Selected.MaPhieu;
+            ChiTietDonDatHangUI chiTietDDH_UI = new ChiTietDonDatHangUI(PDM_Selected.MaKH,PDM_Selected.MaPhieu);
+            
+           chiTietDDH_UI.Show();
+            this.Close();
+
+        }
+        private void dgvDDH_Selected(object sender, SelectionChangedEventArgs e)
+        {
+            // Cho phép chọn xem hoặc huỷ khi chọn đơn đặt hàng và ngược lại
+            if (dgvDDH.SelectedIndex < 0)
+            {
+                btnXemChiTietDon.IsEnabled = false;
+                btnHuy.IsEnabled = false;
+                return;
+            }
+            btnXemChiTietDon.IsEnabled = true;
+            btnHuy.IsEnabled = true;
+            return;
         }
     }
 }

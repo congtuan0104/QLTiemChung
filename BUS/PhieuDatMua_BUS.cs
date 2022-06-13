@@ -22,6 +22,21 @@ namespace BUS
 
         }
 
+        public int XemTinhTrangPhieu(string MaPhieu)
+        { 
+            return DDH.XemTinhTrangPhieu(MaPhieu);
+
+        }
+        public void UpdateTinhTrangPhieu(string Maphieu, int TT)
+        {
+            DDH.UpdateTinhTrangPhieu(Maphieu, TT);
+        }
+        public void Insert_DonDatHang(DateTime NgayDat, Decimal TongTien)
+        {
+            DDH.Insert_DonDatHang(NgayDat, TongTien);
+        }
+
+
 
 
 
