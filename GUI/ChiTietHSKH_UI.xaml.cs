@@ -44,6 +44,7 @@ namespace GUI
             txtNgaySinh.Text = kh.NgaySinh.ToShortDateString();
             txtSDT.Text = kh.SDT;
             txtGioiTinh.Text = kh.GioiTinh;
+            
         }
 
         private void HienThiThongTinNGH(int MaKH)

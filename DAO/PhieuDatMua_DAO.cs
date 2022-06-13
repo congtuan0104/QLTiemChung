@@ -10,6 +10,7 @@ using DTO;
 
 
 
+
 namespace DAO
 {
     public class PhieuDatMua_DAO:DataAccess
@@ -63,6 +64,71 @@ namespace DAO
             reader.Close();
             return DS_DDH;
         }
+
+        public int XemTinhTrangPhieu(string MaPhieu)
+        {
+            MoKetNoi();
+            SqlCommand command = new SqlCommand();
+            command.CommandType = CommandType.Text;
+            command.CommandText = "SELECT TinhTrang FROM PHIEUDATMUAVACCINE Where DaXoa IS NULL and MaPhieu = " + MaPhieu;
+            command.Connection = conec;
+            SqlDataReader reader = command.ExecuteReader();
+            PhieuDatMua PDM;
+
+            //  DS_DDH.Clear();
+            reader.Read();
+            
+                 PDM = new PhieuDatMua();
+                
+                PDM.TinhTrang = reader.GetInt32(0);
+                if(PDM.TinhTrang ==-1)
+                {
+                    return -1;
+                }
+                if (PDM.TinhTrang == 1)
+                {
+                    return 1;
+                }
+                if (PDM.TinhTrang == 0)
+                {
+                    return 0;
+                }
+
+
+            
+            reader.Close();
+            return -1000;
+           
+           
+        }
+
+
+        //  ham update tinh trang của 1 phiếu sau khi ta nhan nut duyet hay ko duyet
+        public void UpdateTinhTrangPhieu(string MaPhieu, int TT)
+        {
+            MoKetNoi();
+            SqlCommand command = new SqlCommand();
+            command.CommandType = CommandType.Text;
+            command.CommandText = "UPDATE PHIEUDATMUAVACCINE SET TinhTrang= "+ TT.ToString()+" Where DaXoa IS NULL and MaPhieu = " + MaPhieu;
+            
+            command.Connection = conec;
+            command.ExecuteNonQuery();
+
+            
+
+
+        }
+        public void Insert_DonDatHang(DateTime NgayDat ,Decimal TongTien)
+        {
+            MoKetNoi();
+            SqlCommand command = new SqlCommand();
+            command.CommandType = CommandType.Text;
+            command.CommandText = "INSERT INTO DONDATHANG(NgayDat,TongTien) VALUES  " + "(" + NgayDat + "," + TongTien + ")";
+
+            command.Connection = conec;
+            command.ExecuteNonQuery();
+        }
+
 
 
 

@@ -39,7 +39,7 @@
                    VerticalAlignment="Top"
                    FontSize="14" />
         <TextBlock HorizontalAlignment="Left"
-                   Margin="108,117,0,0"
+                   Margin="110,119,0,0"
                    TextWrapping="Wrap"
                    Text="Mã Khách Hàng"
                    VerticalAlignment="Top"
@@ -51,7 +51,7 @@
                    VerticalAlignment="Top"
                    FontSize="14"
                    RenderTransformOrigin="0.523,0.281" />
-        <Button Content="Đóng"
+        <Button x:Name="btnClose" Content="Đóng"
                 HorizontalAlignment="Left"
                 Margin="399,371,0,0"
                 VerticalAlignment="Top"
@@ -60,7 +60,8 @@
                 Background="#FFB21313"
                 Height="37"
                 FontSize="14"
-                FontWeight="Normal">
+                FontWeight="Normal"
+                Click="btnClose_Click">
 
             <Button.RenderTransform>
                 <TransformGroup>
@@ -76,10 +77,27 @@
                   Height="214"
                   Margin="390,97,0,0"
                   VerticalAlignment="Top"
-                  Width="320" />
+                  Width="385"
+                  CanUserAddRows="False"
+                  SelectionMode="Single"
+                  SelectionUnit="FullRow"
+                  AutoGenerateColumns="False"
+                  IsReadOnly="True">
+
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Mã Dịch Vụ-Vaccine"
+                                    Binding="{Binding MaDV_Vaccine}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Số Lượng"
+                                    Binding="{Binding SoLuong}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Thành Tiền"
+                                    Binding="{Binding ThanhTien}"></DataGridTextColumn>
+
+            </DataGrid.Columns>
+        </DataGrid>
+
         <TextBlock HorizontalAlignment="Left"
                    Height="18"
-                   Margin="390,64,0,0"
+                   Margin="400,44,0,0"
                    TextWrapping="Wrap"
                    Text="Đơn đặt hàng"
                    VerticalAlignment="Top"
@@ -89,7 +107,7 @@
                    FontStyle="Italic" />
         <TextBlock HorizontalAlignment="Left"
                    Height="19"
-                   Margin="108,64,0,0"
+                   Margin="106,44,0,0"
                    TextWrapping="Wrap"
                    Text="Thông tin khách hàng"
                    VerticalAlignment="Top"
@@ -97,7 +115,8 @@
                    FontWeight="Bold"
                    FontStyle="Italic"
                    FontSize="14" />
-        <TextBlock HorizontalAlignment="Left"
+
+        <TextBlock x:Name="txtMaKH" HorizontalAlignment="Left"
                    Height="24"
                    Margin="238,117,0,0"
                    TextWrapping="Wrap"
@@ -106,17 +125,17 @@
                    Width="33"
                    FontSize="14"
                    Background="#FFF6CD95" />
-        <TextBlock HorizontalAlignment="Left"
+        <TextBlock x:Name="txtHoten" HorizontalAlignment="Left"
                    Height="24"
                    Margin="238,167,0,0"
                    TextWrapping="Wrap"
                    Text="Trần Văn B"
                    VerticalAlignment="Top"
-                   Width="66"
+                   Width="100"
                    FontSize="14"
                    Background="#FFF6CD95"
                    RenderTransformOrigin="0.448,2.518" />
-        <TextBlock HorizontalAlignment="Left"
+        <TextBlock x:Name="txtNgSinh" HorizontalAlignment="Left"
                    Height="24"
                    Margin="238,0,0,0"
                    TextWrapping="Wrap"
@@ -126,7 +145,7 @@
                    FontSize="14"
                    Background="#FFF6CD95"
                    RenderTransformOrigin="0.448,2.518" />
-        <TextBlock HorizontalAlignment="Left"
+        <TextBlock x:Name="txtSDT" HorizontalAlignment="Left"
                    Height="24"
                    Margin="238,277,0,0"
                    TextWrapping="Wrap"
@@ -135,32 +154,72 @@
                    Width="86"
                    FontSize="14"
                    Background="#FFF6CD95" />
-        <TextBlock HorizontalAlignment="Left"
+        <TextBlock x:Name="txtTongTien" HorizontalAlignment="Left"
                    Height="24"
                    Margin="464,333,0,0"
                    TextWrapping="Wrap"
                    Text="7500000"
                    VerticalAlignment="Top"
-                   Width="63"
+                   Width="100"
                    FontSize="14"
-                   Background="#FFF6CD95" />
-        <RadioButton Content="Không duyệt"
+                   Background="#FFF6CD95"
+                  />
+        <RadioButton x:Name="RadioKoDuyet" Content="Không duyệt"
                      HorizontalAlignment="Left"
                      Margin="222,334,0,0"
                      VerticalAlignment="Top"
                      FontSize="14" />
-        <RadioButton Content="Duyệt"
+        <RadioButton x:Name="RadioDuyet" Content="Duyệt"
                      HorizontalAlignment="Left"
                      Margin="108,334,0,0"
                      VerticalAlignment="Top"
                      FontSize="14" />
-        <Button Content="Xác nhận"
+        <Button x:Name="btnXacNhan" Content="Xác nhận"
                 HorizontalAlignment="Left"
                 Height="37"
                 Margin="232,371,0,0"
                 VerticalAlignment="Top"
                 Width="100"
                 FontSize="14"
-                FontWeight="Normal" />
+                FontWeight="Normal" 
+                Click="btnXacNhan_Click"/>
+        <TextBlock HorizontalAlignment="Left" Margin="110,68,0,0" TextWrapping="Wrap" Text="Mã Phiếu" VerticalAlignment="Top"/>
+        <TextBlock x:Name="txtMaKH_Copy" HorizontalAlignment="Left"
+            Height="24"
+            Margin="238,117,0,0"
+            TextWrapping="Wrap"
+            Text="123"
+            VerticalAlignment="Top"
+            Width="33"
+            FontSize="14"
+            Background="#FFF6CD95" RenderTransformOrigin="0.061,-1.79" />
+        <TextBlock x:Name="txtMaKH_Copy1" HorizontalAlignment="Left"
+            Height="24"
+            Margin="238,117,0,0"
+            TextWrapping="Wrap"
+            Text="123"
+            VerticalAlignment="Top"
+            Width="33"
+            FontSize="14"
+            Background="#FFF6CD95" RenderTransformOrigin="0.061,-1.79" />
+        <TextBlock x:Name="txtMaKH_Copy2" HorizontalAlignment="Left"
+            Height="24"
+            Margin="238,117,0,0"
+            TextWrapping="Wrap"
+            Text="123"
+            VerticalAlignment="Top"
+            Width="33"
+            FontSize="14"
+            Background="#FFF6CD95" RenderTransformOrigin="0.061,-1.79" />
+        <TextBlock x:Name="txtMaKH_Copy3" HorizontalAlignment="Left"
+            Height="24"
+            Margin="238,117,0,0"
+            TextWrapping="Wrap"
+            Text="123"
+            VerticalAlignment="Top"
+            Width="33"
+            FontSize="14"
+            Background="#FFF6CD95" RenderTransformOrigin="0.061,-1.79" />
+        <TextBlock x:Name="txtMaPhieu" HorizontalAlignment="Left" Margin="236,68,0,0" TextWrapping="Wrap" Text="89" VerticalAlignment="Top"  Background="#FFF6CD95"/>
     </Grid>
 </Window>

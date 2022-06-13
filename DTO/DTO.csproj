@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CTPhieuDatMua.cs" />
     <Compile Include="GoiVaccine.cs" />
     <Compile Include="PHIEUDANGKY.cs" />
     <Compile Include="Vaccine.cs" />
