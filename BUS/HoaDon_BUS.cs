@@ -22,5 +22,9 @@ namespace BUS
         {
             return hdDSA.XemHoaDon_DB(MaHS);
         }
+        public bool CapNhatHoaDon(int MaHS)
+        {
+            return hdDSA.CapNhatHoaDon(MaHS);
+        }
     }
 }

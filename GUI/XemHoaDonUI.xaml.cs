@@ -30,6 +30,7 @@ namespace GUI
         {
             // Hiển thị thông tin hóa đơn 
             HoaDon hoadon = hoadonBussiness.LayThongTinHoaDon(MaHS);
+            txtMaHoaDon.Text = hoadon.MaHD.ToString();
             txtTongTien.Text = hoadon.TongTien.ToString();
             txtConLai.Text = hoadon.ConLai.ToString();
             txtSoDotThanhToan.Text = hoadon.SoDotThanhToan.ToString();
@@ -45,10 +46,26 @@ namespace GUI
             }
             
         }
-
         private void btnThanhToan_Click(object sender, RoutedEventArgs e)
         {
+            int MaHD=Int32.Parse(txtMaHoaDon.Text);
+            decimal ChuaThanhToan= Decimal.Parse(txtConLai.Text);
+            decimal TienTra1Dot =Decimal.Parse(txtSoTienTraMoiDot.Text);
+            if (hoadonBussiness.CapNhatHoaDon(MaHD))
+            {
+                MessageBox.Show("Thanh toán thành công", "Thông báo", MessageBoxButton.OK);
+                txtConLai.Text = (ChuaThanhToan - TienTra1Dot).ToString();
+            }
+            else
+            {
+                MessageBox.Show("Thanh toán thất bại", "Thông báo", MessageBoxButton.OK,MessageBoxImage.Warning);
+            }
+            return;
+        }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

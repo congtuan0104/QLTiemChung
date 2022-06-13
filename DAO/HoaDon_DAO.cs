@@ -80,5 +80,17 @@ namespace DAO
                 return false; 
             }
         }
+        public bool CapNhatHoaDon(int MaHD)
+        {
+            MoKetNoi();
+            string sql = "update HOADON set ConLai=ConLai-TienTra_1Dot" +
+                " where MaHD = " + MaHD;
+            SqlCommand command = new SqlCommand();
+            command.CommandType = CommandType.Text;
+            command.CommandText = sql;
+            command.Connection = conec;
+            int kq = command.ExecuteNonQuery();
+            return kq > 0;
+        }
     }
 }
