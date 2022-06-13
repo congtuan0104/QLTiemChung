@@ -35,9 +35,9 @@
             <Button Content="3"/>
             <Button Content="4"/>
         </ComboBox>
-        <TextBlock HorizontalAlignment="Left" Height="24" Margin="246,132,0,0" TextWrapping="Wrap" Text="1,413,000" VerticalAlignment="Top" Width="66" FontSize="14" Background="#FFF6CD95"/>
-        <TextBlock HorizontalAlignment="Left" Height="24" Margin="246,182,0,0" TextWrapping="Wrap" Text="1,413,000" VerticalAlignment="Top" Width="66" FontSize="14" Background="#FFF6CD95" RenderTransformOrigin="0.448,2.518"/>
-        <TextBlock HorizontalAlignment="Left" Height="24" Margin="246,292,0,0" TextWrapping="Wrap" Text="353250" VerticalAlignment="Top" Width="66" FontSize="14" Background="#FFF6CD95"/>
+        <TextBlock x:Name="txtTongTien" HorizontalAlignment="Left" Height="24" Margin="246,132,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="66" FontSize="14" Background="#FFF6CD95"/>
+        <TextBlock x:Name="txtConLai" HorizontalAlignment="Left" Height="24" Margin="246,182,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="66" FontSize="14" Background="#FFF6CD95" RenderTransformOrigin="0.448,2.518"/>
+        <TextBlock x:Name="txtSoTienTraMoiDot" HorizontalAlignment="Left" Height="24" Margin="246,292,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="66" FontSize="14" Background="#FFF6CD95"/>
         <RadioButton Content="Trả đủ" HorizontalAlignment="Left" Margin="246,97,0,0" VerticalAlignment="Top" FontSize="14"/>
         <RadioButton Content="Trả góp" HorizontalAlignment="Left" Margin="116,97,0,0" VerticalAlignment="Top" FontSize="14" IsChecked="True"/>
 
