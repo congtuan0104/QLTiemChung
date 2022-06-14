@@ -55,6 +55,7 @@ namespace GUI
             dpNgayHen.SelectedDate = hstc.NgayHenTiem;
             tbKhamSangLoc.Text = hstc.KQ_KhamSangLoc;
             tbKhamSauTiem.Text = hstc.KQ_KhamSauTiem;
+            txtMaKH.Text = hstc.MaKH.ToString();
         }
 
         private bool KiemTraHDTonTai(int MaHS)
@@ -80,7 +81,9 @@ namespace GUI
         }
 
         private void btnQuayLai_Click(object sender, RoutedEventArgs e)
-        {
+        {          
+            ChiTietHSKH_UI chiTietHSKH_UI = new ChiTietHSKH_UI(Int32.Parse(txtMaKH.Text));
+            chiTietHSKH_UI.Show();
             this.Close();
         }
 

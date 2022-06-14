@@ -41,7 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CTHSTC.cs" />
+    <Compile Include="CTHSTC_DAO.cs" />
     <Compile Include="CTPhieuDatMua_DAO.cs" />
     <Compile Include="DataAccess.cs" />
     <Compile Include="GiamHo_DAO.cs" />

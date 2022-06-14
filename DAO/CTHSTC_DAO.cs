@@ -17,7 +17,7 @@ namespace DAO
             SqlCommand command = new SqlCommand();
             command.CommandType = CommandType.Text;
 
-            command.CommandText = "SELECT CD.MADV, CD.LOAIDV, CD.GIADV, CD.TENVACCINE " +
+            command.CommandText = "SELECT CD.MADV, CD.LOAIDV, CD.GIADV, CD.TENDV " +
                 "FROM CT_HOSOTIEMCHUNG ch, CT_DV CD " +
                 "WHERE CH.MaDV = CD.MADV AND MAHS = " + MaHS;
             command.Connection = conec;
@@ -30,7 +30,7 @@ namespace DAO
                 dsdv.MaDV = reader.GetInt32(0);
                 dsdv.LoaiDV = reader.GetString(1);
                 dsdv.GiaDV = reader.GetDecimal(2);
-                dsdv.TenVaccine = reader.GetString(3);
+                dsdv.TenDV = reader.GetString(3);
                 DS_DVDK.Add(dsdv);
             }
             reader.Close();
