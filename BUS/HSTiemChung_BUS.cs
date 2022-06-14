@@ -10,16 +10,21 @@ namespace BUS
 {
     public class HSTiemChung_BUS
     {
-        HSTiemChung_DAO hstc_DAO = new HSTiemChung_DAO();
+        HSTiemChung_DAO hstc = new HSTiemChung_DAO();
 
         public List<HSTiemChung> LayDSHS(int MaKH)
         {
-            return hstc_DAO.LayTatCaHSTCCuaKH_DB(MaKH);
+            return hstc.LayTatCaHSTCCuaKH_DB(MaKH);
+        }
+
+        public HSTiemChung LayThongTinTC(int MaHS)
+        {
+            return hstc.XemHSTiemChung_DB(MaHS);
         }
 
         public bool XoaHS(int maHS)
         {
-            return hstc_DAO.XoaHSTC_DB(maHS);
+            return hstc.XoaHSTC_DB(maHS);
         }
     }
 }

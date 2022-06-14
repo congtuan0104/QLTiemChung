@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using DTO;
 using BUS;
+
 namespace GUI
 {
     /// <summary>
@@ -21,6 +22,8 @@ namespace GUI
     public partial class ChiTietHSTiemChungUI : Window
     {
         HoaDon_BUS HoaDonHSTC = new HoaDon_BUS();
+        HSTiemChung_BUS hstcBussiness = new HSTiemChung_BUS();
+        CTHSTC_BUS DSDVBussiness = new CTHSTC_BUS();
         public ChiTietHSTiemChungUI(int MaHS)
         {
             InitializeComponent();
@@ -33,7 +36,25 @@ namespace GUI
                 btnXemHoaDon.IsEnabled = false;
             }
 
-            txtMaHS.Text = MaHS.ToString();
+            HienThiThongTinTC(MaHS);
+            HienThiDS_DVDKCuaKH(MaHS);
+        }
+
+        private void HienThiDS_DVDKCuaKH(int MaHS)
+        {
+            List<CTHSTC> DSDV = DSDVBussiness.LayDSDV(MaHS);
+            dgvDichVuDangKy.ItemsSource = DSDV;
+            dgvDichVuDangKy.Items.Refresh();
+        }
+
+        private void HienThiThongTinTC(int maHS)
+        {
+            //Hiển thị thông tin tiêm chủng của khách hàng
+            HSTiemChung hstc = hstcBussiness.LayThongTinTC(maHS);
+            dpNgayLap.SelectedDate = hstc.NgayLapHS;
+            dpNgayHen.SelectedDate = hstc.NgayHenTiem;
+            tbKhamSangLoc.Text = hstc.KQ_KhamSangLoc;
+            tbKhamSauTiem.Text = hstc.KQ_KhamSauTiem;
         }
 
         private bool KiemTraHDTonTai(int MaHS)
@@ -62,5 +83,6 @@ namespace GUI
         {
             this.Close();
         }
+
     }
 }

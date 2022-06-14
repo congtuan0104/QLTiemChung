@@ -51,13 +51,13 @@
         </TextBlock>
         <Button Content="Đăng ký"
                 HorizontalAlignment="Left"
-                Margin="230,456,0,0"
+                Margin="230,466,0,0"
                 VerticalAlignment="Top"
                 Width="100"
                 Height="32" />
         <Button Content="Hủy "
                 HorizontalAlignment="Left"
-                Margin="580,456,0,0"
+                Margin="585,466,0,0"
                 Background="#FFC83838"
                 VerticalAlignment="Top"
                 Width="100"
@@ -71,13 +71,13 @@
                  Width="163"
                  FontSize="14"><Run Text="Ngày "/><Run Text="hẹn "/><Run Text="tiêm "/></TextBlock>
         <DatePicker x:Name="dpNgayHenTiem" HorizontalAlignment="Left"
-                    Margin="300,177,0,0"
+                    Margin="300,176,0,0"
                     VerticalAlignment="Top"
                     Text="Hi"
                     Padding="5"
                     Style="{StaticResource MaterialDesignOutlinedDatePicker}"
                     Width="158"
-                    FontSize="16" Height="26" />
+                    FontSize="16" Height="32" />
         <RadioButton Content="Tiêm gói"
                      HorizontalAlignment="Left"
                      Margin="106,284,0,0"
@@ -102,9 +102,10 @@
                  Margin="300,72,0,0"
                  Text="1234"
                  TextWrapping="Wrap"
+                 Background="Bisque"
                  Padding="5"
                  VerticalAlignment="Top"
-                 FontSize="14" Width="65">
+                 FontSize="14" Width="65" Height="25">
 
         </TextBlock>
         <TextBlock HorizontalAlignment="Left"
@@ -125,15 +126,16 @@
         <TextBlock HorizontalAlignment="Left"
             Margin="300,102,0,0"
             Text="Trần Văn A"
+            Background="Bisque"
             TextWrapping="Wrap"
             Padding="5"
             VerticalAlignment="Top"
             FontSize="14" Width="166"/>
-        <ComboBox HorizontalAlignment="Left" Margin="304,214,0,0" VerticalAlignment="Top" Width="154" Height="25"/>
+        <ComboBox x:Name="cbNoiTiem" HorizontalAlignment="Left" Margin="304,214,0,0" VerticalAlignment="Top" Width="154" Height="31"/>
         <DataGrid x:Name="dgvDSVaccine" HorizontalAlignment="Left"  CanUserAddRows="False"
                   SelectionMode="Single"
                   SelectionUnit="FullRow"
-                   AutoGenerateColumns="False" Height="100" Margin="482,336,0,0" VerticalAlignment="Top" Width="352">
+                   AutoGenerateColumns="False" Height="121" Margin="482,325,0,0" VerticalAlignment="Top" Width="352">
             <DataGrid.Columns>
                 <DataGridTextColumn IsReadOnly="True" Header="Tên vaccine"
                                     Binding="{Binding TenVaccine}"></DataGridTextColumn>
@@ -148,10 +150,10 @@
                   CanUserAddRows="False"
                   SelectionMode="Single"
                   SelectionUnit="FullRow"
-                  AutoGenerateColumns="False" Height="100" Margin="104,336,0,0" VerticalAlignment="Top" Width="318">
+                  AutoGenerateColumns="False" Height="121" Margin="106,325,0,0" VerticalAlignment="Top" Width="329">
             <DataGrid.Columns>
                 <DataGridTextColumn IsReadOnly="True" Header="Tên gói vaccine"
-                                    Binding="{Binding TenVaccine}"></DataGridTextColumn>
+                                    Binding="{Binding TenGoiVaccine}"></DataGridTextColumn>
                 <DataGridTextColumn IsReadOnly="True" Header="Giá gói vaccine"
                                     Binding="{Binding Gia}"></DataGridTextColumn>
                 <DataGridCheckBoxColumn Header=""

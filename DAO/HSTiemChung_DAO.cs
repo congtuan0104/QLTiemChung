@@ -41,6 +41,34 @@ namespace DAO
             reader.Close();
             return DS_HSTC;
         }
+        
+        public HSTiemChung XemHSTiemChung_DB(int MaHS)
+        {
+            MoKetNoi();
+            SqlCommand command = new SqlCommand();
+            command.CommandType = CommandType.Text;
+            command.CommandText = "select MaHS, MaTT, MaKH, MaNV, " +
+                "NgayDangKy, NgayTiem, KQ_KhamTruocTiem, KQ_KhamSauTiem" +
+                " from HOSOTIEMCHUNG WHERE DaXoa IS NULL AND MaHS = " + MaHS;
+            command.Connection = conec;
+            SqlDataReader reader = command.ExecuteReader();
+
+            HSTiemChung hstc = new HSTiemChung();
+            if (reader.Read())
+            {                
+                hstc.MaHS = reader.GetInt32(0);
+                hstc.MaTT = reader.GetInt32(1);
+                hstc.MaKH = reader.GetInt32(2);
+                hstc.MaNV = reader.GetInt32(3);
+                hstc.NgayLapHS = reader.GetDateTime(4);
+                hstc.NgayHenTiem = reader.GetDateTime(5);
+                hstc.KQ_KhamSangLoc = reader.GetString(6);
+                hstc.KQ_KhamSauTiem = reader.GetString(7);
+            }
+
+            reader.Close();
+            return hstc;
+        }
 
         public bool XoaHSTC_DB(int maHS)
         {
