@@ -12,6 +12,6 @@ namespace DTO
         public int MaHS { get; set; }
         public string LoaiDV { get; set; }
         public decimal GiaDV { get; set; }
-        public string TenVaccine { get; set; }
+        public string TenDV { get; set; }
     }
 }

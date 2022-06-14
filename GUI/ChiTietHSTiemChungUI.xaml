@@ -30,17 +30,15 @@
                   SelectionMode="Single"
                   SelectionUnit="FullRow"
                   AutoGenerateColumns="False"
-                  IsReadOnly="True"
-                  >
+                  IsReadOnly="True">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Mã dịch vụ"
-                                    Binding="{Binding MaDV}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Tên dịch vụ"
+                                    Binding="{Binding TenDV}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Loại dịch vụ"
                                     Binding="{Binding LoaiDV}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Giá"
                                     Binding="{Binding GiaDV}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Tên Vaccine"
-                                    Binding="{Binding TenVaccine}"></DataGridTextColumn>
+                
             </DataGrid.Columns>
         </DataGrid>
         <TextBlock HorizontalAlignment="Left"
