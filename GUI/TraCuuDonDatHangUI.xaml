@@ -41,7 +41,7 @@
                                     Binding="{Binding MaKH}"></DataGridTextColumn>
                 
                 <DataGridTextColumn Header="Ngày Đặt"
-                                    Binding="{Binding NgayDat}"></DataGridTextColumn>
+                                    Binding="{Binding NgayDat , StringFormat='dd-MM-yyyy'}"></DataGridTextColumn>
 
             </DataGrid.Columns>
         </DataGrid>
@@ -60,27 +60,28 @@
                  Height="26" />
 
 
-        <Button Content="Mua vaccine"
+        <Button x:Name="btnMua" Content="Mua vaccine"
                 Padding="15,10,15,10"
                 HorizontalAlignment="Left"
                 Margin="45,389,0,0"
                 VerticalAlignment="Top"
                 Height="40" />
-        <Button Content="Huỷ đơn"
+        <Button x:Name="btnHuy" Content="Huỷ đơn"
                 Padding="15,10,15,10"
                 HorizontalAlignment="Center"
                 Margin="0,389,0,0"
                 VerticalAlignment="Top"
                 Height="40"
                 Width="110" />
-        <Button Content="Xem chi tiết"
+        <Button x:Name="btnXemChiTietDon" Content="Xem chi tiết"
                 Padding="15,10,15,10"
                 HorizontalAlignment="Left"
                 Margin="191,389,0,0"
                 VerticalAlignment="Top"
                 Height="40"
-                Width="109" />
-        <Button Content="Tìm kiếm"
+                Width="109"
+                Click="btnXemChiTietDon_Click"/>
+        <Button x:Name="btnTimKiem" Content="Tìm kiếm"
                 Padding="15,10,15,10"
                 HorizontalAlignment="Left"
                 Margin="499,389,0,0"

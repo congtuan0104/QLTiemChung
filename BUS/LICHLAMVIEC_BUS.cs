@@ -21,5 +21,10 @@ namespace BUS
         {
             return llv.layLichLamViec_1_NhanVien_DB(dieukien);
         }
+
+        public bool ThemLichLamViec(LICHLAMVIEC llv_moi)
+        {
+            return llv.themLichLamViec(llv_moi);
+        }
     }
 }
