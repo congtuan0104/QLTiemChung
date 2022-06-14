@@ -45,6 +45,7 @@
     <Compile Include="CTPhieuDatMua_BUS.cs" />
     <Compile Include="GoiVaccine_BUS.cs" />
     <Compile Include="PHIEUDANGKY_BUS.cs" />
+    <Compile Include="TrungTam_BUS.cs" />
     <Compile Include="Vaccine_BUS.cs" />
     <Compile Include="GiamHo_BUS.cs" />
     <Compile Include="HoaDon_BUS.cs" />
