@@ -84,10 +84,12 @@ namespace DAO
                 kh.DiaChi = reader.GetString(3);
                 kh.GioiTinh = reader.GetString(4);
                 kh.NgaySinh = reader.GetDateTime(5);
+                reader.Close();
+                return kh;
             }
 
             reader.Close();
-            return kh;
+            return null;
         }
 
         public bool ThemKhachHang_DB(HSKH KH)

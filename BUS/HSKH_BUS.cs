@@ -37,6 +37,15 @@ namespace BUS
             return hsa.XoaKhachHang_DB(MaKH);
         }
 
+        public bool KiemTraKHTonTai(string TenKH, string SDT)
+        {
+            if((hsa.TraCuuKH_DB(TenKH, SDT).Count == 0))
+            {
+                return false;
+            }
+            return true;
+        }
+
     }
 }
 

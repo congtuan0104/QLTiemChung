@@ -49,45 +49,53 @@ namespace GUI
 
         private void btnLuu_Click(object sender, RoutedEventArgs e)
         {
-            // Lưu hồ sơ khách hàng
-
-            if (KiemTraThongTinNhap())
+            // Kiểm tra thông tin nhập
+            if (!KiemTraThongTinNhap())
             {
-                // Lưu thông tin người tiêm
-                HSKH KH = new HSKH();
-                KH.TenKH = tbHoTen.Text;
-                KH.SDT = tbSDT.Text;
-                KH.DiaChi = tbDiaChi.Text;
-                KH.NgaySinh = dpNgaySinh.SelectedDate.Value;
-                KH.GioiTinh = rbNam.IsChecked == true ? "Nam" : "Nữ";
+                return;
+            }
 
-                // Thêm thông tin người tiêm thành công
-                if (hskhBussiness.ThemKH(KH))
-                {
-                    // Lưu thông tin người giám hộ (nếu có)
-                    if (checkTreEm.IsChecked == true)
-                    {
-                        GiamHo GH = new GiamHo();
-                        GH.MaKH = hskhBussiness.TraCuuKH(KH.TenKH, KH.SDT)[0].MaKH;
-                        GH.TenNGH = tbNguoiGiamHo.Text;
-                        GH.QuanHe = tbQuanHe.Text;
+            HSKH KH = new HSKH();
+            KH.TenKH = tbHoTen.Text;
+            KH.SDT = tbSDT.Text;
+            KH.DiaChi = tbDiaChi.Text;
+            KH.NgaySinh = dpNgaySinh.SelectedDate.Value;
+            KH.GioiTinh = rbNam.IsChecked == true ? "Nam" : "Nữ";
 
-                        if (!ghBussiness.ThemNGH(GH))
-                        {
-                            MessageBox.Show("Thêm thông tin người giám hộ không thành công");
-                            this.Close();
-                            return;
-                        }
-                    }
-                    MessageBox.Show("Tạo hồ sơ thành công");
-                    this.Close();
-                    return;
-                }
+            // Kiểm tra khách hàng tồn tại
+            if (hskhBussiness.KiemTraKHTonTai("", KH.SDT))
+            {
+                MessageBox.Show("Khách hàng đã tồn tại");
+                return;
+            }
 
+            // Thêm thông tin người tiêm 
+            if (!hskhBussiness.ThemKH(KH))
+            {
                 MessageBox.Show("Tạo hồ sơ thất bại");
                 this.Close();
                 return;
-            }           
+            }
+
+            // Lưu thông tin người giám hộ (nếu có)
+            if (checkTreEm.IsChecked == true)
+            {
+                GiamHo GH = new GiamHo();
+                GH.MaKH = hskhBussiness.TraCuuKH(KH.TenKH, KH.SDT)[0].MaKH;
+                GH.TenNGH = tbNguoiGiamHo.Text;
+                GH.QuanHe = tbQuanHe.Text;
+
+                if (!ghBussiness.ThemNGH(GH))
+                {
+                    MessageBox.Show("Thêm thông tin người giám hộ không thành công");
+                    this.Close();
+                    return;
+                }
+            }
+            MessageBox.Show("Tạo hồ sơ thành công");
+            this.Close();
+            return;
+
         }
 
         private bool KiemTraThongTinNhap()
@@ -145,6 +153,13 @@ namespace GUI
             }
 
             // Kiểm tra xem số điện thoại có hợp lệ không
+            if(tbSDT.Text.Length != 10)
+            {
+                MessageBox.Show("Số điện thoại không hợp lệ", "Thông báo",
+                    MessageBoxButton.OK, MessageBoxImage.Information);
+                tbSDT.Focus();
+                return false;
+            }
 
             return true;
         }
