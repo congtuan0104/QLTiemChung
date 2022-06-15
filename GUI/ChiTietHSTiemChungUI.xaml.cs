@@ -56,44 +56,37 @@ namespace GUI
             tbKhamSangLoc.Text = hstc.KQ_KhamSangLoc;
             tbKhamSauTiem.Text = hstc.KQ_KhamSauTiem;
             txtMaKH.Text = hstc.MaKH.ToString();
-            txtMaHS.Text=hstc.MaHS.ToString();
+            txtMaHS.Text = hstc.MaHS.ToString();
         }
 
         private bool KiemTraHDTonTai(int MaHS)
         {
             HoaDon hoadon = HoaDonHSTC.LayThongTinHoaDon(MaHS);
-            if(hoadon==null)
+            if (hoadon == null)
             {
                 return false;
             }
             else
             {
                 return true;
-            }    
+            }
         }
 
         private void btnCapNhat_Click(object sender, RoutedEventArgs e)
         {
-            if (tbKhamSangLoc.Text == "")
-            {
-                MessageBox.Show("Bạn chưa nhập lại  thông tin khám sàng lọc", "Thông báo",
-                    MessageBoxButton.OK, MessageBoxImage.Information);
-            }
-            if (tbKhamSauTiem.Text == "")
-            {
-                MessageBox.Show("Bạn chưa nhập lại  thông tin khám sau tiêm", "Thông báo",
-                    MessageBoxButton.OK, MessageBoxImage.Information);
-            }
-            int mahs = Int32.Parse(txtMaHS.Text);
-            string NgayHen = dpNgayHen.SelectedDate.ToString();
-            if (hstcBussiness.CapNhatThongTinHSTC(mahs, tbKhamSangLoc.Text, tbKhamSauTiem.Text,NgayHen))
+            HSTiemChung hs = new HSTiemChung();
+            hs.MaHS = Int32.Parse(txtMaHS.Text);
+            hs.NgayHenTiem = dpNgayHen.SelectedDate.Value;
+            hs.KQ_KhamSangLoc = tbKhamSangLoc.Text;
+            hs.KQ_KhamSauTiem = tbKhamSauTiem.Text;
+            if (hstcBussiness.CapNhatThongTinHSTC(hs))
             {
                 MessageBox.Show("Cập nhật hồ sơ thành công", "Thông báo", MessageBoxButton.OK);
+                return;
             }
-            else
-            {
-                MessageBox.Show("Cập nhật hồ sơ thất bại", "Thông báo", MessageBoxButton.OK);
-            }    
+
+            MessageBox.Show("Cập nhật hồ sơ thất bại", "Thông báo", MessageBoxButton.OK);
+
         }
 
         private void btnXuatHoaDon_Click(object sender, RoutedEventArgs e)
@@ -109,7 +102,7 @@ namespace GUI
         }
 
         private void btnQuayLai_Click(object sender, RoutedEventArgs e)
-        {          
+        {
             ChiTietHSKH_UI chiTietHSKH_UI = new ChiTietHSKH_UI(Int32.Parse(txtMaKH.Text));
             chiTietHSKH_UI.Show();
             this.Close();

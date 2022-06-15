@@ -69,15 +69,21 @@ namespace DAO
             reader.Close();
             return hstc;
         }
-        public bool CapNhatHoSoTiemChung_DB(int MaHS,string KQSangLoc,string KQSauTiem,string NgayHen)
+        public bool CapNhatHoSoTiemChung_DB(HSTiemChung HS)
         {
             MoKetNoi();
-            string sql = "update HOSOTIEMCHUNG set KQ_KhamTruocTiem =N'" + KQSangLoc +"'"+
-                  ", KQ_KhamSauTiem= N'"+KQSauTiem+"'"+",NgayTiem ='"+NgayHen+"'"+" where MaHS = " + MaHS;
+            string sql = "update HOSOTIEMCHUNG " +
+                "set NgayTiem = @ngayhen, KQ_KhamTruocTiem = @kq1, " +
+                "KQ_KhamSauTiem = @kq2 WHERE MaHS = @mahs";
             SqlCommand command = new SqlCommand();
             command.CommandType = CommandType.Text;
             command.CommandText = sql;
             command.Connection = conec;
+
+            command.Parameters.Add("@ngayhen", SqlDbType.Date).Value = HS.NgayHenTiem;
+            command.Parameters.Add("@kq1", SqlDbType.NVarChar).Value = HS.KQ_KhamSangLoc;
+            command.Parameters.Add("@kq2", SqlDbType.NVarChar).Value = HS.KQ_KhamSauTiem;
+            command.Parameters.Add("@mahs", SqlDbType.Int).Value = HS.MaHS;
             int kq = command.ExecuteNonQuery();
             return kq > 0;
         }
