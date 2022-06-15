@@ -63,7 +63,7 @@
                    VerticalAlignment="Top"
                    FontStyle="Italic"
                    FontWeight="Bold" />
-        <DatePicker x:Name="dpNgayLap"
+        <DatePicker x:Name="dpNgayHen"
                     HorizontalAlignment="Left"
                     Margin="164,141,0,0"
                     Style="{StaticResource MaterialDesignOutlinedDatePicker}"
@@ -128,7 +128,7 @@
                 VerticalAlignment="Top"
                 Height="40"
                 Click="btnQuayLai_Click" />
-        <DatePicker x:Name="dpNgayHen"
+        <DatePicker x:Name="dpNgayLap"
                     HorizontalAlignment="Left"
                     IsEnabled="False"
                     Margin="164,101,0,0"

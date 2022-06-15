@@ -81,13 +81,15 @@ namespace GUI
 
         private void btnDong_Click(object sender, RoutedEventArgs e)
         {
+            ChiTietHSTiemChungUI ct = new ChiTietHSTiemChungUI(maHS);
+            ct.Show();
             this.Close();
         }
 
         private void rbTraDu_Checked(object sender, RoutedEventArgs e)
         {
             CbSoDotThanhToan.IsEnabled = false;
-            txtSoTienTraMoiDot.Text = "0";
+            txtSoTienTraMoiDot.Text = txtTongTien.Text;
         }
 
         private void rbTraGop_Checked(object sender, RoutedEventArgs e)
