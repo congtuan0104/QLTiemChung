@@ -50,9 +50,15 @@ namespace GUI
         private void HienThiThongTinNGH(int MaKH)
         {
             // Hiển thị thông tin người giám hộ (nếu có)
-            GiamHo giamHo = giamHoBussuness.LayThongTinNGHCuaKH(MaKH);     
-            txtGiamHo.Text = giamHo.TenNGH != null ? giamHo.TenNGH : "Không có thông tin";
-            txtQuanHe.Text = giamHo.QuanHe != null ? giamHo.QuanHe : "Không có thông tin";
+            GiamHo giamHo = giamHoBussuness.LayThongTinNGHCuaKH(MaKH);
+            if (giamHo == null)
+            {
+                txtGiamHo.Text = "Không có thông tin";
+                txtQuanHe.Text = "Không có thông tin";
+                return;
+            }    
+            txtGiamHo.Text = giamHo.TenNGH;
+            txtQuanHe.Text = giamHo.QuanHe;
             return;
 
         }
