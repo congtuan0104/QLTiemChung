@@ -33,16 +33,18 @@
                   SelectionMode="Single"
                   SelectionUnit="FullRow"
                   VerticalAlignment="Top"
-                  Width="707" >
+                  Width="707"
+                  SelectionChanged="dgvDDH_Selected">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Mã Phiếu"
                                     Binding="{Binding MaPhieu}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Mã Khách Hàng"
                                     Binding="{Binding MaKH}"></DataGridTextColumn>
-                
+
                 <DataGridTextColumn Header="Ngày Đặt"
                                     Binding="{Binding NgayDat , StringFormat='dd-MM-yyyy'}"></DataGridTextColumn>
-
+                <DataGridTextColumn Header="Tình trạng"
+                                    Binding="{Binding TinhTrang}"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
         <TextBlock HorizontalAlignment="Left"
@@ -51,52 +53,81 @@
                    TextWrapping="Wrap"
                    Text="Mã khách hàng"
                    VerticalAlignment="Top" />
-        <TextBox x:Name="txbMaKH" HorizontalAlignment="Left"
-                 Margin="161,71,0,0"
+        <TextBlock HorizontalAlignment="Left"
+                   Margin="462,79,0,0"
+                   FontSize="14"
+                   TextWrapping="Wrap"
+                   Text="Tình trạng đơn"
+                   VerticalAlignment="Top" />
+        <TextBox x:Name="tbMaKH"
+                 HorizontalAlignment="Left"
+                 Margin="161,69,0,0"
                  TextWrapping="Wrap"
                  FontSize="14"
                  VerticalAlignment="Top"
-                 Width="167"
-                 Height="26" />
+                 Padding="5"
+                 Width="160" />
 
 
-        <Button x:Name="btnMua" Content="Mua vaccine"
+        <Button x:Name="btnMua"
+                Content="Mua vaccine"
                 Padding="15,10,15,10"
                 HorizontalAlignment="Left"
                 Margin="45,389,0,0"
                 VerticalAlignment="Top"
-                Height="40" />
-        <Button x:Name="btnHuy" Content="Huỷ đơn"
+                Height="40"
+                Click="btnMua_Click" />
+        <Button x:Name="btnHuy"
+                Content="Huỷ đơn"
                 Padding="15,10,15,10"
+                IsEnabled="False"
                 HorizontalAlignment="Center"
                 Margin="0,389,0,0"
                 VerticalAlignment="Top"
                 Height="40"
-                Width="110" />
-        <Button x:Name="btnXemChiTietDon" Content="Xem chi tiết"
+                Width="110"
+                Click="btnHuy_Click" />
+        <Button x:Name="btnChiTiet"
+                Content="Xem chi tiết"
                 Padding="15,10,15,10"
+                IsEnabled="False"
                 HorizontalAlignment="Left"
                 Margin="191,389,0,0"
                 VerticalAlignment="Top"
                 Height="40"
                 Width="109"
-                Click="btnXemChiTietDon_Click"/>
-        <Button x:Name="btnTimKiem" Content="Tìm kiếm"
+                Click="btnChiTiet_Click" />
+        <Button x:Name="btnTimKiem"
+                Content="Tìm kiếm"
                 Padding="15,10,15,10"
                 HorizontalAlignment="Left"
                 Margin="499,389,0,0"
                 VerticalAlignment="Top"
                 Height="40"
                 Width="109"
-                Click="Button_ClickTKDDH"/>
-        <Button x:Name="btnQuayLai" Content="Quay lại"
+                Click="btnTimKiem_Click" />
+        <Button x:Name="btnQuayLai"
+                Content="Quay lại"
                 Padding="15,10,15,10"
                 HorizontalAlignment="Left"
                 Margin="649,389,0,0"
                 VerticalAlignment="Top"
                 Height="40"
                 Width="109"
-                Click="btnQuayLai_Click"/>
+                Click="btnQuayLai_Click" />
+        <ComboBox x:Name="cbbTinhTrang"
+                  HorizontalAlignment="Left"
+                  Margin="582,71,0,0"
+                  FontSize="14"
+                  VerticalAlignment="Top"
+                  Padding="5"
+                  Style="{DynamicResource MaterialDesignComboBox}"
+                  Width="160">
+            <ComboBoxItem IsSelected="True">Tất cả</ComboBoxItem>
+            <ComboBoxItem>Không được duyệt</ComboBoxItem>
+            <ComboBoxItem>Chưa duyệt</ComboBoxItem>
+            <ComboBoxItem>Được duyệt</ComboBoxItem>
+        </ComboBox>
 
     </Grid>
 </Window>

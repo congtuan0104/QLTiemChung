@@ -22,41 +22,69 @@ namespace GUI
     public partial class TraCuuDonDatHangUI : Window
     {
         PhieuDatMua_BUS pdm = new PhieuDatMua_BUS();
-        
+
         public TraCuuDonDatHangUI()
         {
             InitializeComponent();
-            
-            HienThiDSKH();
+            HienThiDSDH();
         }
-        private void HienThiDSKH()
+        private void HienThiDSDH()
         {
             // Lấy ds khách hàng đổ vào dgvDSKH
-            List<PhieuDatMua> dsHSKH = pdm.XEMDONDATHANG();
-            dgvDDH.ItemsSource = dsHSKH;
-           dgvDDH.Items.Refresh();
+            List<PhieuDatMua> dsPDM = pdm.LayDSDonDatHang();
+            dgvDDH.ItemsSource = dsPDM;
+            dgvDDH.Items.Refresh();
         }
 
-        private void Button_ClickTKDDH(object sender, RoutedEventArgs e)
+        private void btnTimKiem_Click(object sender, RoutedEventArgs e)
         {
-            string MaKhachhang = txbMaKH.Text;
-           
-            if (MaKhachhang == "" )
+            if (tbMaKH.Text == "")
             {
                 MessageBox.Show("Vui lòng nhập thông tin trước khi tìm kiếm");
                 return;
             }
 
             // Tra cứu danh sách
-            List<PhieuDatMua> dsHSKH = pdm.TraCuuKH(MaKhachhang);
+            int makh = Int32.Parse(tbMaKH.Text);
+            int tinhtrang = cbbTinhTrang.SelectedIndex - 2;
+            List<PhieuDatMua> dsPDM = pdm.TraCuuDDHCuaKH(makh, tinhtrang);
 
-            if (dsHSKH.Count == 0)
+            if (dsPDM.Count == 0)
             {
-                MessageBox.Show("Không tìm thấy thông tin khách hàng");
+                MessageBox.Show("Không tìm thấy thông tin");
             }
-            dgvDDH.ItemsSource = dsHSKH;
+            dgvDDH.ItemsSource = dsPDM;
             dgvDDH.Items.Refresh();
 
+        }
+
+        private void btnChiTiet_Click(object sender, RoutedEventArgs e)
+        {
+            PhieuDatMua PDM_Selected = dgvDDH.SelectedItem as PhieuDatMua;
+            ChiTietDonDatHangUI chiTietDDH_UI = new ChiTietDonDatHangUI(PDM_Selected.MaKH, PDM_Selected.MaPhieu);
+            chiTietDDH_UI.ShowDialog();
+        }
+
+        private void btnMua_Click(object sender, RoutedEventArgs e)
+        {
+            // Đặt mua vaccine
+            DatMuaVaccineUI muaVaccineUI = new DatMuaVaccineUI();
+            muaVaccineUI.ShowDialog();
+        }
+
+        private void btnHuy_Click(object sender, RoutedEventArgs e)
+        {
+            // Xoá đơn đặt hàng
+            PhieuDatMua pdm_Selected = dgvDDH.SelectedItem as PhieuDatMua;
+            string message = "Bạn có chắc muốn xoá đơn đặt hàng " + pdm_Selected.MaPhieu;
+
+            if (MessageBox.Show(message, "Cảnh báo", MessageBoxButton.YesNo,
+                MessageBoxImage.Warning) == MessageBoxResult.Yes)
+            {
+                pdm.XoaDonDatHang(pdm_Selected.MaPhieu);
+                HienThiDSDH();
+            }
+            return;
         }
 
         private void btnQuayLai_Click(object sender, RoutedEventArgs e)
@@ -65,29 +93,22 @@ namespace GUI
             menuUI.Show();
             this.Close();
         }
-       
-        private void btnXemChiTietDon_Click(object sender, RoutedEventArgs e)
-        { int Maphieu;
-            PhieuDatMua PDM_Selected = dgvDDH.SelectedItem as PhieuDatMua;
-            Maphieu = PDM_Selected.MaPhieu;
-            ChiTietDonDatHangUI chiTietDDH_UI = new ChiTietDonDatHangUI(PDM_Selected.MaKH,PDM_Selected.MaPhieu);
-            
-           chiTietDDH_UI.Show();
-            this.Close();
 
-        }
+
         private void dgvDDH_Selected(object sender, SelectionChangedEventArgs e)
         {
             // Cho phép chọn xem hoặc huỷ khi chọn đơn đặt hàng và ngược lại
             if (dgvDDH.SelectedIndex < 0)
             {
-                btnXemChiTietDon.IsEnabled = false;
+                btnChiTiet.IsEnabled = false;
                 btnHuy.IsEnabled = false;
                 return;
             }
-            btnXemChiTietDon.IsEnabled = true;
+            btnChiTiet.IsEnabled = true;
             btnHuy.IsEnabled = true;
             return;
         }
+
+
     }
 }

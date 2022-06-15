@@ -23,6 +23,7 @@ namespace GUI
     {
         // Khai báo các nghiệp vụ liên quan đến giao diện tra cứu hồ sơ khách hàng
         HSKH_BUS hskhBussiness = new HSKH_BUS();
+        GiamHo_BUS ghBussiness = new GiamHo_BUS();
 
         public TraCuuHSKH_UI()
         {
@@ -65,6 +66,9 @@ namespace GUI
                 MessageBoxImage.Warning) == MessageBoxResult.Yes)
             {      
                 hskhBussiness.XoaKH(KH_Selected.MaKH);
+                if (ghBussiness.KiemTraKHCoNGH(KH_Selected.MaKH)){
+                    ghBussiness.XoaNGH(KH_Selected.MaKH);
+                }
                 HienThiDSKH();
             }
             return;

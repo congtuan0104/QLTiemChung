@@ -56,6 +56,7 @@ namespace GUI
             tbKhamSangLoc.Text = hstc.KQ_KhamSangLoc;
             tbKhamSauTiem.Text = hstc.KQ_KhamSauTiem;
             txtMaKH.Text = hstc.MaKH.ToString();
+            txtMaHS.Text = hstc.MaHS.ToString();
         }
 
         private bool KiemTraHDTonTai(int MaHS)

@@ -20,120 +20,92 @@ namespace GUI
     /// Interaction logic for ChiTietDonDatHangUI.xaml
     /// </summary>
     public partial class ChiTietDonDatHangUI : Window
-    { CTPhieuDatMua_BUS ctpdm = new CTPhieuDatMua_BUS();
-        PhieuDatMua_BUS pdm = new PhieuDatMua_BUS();
+    {
+        CTPhieuDatMua_BUS ctpdm = new CTPhieuDatMua_BUS();
+        PhieuDatMua_BUS pdmBus = new PhieuDatMua_BUS();
         HSKH_BUS hskhBussiness = new HSKH_BUS();
 
         public ChiTietDonDatHangUI(int MaKH, int MaPhieu)
         {
             InitializeComponent();
-            HienThiThongTinKH(MaKH,MaPhieu);
-
-
-
+            HienThiThongTinKH(MaKH);
+            HienThiThongTinPhieu(MaPhieu);
+            HienThiChiTietPhieu(MaPhieu);
         }
-        private void HienThiThongTinKH(int MaKH, int MaPhieu)
+
+        private void HienThiThongTinKH(int MaKH)
         {
             HSKH kh = hskhBussiness.LayThongTinKH(MaKH);
-            txtMaPhieu.Text = MaPhieu.ToString();
-            txtMaKH_Copy3.Text = MaKH.ToString();
+            txtMaKH.Text = MaKH.ToString();
             txtHoten.Text = kh.TenKH;
             txtNgSinh.Text = kh.NgaySinh.ToShortDateString();
             txtSDT.Text = kh.SDT;
-            List<CTPhieuDatMua> CT = ctpdm.XEMCHITIETPHIEU(MaPhieu);
-            decimal T = 0;
-            for (int i = 0; i < CT.Count; i++)
-            {
-                T = CT[i].ThanhTien + T;
-            }
+        }
 
+        private void HienThiThongTinPhieu(int maPhieu)
+        {
+            PhieuDatMua pdm = pdmBus.XemPhieuDatMua(maPhieu);
+            txtMaPhieu.Text = pdm.MaPhieu.ToString();
+            txtNgayDat.Text = pdm.NgayDat.ToShortDateString();
+            // -1 : ko duyệt
+            // 0: chưa xét 
+            // 1: đã duyệt 
+            if (pdm.TinhTrang == 0)
+                return;
+            if (pdm.TinhTrang == -1)
+            {
+                rbKoDuyet.IsChecked = true;
+                btnXacNhan.IsEnabled = false;
+                return;
+            }
+            if (pdm.TinhTrang == 1)
+            {
+                rbDuyet.IsChecked = true;
+                btnXacNhan.IsEnabled = false;
+                return;
+            }
+        }
+
+        private void HienThiChiTietPhieu(int MaPhieu)
+        {
+            List<CTPhieuDatMua> CT = ctpdm.XEMCHITIETPHIEU(MaPhieu);
+            decimal TongTien = 0;
+            for (int i = 0; i < CT.Count; i++)
+                TongTien = CT[i].ThanhTien + TongTien;
             DSVacXin.ItemsSource = CT;
             DSVacXin.Items.Refresh();
-            txtTongTien.Text = T.ToString();
-            // mới viết thêm ở đây nha
-            // -1 : chưa xét 
-            // 0: Ko duyệt
-            // 1: đã duyệt 
-            int tinhtrang;
-            tinhtrang = pdm.XemTinhTrangPhieu(txtMaPhieu.Text);
-         //   MessageBox.Show(tinhtrang.ToString());
-         // -1 : chưa xét
-            if (tinhtrang == -1)
-            {
-                RadioKoDuyet.IsEnabled = true;
-                RadioDuyet.IsEnabled = true;
-                
-            }
-            // đã được duyệt
-            // 1: đã xét
-            if (tinhtrang == 1)
-            {
-               // RadioKoDuyet.IsEnabled = false;
-                RadioKoDuyet.IsEnabled = false;
-                RadioDuyet.IsChecked = true;
-            }
-
-       
-            // 0 bị từ chối hay không được duyệt
-            if (tinhtrang == 0)
-            {
-                RadioDuyet.IsEnabled = false;
-
-                RadioKoDuyet.IsChecked = true;
-
-            }
-        }
-        public ChiTietDonDatHangUI()
-        {
-            InitializeComponent();
+            txtTongTien.Text = TongTien.ToString();
         }
 
-        private void btnClose_Click(object sender, RoutedEventArgs e)
-        {
-            MenuUI menuUI = new MenuUI();
-            menuUI.Show();
-            this.Close();
-        }
 
-        
-        
         private void btnXacNhan_Click(object sender, RoutedEventArgs e)
-
-
-            
-
-
-
-          {
-
-
-            //MessageBox.Show(txtMaPhieu.Text);
-            int tinhtrang;
-            tinhtrang = pdm.XemTinhTrangPhieu(txtMaPhieu.Text);
-
-            // -1 : chưa xét 
-            // 0: Ko duyệt
+        {
+            // -1 : ko duyệt
+            // 0: chưa xét 
             // 1: đã duyệt 
-            if (RadioDuyet.IsChecked==true)
+            if (rbDuyet.IsChecked == false && rbKoDuyet.IsChecked == false)
             {
-                MessageBox.Show(" Phiếu mua hàng đã được duyệt ");
-                RadioKoDuyet.IsEnabled = false;
-                pdm.UpdateTinhTrangPhieu(txtMaPhieu.Text, 1);
-
-               
-                // MessageBox.Show(tinhtrang.ToString());
-
-            }    
-          else if(RadioKoDuyet.IsChecked==true)
+                MessageBox.Show("Vui lòng lựa chọn duyệt phiếu trước khi xác nhận");
+                return;
+            }
+            int maPhieu = Int32.Parse(txtMaPhieu.Text);
+            int tinhTrang = rbDuyet.IsChecked == true ? 1 : -1;
+            if(pdmBus.CapNhatTinhTrangPhieu(maPhieu, tinhTrang))
             {
-                MessageBox.Show(" Phiếu mua hàng KHÔNG được duyệt ");
-                RadioDuyet.IsEnabled = false;
-                pdm.UpdateTinhTrangPhieu(txtMaPhieu.Text, 0);
-                //MessageBox.Show(tinhtrang.ToString());
-              
+                MessageBox.Show("Cập nhật thành công");
+                btnXacNhan.IsEnabled = false;
+                if (tinhTrang == 1)
+                {
+                    // Tạo đơn đặt hàng
+                }
+            }
+            
+            return;
+        }
 
-            }    
-
+        private void btnDong_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }
