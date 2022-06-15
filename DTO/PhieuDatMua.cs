@@ -10,10 +10,8 @@ namespace DTO
     {
         public int MaPhieu { get; set; }
         public int MaKH { get; set; }
-       public int TinhTrang { get; set; }
+        public int TinhTrang { get; set; }
         public DateTime NgayDat { get; set; }
-
-
 
     }
 }

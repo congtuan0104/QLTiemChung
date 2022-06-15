@@ -11,29 +11,36 @@ namespace BUS
     public class PhieuDatMua_BUS
     {
         PhieuDatMua_DAO DDH = new PhieuDatMua_DAO();
-        public List<PhieuDatMua> XEMDONDATHANG()
+        public List<PhieuDatMua> LayDSDonDatHang()
         {
-            return DDH.XEMDONDATHANG();
+            return DDH.LayDSDonDatHang_DB();
 
         }
-        public List<PhieuDatMua> TraCuuKH(string makh)
+        public List<PhieuDatMua> TraCuuDDHCuaKH(int makh, int tinhtrang)
         {
-            return DDH.TraCuuKH(makh);
+            return DDH.TraCuuDDHCuaKH_DB(makh, tinhtrang);
 
         }
 
-        public int XemTinhTrangPhieu(string MaPhieu)
+        public PhieuDatMua XemPhieuDatMua(int MaPhieu)
         { 
-            return DDH.XemTinhTrangPhieu(MaPhieu);
+            return DDH.XemPhieuDatMua_DB(MaPhieu);
 
         }
-        public void UpdateTinhTrangPhieu(string Maphieu, int TT)
+
+        public bool CapNhatTinhTrangPhieu(int Maphieu, int TinhTrang)
         {
-            DDH.UpdateTinhTrangPhieu(Maphieu, TT);
+            return DDH.CapNhatTinhTrangPhieu_DB(Maphieu, TinhTrang);
         }
+
         public void Insert_DonDatHang(DateTime NgayDat, Decimal TongTien)
         {
             DDH.Insert_DonDatHang(NgayDat, TongTien);
+        }
+
+        public bool XoaDonDatHang(int MaPhieu)
+        {
+            return DDH.XoaDonDatHang_DB(MaPhieu);
         }
 
 

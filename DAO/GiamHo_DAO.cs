@@ -28,11 +28,12 @@ namespace DAO
             {
                 GH.MaKH = reader.GetInt32(0);
                 GH.TenNGH = reader.GetString(1);
-                GH.QuanHe = reader.GetString(2);               
+                GH.QuanHe = reader.GetString(2);
+                reader.Close();
+                return GH;
             }
-
-            reader.Close();
-            return GH;
+            return null;
+            
         }
 
         public bool ThemNguoiGiamHo_DB(GiamHo GH)
@@ -49,6 +50,18 @@ namespace DAO
             command.Parameters.Add("@ten", SqlDbType.NVarChar).Value = GH.TenNGH;
             command.Parameters.Add("@quanhe", SqlDbType.NVarChar).Value = GH.QuanHe;
 
+            int kq = command.ExecuteNonQuery();
+            return kq > 0;
+        }
+
+        public bool XoaNguoiGiamHo_DB(int maKH)
+        {
+            MoKetNoi();
+            string sql = "DELETE NGUOIGIAMHO where MaKH = " + maKH;
+            SqlCommand command = new SqlCommand();
+            command.CommandType = CommandType.Text;
+            command.CommandText = sql;
+            command.Connection = conec;
             int kq = command.ExecuteNonQuery();
             return kq > 0;
         }

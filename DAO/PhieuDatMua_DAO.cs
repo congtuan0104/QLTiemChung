@@ -8,47 +8,21 @@ using System.Data.SqlClient;
 using DTO;
 
 
-
-
-
 namespace DAO
 {
-    public class PhieuDatMua_DAO:DataAccess
+    public class PhieuDatMua_DAO : DataAccess
     {
         List<PhieuDatMua> DS_DDH = new List<PhieuDatMua>();
-        public List<PhieuDatMua> XEMDONDATHANG()
-            {
-                // Lấy danh sách hồ sơ tiêm chủng của một khách hàng
-                MoKetNoi();
-                SqlCommand command = new SqlCommand();
-                command.CommandType = CommandType.Text;
-                command.CommandText = "SELECT MaPhieu,MaKH,NgayDat FROM PHIEUDATMUAVACCINE Where DaXoa IS NULL ";
-                command.Connection = conec;
-                SqlDataReader reader = command.ExecuteReader();
-
-              DS_DDH.Clear();
-            while (reader.Read())
-                {
-                PhieuDatMua PDM = new PhieuDatMua();
-                    PDM.MaPhieu = reader.GetInt32(0);
-                PDM.MaKH = reader.GetInt32(1);
-               // PDM.TinhTrang = reader.GetInt32(2);
-                PDM.NgayDat = reader.GetDateTime(2);
-                  
-                DS_DDH.Add(PDM);
-                }
-                reader.Close();
-                return DS_DDH;
-            }
-        public List<PhieuDatMua> TraCuuKH(string MaKH)
+        public List<PhieuDatMua> LayDSDonDatHang_DB()
         {
+            // Lấy danh sách hồ sơ tiêm chủng của một khách hàng
             MoKetNoi();
             SqlCommand command = new SqlCommand();
             command.CommandType = CommandType.Text;
-            command.CommandText = "SELECT MaPhieu,MaKH,NgayDat FROM PHIEUDATMUAVACCINE Where DaXoa IS NULL and MaKH = " +MaKH;
+            command.CommandText = "SELECT MaPhieu,MaKH,NgayDat, TinhTrang " +
+                "FROM PHIEUDATMUAVACCINE Where DaXoa IS NULL ";
             command.Connection = conec;
             SqlDataReader reader = command.ExecuteReader();
-
 
             DS_DDH.Clear();
             while (reader.Read())
@@ -56,8 +30,36 @@ namespace DAO
                 PhieuDatMua PDM = new PhieuDatMua();
                 PDM.MaPhieu = reader.GetInt32(0);
                 PDM.MaKH = reader.GetInt32(1);
-                // PDM.TinhTrang = reader.GetInt32(2);
                 PDM.NgayDat = reader.GetDateTime(2);
+                PDM.TinhTrang = reader.GetInt32(3);
+                DS_DDH.Add(PDM);
+            }
+            reader.Close();
+            return DS_DDH;
+        }
+
+
+        public List<PhieuDatMua> TraCuuDDHCuaKH_DB(int MaKH, int TinhTrang)
+        {
+            MoKetNoi();
+            string sql = "SELECT MaPhieu,MaKH,NgayDat, TinhTrang FROM PHIEUDATMUAVACCINE " +
+                "Where DaXoa IS NULL and MaKH = " + MaKH;
+            if (TinhTrang >= -1)
+                sql = sql + " AND TinhTrang = "+ TinhTrang;
+            SqlCommand command = new SqlCommand();
+            command.CommandType = CommandType.Text;
+            command.CommandText = sql;
+            command.Connection = conec;
+            SqlDataReader reader = command.ExecuteReader();
+
+            DS_DDH.Clear();
+            while (reader.Read())
+            {
+                PhieuDatMua PDM = new PhieuDatMua();
+                PDM.MaPhieu = reader.GetInt32(0);
+                PDM.MaKH = reader.GetInt32(1);
+                PDM.NgayDat = reader.GetDateTime(2);
+                PDM.TinhTrang = reader.GetInt32(3);
 
                 DS_DDH.Add(PDM);
             }
@@ -65,60 +67,47 @@ namespace DAO
             return DS_DDH;
         }
 
-        public int XemTinhTrangPhieu(string MaPhieu)
+        public PhieuDatMua XemPhieuDatMua_DB(int MaPhieu)
         {
             MoKetNoi();
             SqlCommand command = new SqlCommand();
             command.CommandType = CommandType.Text;
-            command.CommandText = "SELECT TinhTrang FROM PHIEUDATMUAVACCINE Where DaXoa IS NULL and MaPhieu = " + MaPhieu;
+            command.CommandText = "SELECT MaPhieu,MaKH,NgayDat, TinhTrang " +
+                "FROM PHIEUDATMUAVACCINE Where MaPhieu = " + MaPhieu;
             command.Connection = conec;
             SqlDataReader reader = command.ExecuteReader();
-            PhieuDatMua PDM;
 
-            //  DS_DDH.Clear();
-            reader.Read();
-            
-                 PDM = new PhieuDatMua();
-                
-                PDM.TinhTrang = reader.GetInt32(0);
-                if(PDM.TinhTrang ==-1)
-                {
-                    return -1;
-                }
-                if (PDM.TinhTrang == 1)
-                {
-                    return 1;
-                }
-                if (PDM.TinhTrang == 0)
-                {
-                    return 0;
-                }
-
-
-            
+            if (reader.Read())
+            {
+                PhieuDatMua PDM = new PhieuDatMua();
+                PDM.MaPhieu = reader.GetInt32(0);
+                PDM.MaKH = reader.GetInt32(1);
+                PDM.NgayDat = reader.GetDateTime(2);
+                PDM.TinhTrang = reader.GetInt32(3);
+                reader.Close();
+                return PDM;
+            }
             reader.Close();
-            return -1000;
-           
-           
+            return null;
+
         }
 
 
         //  ham update tinh trang của 1 phiếu sau khi ta nhan nut duyet hay ko duyet
-        public void UpdateTinhTrangPhieu(string MaPhieu, int TT)
+        public bool CapNhatTinhTrangPhieu_DB(int MaPhieu, int TinhTrang)
         {
             MoKetNoi();
+            string sql = "update PHIEUDATMUAVACCINE set TinhTrang = " + TinhTrang +
+                " where MaPhieu = " + MaPhieu;
             SqlCommand command = new SqlCommand();
             command.CommandType = CommandType.Text;
-            command.CommandText = "UPDATE PHIEUDATMUAVACCINE SET TinhTrang= "+ TT.ToString()+" Where DaXoa IS NULL and MaPhieu = " + MaPhieu;
-            
+            command.CommandText = sql;
             command.Connection = conec;
-            command.ExecuteNonQuery();
-
-            
-
-
+            int kq = command.ExecuteNonQuery();
+            return kq > 0;
         }
-        public void Insert_DonDatHang(DateTime NgayDat ,Decimal TongTien)
+
+        public void Insert_DonDatHang(DateTime NgayDat, Decimal TongTien)
         {
             MoKetNoi();
             SqlCommand command = new SqlCommand();
@@ -130,9 +119,18 @@ namespace DAO
         }
 
 
-
-
-
+        public bool XoaDonDatHang_DB(int maPhieu)
+        {
+            MoKetNoi();
+            string sql = "update PHIEUDATMUAVACCINE set DaXoa = GETDATE()" +
+                " where MaPhieu = " + maPhieu;
+            SqlCommand command = new SqlCommand();
+            command.CommandType = CommandType.Text;
+            command.CommandText = sql;
+            command.Connection = conec;
+            int kq = command.ExecuteNonQuery();
+            return kq > 0;
+        }
 
     }
 }
