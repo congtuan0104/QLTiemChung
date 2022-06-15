@@ -81,6 +81,8 @@ namespace GUI
 
         private void btnDong_Click(object sender, RoutedEventArgs e)
         {
+            ChiTietHSTiemChungUI ct = new ChiTietHSTiemChungUI(maHS);
+            ct.Show();
             this.Close();
         }
 
