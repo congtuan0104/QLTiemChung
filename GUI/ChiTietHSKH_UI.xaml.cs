@@ -68,7 +68,8 @@ namespace GUI
         private void btnDangKyTiem_Click(object sender, RoutedEventArgs e)
         {
             // Hiển thị giao diện đăng ký tiêm chủng
-            DangKyTiemChungUI dangKyTiemChungUI = new DangKyTiemChungUI();
+         
+            DangKyTiemChungUI dangKyTiemChungUI = new DangKyTiemChungUI(Int32.Parse(txtMaKH.Text));
             dangKyTiemChungUI.ShowDialog();
         }
 

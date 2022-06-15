@@ -21,13 +21,24 @@ namespace GUI
     /// </summary>
     public partial class DangKyTiemChungUI : Window
     {
+        HSKH_BUS hskhb = new HSKH_BUS();
         Vaccine_BUS vcb = new Vaccine_BUS();
         GoiVaccine_BUS gvcb = new GoiVaccine_BUS();
-        public DangKyTiemChungUI()
+        TrungTam_BUS ttb = new TrungTam_BUS();
+        public DangKyTiemChungUI(int MaKH)
         {
             InitializeComponent();
+            HienThiThongTin(MaKH);
             HienThiDSVaccine();
             HienThiDSGoiVaccine();
+            HienThiTrungTam();
+        }
+
+        private void HienThiThongTin(int MaKH)
+        {
+            HSKH kh = hskhb.LayThongTinKH(MaKH);
+            txtMaKH.Text = MaKH.ToString();
+            txtTenKH.Text = kh.TenKH;
         }
 
         private void HienThiDSGoiVaccine()
@@ -43,5 +54,19 @@ namespace GUI
             dgvDSVaccine.ItemsSource = DS_Vaccine;
             dgvDSVaccine.Items.Refresh();
         }
+
+        private void HienThiTrungTam()
+        {
+            List<TrungTam> DS_TrungTam = ttb.LayDSTrungTam();
+            cbNoiTiem.ItemsSource = DS_TrungTam;
+            cbNoiTiem.DisplayMemberPath = "TenTT";
+        }
+
+        private void btnHuy_Click(object sender, RoutedEventArgs e)
+        {
+            // Quay lại giao diện Hồ sơ khach hang
+            this.Close();
+        }
+
     }
 }
