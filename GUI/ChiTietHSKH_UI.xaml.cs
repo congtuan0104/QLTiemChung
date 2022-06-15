@@ -84,7 +84,7 @@ namespace GUI
             // Hiển thị giao diện xem chi tiết hồ sơ tiêm chủng 
             HSTiemChung HS_Selected = dgvDS_HSTC.SelectedItem as HSTiemChung;
             ChiTietHSTiemChungUI CTHSTC_UI  = new ChiTietHSTiemChungUI(HS_Selected.MaHS);
-            CTHSTC_UI.ShowDialog();
+            CTHSTC_UI.Show();
             this.Close();
         }
 

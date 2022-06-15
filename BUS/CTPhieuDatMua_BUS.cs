@@ -10,9 +10,9 @@ namespace BUS
 {
     public class CTPhieuDatMua_BUS
     { CTPhieuDatMua_DAO CTPDM = new CTPhieuDatMua_DAO();
-        public List<CTPhieuDatMua> XEMCHITIETPHIEU(int Maphieu)
+        public List<CTPhieuDatMua> XemChiTietPhieu(int Maphieu)
         {
-            return CTPDM.XEMCHITIETPHIEU(Maphieu);
+            return CTPDM.XemChiTietPhieu_DB(Maphieu);
         }
     }
 }

@@ -62,7 +62,8 @@ namespace GUI
         {
             PhieuDatMua PDM_Selected = dgvDDH.SelectedItem as PhieuDatMua;
             ChiTietDonDatHangUI chiTietDDH_UI = new ChiTietDonDatHangUI(PDM_Selected.MaKH, PDM_Selected.MaPhieu);
-            chiTietDDH_UI.ShowDialog();
+            chiTietDDH_UI.Show();
+            this.Close();
         }
 
         private void btnMua_Click(object sender, RoutedEventArgs e)

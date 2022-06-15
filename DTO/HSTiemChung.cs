@@ -16,5 +16,10 @@ namespace DTO
         public DateTime NgayHenTiem { get; set; }
         public string KQ_KhamSangLoc { get; set; }
         public string KQ_KhamSauTiem { get; set; }
+
+        public bool CapNhatHSTC_DB(HSTiemChung hstc)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

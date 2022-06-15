@@ -20,32 +20,32 @@
                    FontSize="22"
                    Foreground="#FFEB0D0D" />
         <TextBlock HorizontalAlignment="Left"
-                   Margin="108,122,0,0"
+                   Margin="44,126,0,0"
                    TextWrapping="Wrap"
                    Text="Họ tên khách hàng"
                    VerticalAlignment="Top"
                    FontSize="14"
                    RenderTransformOrigin="-0.701,0.55" />
         <TextBlock HorizontalAlignment="Left"
-                   Margin="108,196,0,0"
+                   Margin="44,200,0,0"
                    TextWrapping="Wrap"
                    Text="Ngày sinh"
                    VerticalAlignment="Top"
                    FontSize="14" />
         <TextBlock HorizontalAlignment="Left"
-                   Margin="108,158,0,0"
+                   Margin="44,162,0,0"
                    TextWrapping="Wrap"
                    Text="Số điện thoại"
                    VerticalAlignment="Top"
                    FontSize="14" />
         <TextBlock HorizontalAlignment="Left"
-                   Margin="108,84,0,0"
+                   Margin="44,88,0,0"
                    TextWrapping="Wrap"
                    Text="Mã Khách Hàng"
                    VerticalAlignment="Top"
                    FontSize="14" />
         <TextBlock HorizontalAlignment="Left"
-                   Margin="390,342,0,0"
+                   Margin="527,344,0,0"
                    TextWrapping="Wrap"
                    Text="Tổng tiền"
                    VerticalAlignment="Top"
@@ -75,10 +75,10 @@
         </Button>
         <DataGrid Name="DSVacXin"
                   HorizontalAlignment="Left"
-                  Height="226"
-                  Margin="390,90,0,0"
+                  Height="229"
+                  Margin="308,87,0,0"
                   VerticalAlignment="Top"
-                  Width="385"
+                  Width="467"
                   CanUserAddRows="False"
                   SelectionMode="Single"
                   SelectionUnit="FullRow"
@@ -86,8 +86,10 @@
                   IsReadOnly="True">
 
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Mã Vaccine"
-                                    Binding="{Binding MaDV_Vaccine}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Tên Vaccine"
+                                    Binding="{Binding TenVaccine}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Giá vaccine"
+                                    Binding="{Binding Gia}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Số Lượng"
                                     Binding="{Binding SoLuong}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Thành Tiền"
@@ -96,9 +98,9 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <TextBlock HorizontalAlignment="Left"
+        <TextBlock HorizontalAlignment="Center"
                    Height="18"
-                   Margin="393,48,0,0"
+                   Margin="0,51,0,0"
                    TextWrapping="Wrap"
                    Text="Chi tiết đơn"
                    VerticalAlignment="Top"
@@ -108,7 +110,7 @@
                    FontStyle="Italic" />
         <TextBlock HorizontalAlignment="Left"
                    Height="19"
-                   Margin="106,47,0,0"
+                   Margin="42,51,0,0"
                    TextWrapping="Wrap"
                    Text="Thông tin khách hàng"
                    VerticalAlignment="Top"
@@ -118,7 +120,7 @@
                    FontSize="14" />
         <TextBlock HorizontalAlignment="Left"
                    Height="19"
-                   Margin="106,233,0,0"
+                   Margin="42,237,0,0"
                    TextWrapping="Wrap"
                    Text="Thông tin đơn đặt mua vaccine"
                    VerticalAlignment="Top"
@@ -130,7 +132,7 @@
         <TextBlock x:Name="txtMaKH"
                    HorizontalAlignment="Left"
                    Height="24"
-                   Margin="238,83,0,0"
+                   Margin="174,87,0,0"
                    TextWrapping="Wrap"
                    Text="123"
                    VerticalAlignment="Top"
@@ -140,7 +142,7 @@
         <TextBlock x:Name="txtHoten"
                    HorizontalAlignment="Left"
                    Height="24"
-                   Margin="238,119,0,0"
+                   Margin="174,123,0,0"
                    TextWrapping="Wrap"
                    Text="Trần Văn B"
                    VerticalAlignment="Top"
@@ -150,7 +152,7 @@
         <TextBlock x:Name="txtNgSinh"
                    HorizontalAlignment="Left"
                    Height="24"
-                   Margin="238,193,0,0"
+                   Margin="174,197,0,0"
                    TextWrapping="Wrap"
                    Text="26/5/2015"
                    VerticalAlignment="Top"
@@ -160,7 +162,7 @@
         <TextBlock x:Name="txtNgayDat"
                    HorizontalAlignment="Left"
                    Height="24"
-                   Margin="240,299,0,0"
+                   Margin="176,303,0,0"
                    TextWrapping="Wrap"
                    Text="26/5/2015"
                    VerticalAlignment="Top"
@@ -170,7 +172,7 @@
         <TextBlock x:Name="txtSDT"
                    HorizontalAlignment="Left"
                    Height="24"
-                   Margin="239,156,0,0"
+                   Margin="175,160,0,0"
                    TextWrapping="Wrap"
                    Text="0123456789"
                    VerticalAlignment="Top"
@@ -180,7 +182,7 @@
         <TextBlock x:Name="txtTongTien"
                    HorizontalAlignment="Left"
                    Height="24"
-                   Margin="464,342,0,0"
+                   Margin="606,341,0,0"
                    TextWrapping="Wrap"
                    Text="7500000"
                    VerticalAlignment="Top"
@@ -190,13 +192,13 @@
         <RadioButton x:Name="rbKoDuyet"
                      Content="Không duyệt"
                      HorizontalAlignment="Left"
-                     Margin="222,342,0,0"
+                     Margin="158,346,0,0"
                      VerticalAlignment="Top"
                      FontSize="14" />
         <RadioButton x:Name="rbDuyet"
                      Content="Duyệt"
                      HorizontalAlignment="Left"
-                     Margin="108,342,0,0"
+                     Margin="44,346,0,0"
                      VerticalAlignment="Top"
                      FontSize="14" />
         <Button x:Name="btnXacNhan"
@@ -211,20 +213,20 @@
                 Click="btnXacNhan_Click" />
         <TextBlock FontSize="14"
                    HorizontalAlignment="Left"
-                   Margin="108,265,0,0"
+                   Margin="44,269,0,0"
                    TextWrapping="Wrap"
                    Text="Mã Phiếu"
                    VerticalAlignment="Top" />
         <TextBlock FontSize="14"
                    HorizontalAlignment="Left"
-                   Margin="108,302,0,0"
+                   Margin="44,306,0,0"
                    TextWrapping="Wrap"
                    Text="Ngày đặt"
                    VerticalAlignment="Top" />
         <TextBlock FontSize="14"
                    x:Name="txtMaPhieu"
                    HorizontalAlignment="Left"
-                   Margin="240,264,0,0"
+                   Margin="176,269,0,0"
                    TextWrapping="Wrap"
                    Text="89"
                    VerticalAlignment="Top"

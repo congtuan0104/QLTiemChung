@@ -11,22 +11,23 @@
         Height="480"
         Width="800">
     <Grid>
-        <TextBlock Text="Mã Đơn Đặt Hàng"
-                   HorizontalAlignment="Left"
-                   Margin="43,105,0,0"
-                   FontSize="14"
-                   VerticalAlignment="Top" />
 
 
         <TextBlock Text="Ngày đặt"
                    HorizontalAlignment="Left"
-                   Margin="43,149,0,0"
+                   Margin="45,293,0,0"
                    VerticalAlignment="Top"
                    FontSize="14" />
+        <TextBlock Text="Tổng tiền"
+                   HorizontalAlignment="Left"
+                   Margin="45,342,0,0"
+                   VerticalAlignment="Top"
+                   FontSize="14" />
+
         <Button x:Name="btnMua"
                 Content="Mua"
                 HorizontalAlignment="Left"
-                Margin="148,373,0,0"
+                Margin="182,391,0,0"
                 VerticalAlignment="Top"
                 Height="40"
                 Width="120"
@@ -34,7 +35,7 @@
         <Button x:Name="btnDong"
                 Content="Đóng"
                 HorizontalAlignment="Left"
-                Margin="525,373,0,0"
+                Margin="519,391,0,0"
                 VerticalAlignment="Top"
                 Background="#FFC93737"
                 Height="40"
@@ -42,17 +43,17 @@
                 Click="btnDong_Click" />
         <TextBlock Text="Mã khách hàng"
                    HorizontalAlignment="Left"
-                   Margin="43,191,0,0"
+                   Margin="43,112,0,0"
                    VerticalAlignment="Top"
                    FontSize="14" />
-        <TextBlock Text="Họ tên khách hàng"
+        <TextBlock Text="Họ tên KH"
                    HorizontalAlignment="Left"
-                   Margin="43,239,0,0"
+                   Margin="43,160,0,0"
                    VerticalAlignment="Top"
                    FontSize="14" />
         <TextBlock Text="Số điện thoại"
                    HorizontalAlignment="Left"
-                   Margin="43,286,0,0"
+                   Margin="43,207,0,0"
                    VerticalAlignment="Top"
                    FontSize="14" />
 
@@ -68,10 +69,10 @@
                    FontWeight="Bold" />
 
         <TextBlock HorizontalAlignment="Left"
-                   Margin="365,69,0,0"
+                   Margin="325,69,0,0"
                    FontSize="14"
                    TextWrapping="Wrap"
-                   Text="Các loại vaccine "
+                   Text="Danh sách vaccine "
                    VerticalAlignment="Top"
                    FontStyle="Italic"
                    FontWeight="Bold" />
@@ -79,77 +80,94 @@
                    Margin="43,69,0,0"
                    FontSize="14"
                    TextWrapping="Wrap"
-                   Text="Thông tin đơn đặt hàng"
+                   Text="Thông tin người đặt hàng"
                    VerticalAlignment="Top"
                    FontStyle="Italic"
                    FontWeight="Bold" />
-        <DataGrid x:Name="dgvDichVuDangKy"
+        <TextBlock HorizontalAlignment="Left"
+                   Margin="44,252,0,0"
+                   FontSize="14"
+                   TextWrapping="Wrap"
+                   Text="Thông tin phiếu đặt mua vaccine"
+                   VerticalAlignment="Top"
+                   FontStyle="Italic"
+                   FontWeight="Bold" />
+        <DataGrid x:Name="dgvDSVaccine"
                   HorizontalAlignment="Left"
-                  Height="197"
+                  Height="267"
                   FontSize="14"
-                  Margin="365,105,0,0"
+                  Margin="325,105,0,0"
                   VerticalAlignment="Top"
-                  Width="417"
-                  
-                  RenderTransformOrigin="0.5,0.5">
-            <DataGrid.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform />
-                    <SkewTransform />
-                    <RotateTransform Angle="0.449" />
-                    <TranslateTransform />
-                </TransformGroup>
-            </DataGrid.RenderTransform>
+                  AutoGenerateColumns="False"
+                  CanUserAddRows="False"
+                  Width="442"
+                  CellEditEnding="ThayDoiSoLuong">
+            <DataGrid.Columns>
+                <DataGridTextColumn IsReadOnly="True"
+                                    Header="Tên vaccine"
+                                    Binding="{Binding TenVaccine, UpdateSourceTrigger=LostFocus}"></DataGridTextColumn>
+                <DataGridTextColumn IsReadOnly="True"
+                                    Header="Giá vaccine"
+                                    Binding="{Binding Gia, UpdateSourceTrigger=LostFocus}"></DataGridTextColumn>
+                <DataGridTextColumn Header="SL"
+                                    Width="60"
+                                    Binding="{Binding SoLuong, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></DataGridTextColumn>
+                <DataGridTextColumn IsReadOnly="True"
+                                    Header="Thành tiền"
+                                    Binding="{Binding ThanhTien, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"></DataGridTextColumn>
+
+            </DataGrid.Columns>
         </DataGrid>
-        <CheckBox Content="Mua"
-                  HorizontalAlignment="Left"
-                  Margin="704,129,0,0"
-                  VerticalAlignment="Top" />
-        <CheckBox Content="Mua"
-                  HorizontalAlignment="Left"
-                  Margin="704,149,0,0"
-                  VerticalAlignment="Top"
-                  RenderTransformOrigin="0.481,1.99" />
-        <CheckBox Content="Mua"
-                  HorizontalAlignment="Left"
-                  Margin="704,170,0,0"
-                  VerticalAlignment="Top" />
-        <TextBlock x:Name="txbMaDonHang" HorizontalAlignment="Left"
-                 Margin="182,99,0,0"
+
+        <TextBox x:Name="tbMaKH"
+                 HorizontalAlignment="Left"
+                 Margin="152,104,0,0"
                  TextWrapping="Wrap"
-                 Text="DH123"
                  FontSize="14"
                  VerticalAlignment="Top"
-                 Width="93" Background="#FFF6CD95" />
-        <DatePicker x:Name="NgayDat" HorizontalAlignment="Left"
-                    Margin="182,142,0,0"
-                    IsEnabled="False"
-                    VerticalAlignment="Top"
-                    Width="93" Background="#FFF6CD95" />
-        <TextBlock x:Name="txtMaKH" HorizontalAlignment="Left"
-                 Margin="182,186,0,0"
-                 TextWrapping="Wrap"
-                 Text="123"
-                 FontSize="14"
-                 VerticalAlignment="Top"
-                 Width="93" Background="#FFF6CD95" />
-        <TextBlock x:Name="txtHoTen" HorizontalAlignment="Left"
-                 Margin="182,235,0,0"
-                 IsEnabled="False"
-                 TextWrapping="Wrap"
-                 Text="Trần Văn B"
-                 FontSize="14"
-                 VerticalAlignment="Top"
-                 Width="93" Background="#FFF6CD95"/>
-        <TextBlock x:Name="txtSDT" HorizontalAlignment="Left"
-                 Margin="182,285,0,0"
-                 IsEnabled="False"
-                 TextWrapping="Wrap"
-                 Text="0123456789"
-                 VerticalAlignment="Top"
-                 FontSize="14"
-                 Width="93" Background="#FFF6CD95" />
-        <TextBlock HorizontalAlignment="Left" Margin="390,319,0,0" TextWrapping="Wrap" Text="Tổng tiền" VerticalAlignment="Top" Background="#FFF6CD95" Height="24" Width="80"  />
+                 Width="140"
+                 TextChanged="ThayDoiMaKH" />
+        <TextBlock x:Name="txtHoTen"
+                   HorizontalAlignment="Left"
+                   Margin="152,156,0,0"
+                   Background="#FFF6CD95"
+                   Padding="5"
+                   IsEnabled="False"
+                   TextWrapping="Wrap"
+                   FontSize="14"
+                   VerticalAlignment="Top"
+                   Width="150" />
+        <TextBlock x:Name="txtSDT"
+                   HorizontalAlignment="Left"
+                   Margin="152,202,0,0"
+                   Padding="5"
+                   IsEnabled="False"
+                   TextWrapping="Wrap"
+                   VerticalAlignment="Top"
+                   FontSize="14"
+                   Width="150"
+                   Background="#FFF6CD95" />
+        <TextBlock x:Name="txtNgayDat"
+                   HorizontalAlignment="Left"
+                   Margin="152,289,0,0"
+                   Padding="5"
+                   IsEnabled="False"
+                   TextWrapping="Wrap"
+                   VerticalAlignment="Top"
+                   FontSize="14"
+                   Width="150"
+                   Background="#FFF6CD95" />
+        <TextBlock x:Name="txtTongTien"
+                   HorizontalAlignment="Left"
+                   Margin="152,337,0,0"
+                   Padding="5"
+                   IsEnabled="False"
+                   TextWrapping="Wrap"
+                   Text="0"
+                   VerticalAlignment="Top"
+                   FontSize="14"
+                   Width="150"
+                   Background="#FFF6CD95" />
 
 
     </Grid>

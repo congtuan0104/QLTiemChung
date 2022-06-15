@@ -13,32 +13,29 @@ namespace DAO
     {
 
         List<CTPhieuDatMua> CT = new List<CTPhieuDatMua>();
-        public List<CTPhieuDatMua> XEMCHITIETPHIEU(int MaPhieu)
+        public List<CTPhieuDatMua> XemChiTietPhieu_DB(int MaPhieu)
         {
-            
+
             MoKetNoi();
             SqlCommand command = new SqlCommand();
             command.CommandType = CommandType.Text;
-            command.CommandText = "SELECT MaDV_Vaccine,SoLuong,ThanhTien FROM CT_PHIEUDATMUAVACCINE where MaPhieu= "+MaPhieu;
+            command.CommandText = "SELECT cp.MaDV_Vaccine, " +
+                "cd.TenDV,cd.GiaDV, cp.SoLuong, cp.ThanhTien " +
+                "FROM ct_dv cd, CT_PHIEUDATMUAVACCINE cp " +
+                "WHERE cd.MaDV = cp.MaDV_Vaccine AND cp.MaPhieu =" + MaPhieu;
             command.Connection = conec;
             SqlDataReader reader = command.ExecuteReader();
-            decimal TinhTongTien = 0;
+
             CT.Clear();
             while (reader.Read())
             {
                 CTPhieuDatMua CTM = new CTPhieuDatMua();
-                CTM.MaDV_Vaccine = reader.GetInt32(0);
-                CTM.SoLuong = reader.GetInt32(1);
-                CTM.ThanhTien = reader.GetDecimal(2);
-              //  TinhTongTien = TinhTongTien + CTM.ThanhTien;
-                
+                CTM.MaVaccine = reader.GetInt32(0);
+                CTM.TenVaccine = reader.GetString(1);
+                CTM.Gia = reader.GetDecimal(2);
+                CTM.SoLuong = reader.GetInt32(3);
+                CTM.ThanhTien = reader.GetDecimal(4);
                 CT.Add(CTM);
-              //  CTM.TongTien=TinhTongTien;
-                
-               
-
-
-
             }
             reader.Close();
             return CT;

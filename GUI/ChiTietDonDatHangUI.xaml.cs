@@ -68,7 +68,7 @@ namespace GUI
 
         private void HienThiChiTietPhieu(int MaPhieu)
         {
-            List<CTPhieuDatMua> CT = ctpdm.XEMCHITIETPHIEU(MaPhieu);
+            List<CTPhieuDatMua> CT = ctpdm.XemChiTietPhieu(MaPhieu);
             decimal TongTien = 0;
             for (int i = 0; i < CT.Count; i++)
                 TongTien = CT[i].ThanhTien + TongTien;
@@ -105,6 +105,8 @@ namespace GUI
 
         private void btnDong_Click(object sender, RoutedEventArgs e)
         {
+            TraCuuDonDatHangUI traCuuDonUI = new TraCuuDonDatHangUI();
+            traCuuDonUI.Show();
             this.Close();
         }
     }
