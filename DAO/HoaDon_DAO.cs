@@ -37,6 +37,26 @@ namespace DAO
             reader.Close();
             return DS_HoaDon;
         }
+        public bool ThemHoaDon_DB(HoaDon Hdon,int MaHS)
+        {
+
+            MoKetNoi();
+            string sql = "insert into HOADON(SoDotThanhToan, TienTra_1Dot, TongTien,ConLai,MaHS)" +
+                " values(@SoDotThanhToan, @TienTra_1Dot, @TongTien, @ConLai, @MaHS)";
+            SqlCommand command = new SqlCommand();
+            command.CommandType = CommandType.Text;
+            command.CommandText = sql;
+            command.Connection = conec;
+
+            command.Parameters.Add("@SoDotThanhToan", SqlDbType.Int).Value = Hdon.SoDotThanhToan;
+            command.Parameters.Add("@TienTra_1Dot", SqlDbType.Money).Value = Hdon.TienTra_1Dot;
+            command.Parameters.Add("@TongTien", SqlDbType.Money).Value = Hdon.TongTien;
+            command.Parameters.Add("@ConLai", SqlDbType.Money).Value = Hdon.ConLai;
+            command.Parameters.Add("@MaHS", SqlDbType.Int).Value = MaHS;
+
+            int kq = command.ExecuteNonQuery();
+            return kq > 0;
+        }
         public HoaDon XemHoaDon_DB(int MaHS)
         {
             MoKetNoi();
@@ -57,28 +77,14 @@ namespace DAO
                 hoadon.TongTien = reader.GetDecimal(3);
                 hoadon.ConLai = reader.GetDecimal(4);
                 hoadon.MaHS = reader.GetInt32(5);
-            }
-
-            reader.Close();
-            return hoadon;
-        }
-        public bool KiemTraHDTonTai(int MaHS)
-        {
-            MoKetNoi();
-            string sql = "select * " + "from HOADON WHERE" +" MAHS = " + MaHS;
-            SqlCommand command = new SqlCommand();
-            command.CommandType = CommandType.Text;
-            command.CommandText = sql;
-            command.Connection = conec;
-            SqlDataReader reader = command.ExecuteReader();
-            if (reader.Read())
-            { 
-                return true; 
+                reader.Close();
+                return hoadon;
             }
             else
             {
-                return false; 
-            }
+                return null;
+            }    
+            
         }
         public bool CapNhatHoaDon(int MaHD)
         {

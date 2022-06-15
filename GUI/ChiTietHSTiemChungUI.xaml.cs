@@ -56,11 +56,20 @@ namespace GUI
             tbKhamSangLoc.Text = hstc.KQ_KhamSangLoc;
             tbKhamSauTiem.Text = hstc.KQ_KhamSauTiem;
             txtMaKH.Text = hstc.MaKH.ToString();
+            txtMaHS.Text=hstc.MaHS.ToString();
         }
 
         private bool KiemTraHDTonTai(int MaHS)
         {
-            return HoaDonHSTC.KiemTraHD(MaHS);
+            HoaDon hoadon = HoaDonHSTC.LayThongTinHoaDon(MaHS);
+            if(hoadon==null)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }    
         }
 
         private void btnCapNhat_Click(object sender, RoutedEventArgs e)
@@ -71,13 +80,13 @@ namespace GUI
         private void btnXuatHoaDon_Click(object sender, RoutedEventArgs e)
         {
             XuatHoaDonUI xuathoadon = new XuatHoaDonUI(Int32.Parse(txtMaHS.Text));
-            xuathoadon.ShowDialog();
+            xuathoadon.Show();
         }
 
         private void btnXemHoaDon_Click(object sender, RoutedEventArgs e)
         {
             XemHoaDonUI xemhoadon = new XemHoaDonUI(Int32.Parse(txtMaHS.Text));
-            xemhoadon.ShowDialog();
+            xemhoadon.Show();
         }
 
         private void btnQuayLai_Click(object sender, RoutedEventArgs e)

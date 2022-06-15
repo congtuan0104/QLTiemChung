@@ -14,10 +14,6 @@ namespace BUS
         {
             return hdDSA.LayToanBoHoaDon_DB();
         }
-        public bool KiemTraHD(int MaHS)
-        {
-            return hdDSA.KiemTraHDTonTai(MaHS);
-        }
         public HoaDon LayThongTinHoaDon(int MaHS)
         {
             return hdDSA.XemHoaDon_DB(MaHS);
@@ -25,6 +21,10 @@ namespace BUS
         public bool CapNhatHoaDon(int MaHS)
         {
             return hdDSA.CapNhatHoaDon(MaHS);
+        }
+        public bool ThemHoaDon(HoaDon Hdon,int MaHS)
+        {
+            return hdDSA.ThemHoaDon_DB(Hdon, MaHS);
         }
     }
 }

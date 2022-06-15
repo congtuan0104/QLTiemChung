@@ -25,7 +25,28 @@
                 </TransformGroup>
             </Button.RenderTransform>
         </Button>
-        <DataGrid Name="DSDichVu1" HorizontalAlignment="Left" Height="257" Margin="390,99,0,0" VerticalAlignment="Top" Width="323" />
+        <DataGrid x:Name="dgvDichVuDangKy"
+                  HorizontalAlignment="Left"
+                  Height="258"
+                  FontSize="14"
+                  Margin="390,106,0,0"
+                  VerticalAlignment="Top"
+                  Width="366" 
+                  CanUserAddRows="False"
+                  SelectionMode="Single"
+                  SelectionUnit="FullRow"
+                  AutoGenerateColumns="False"
+                  IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Tên dịch vụ"
+                                    Binding="{Binding TenDV}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Loại dịch vụ"
+                                    Binding="{Binding LoaiDV}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Giá"
+                                    Binding="{Binding GiaDV}"></DataGridTextColumn>
+
+            </DataGrid.Columns>
+        </DataGrid>
         <Button x:Name="btnThanhToan" Content="Thanh Toán" HorizontalAlignment="Left" Height="42" Margin="254,383,0,0" VerticalAlignment="Top" Width="105" FontSize="14" Click="btnThanhToan_Click" />
         <TextBlock HorizontalAlignment="Left" Height="18" Margin="390,63,0,0" TextWrapping="Wrap" Text="Chi tiết hóa đơn" VerticalAlignment="Top" Width="180" FontSize="14" FontWeight="Bold" FontStyle="Italic"/>
         <TextBlock HorizontalAlignment="Left" Height="19" Margin="88,63,0,0" TextWrapping="Wrap" Text="Thông tin hóa đơn" VerticalAlignment="Top" Width="184" FontWeight="Bold" FontStyle="Italic" FontSize="14"/>

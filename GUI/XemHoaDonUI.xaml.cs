@@ -21,10 +21,18 @@ namespace GUI
     public partial class XemHoaDonUI : Window
     {
         HoaDon_BUS hoadonBussiness = new HoaDon_BUS();
+        CTHSTC_BUS DSDVBussiness = new CTHSTC_BUS();
         public XemHoaDonUI(int MaHS)
         {
             InitializeComponent();
             HienThiThongTinHoaDon(MaHS);
+            HienThiDS_DVDKCuaKH(MaHS);
+        }
+        private void HienThiDS_DVDKCuaKH(int MaHS)
+        {
+            List<CTHSTC> DSDV = DSDVBussiness.LayDSDV(MaHS);
+            dgvDichVuDangKy.ItemsSource = DSDV;
+            dgvDichVuDangKy.Items.Refresh();
         }
         private void HienThiThongTinHoaDon(int MaHS)
         {
@@ -44,7 +52,11 @@ namespace GUI
                 txtHinhThucThanhToan.Text = "Thanh toán hết";
                 btnThanhToan.IsEnabled=false;
             }
-            
+            if (Decimal.Parse(txtConLai.Text) == 0)
+            {
+                btnThanhToan.IsEnabled = false;
+            }
+
         }
         private void btnThanhToan_Click(object sender, RoutedEventArgs e)
         {
