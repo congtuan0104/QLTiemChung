@@ -69,7 +69,18 @@ namespace DAO
             reader.Close();
             return hstc;
         }
-
+        public bool CapNhatHoSoTiemChung_DB(int MaHS,string KQSangLoc,string KQSauTiem,string NgayHen)
+        {
+            MoKetNoi();
+            string sql = "update HOSOTIEMCHUNG set KQ_KhamTruocTiem =N'" + KQSangLoc +"'"+
+                  ", KQ_KhamSauTiem= N'"+KQSauTiem+"'"+",NgayTiem ='"+NgayHen+"'"+" where MaHS = " + MaHS;
+            SqlCommand command = new SqlCommand();
+            command.CommandType = CommandType.Text;
+            command.CommandText = sql;
+            command.Connection = conec;
+            int kq = command.ExecuteNonQuery();
+            return kq > 0;
+        }
         public bool XoaHSTC_DB(int maHS)
         {
             MoKetNoi();

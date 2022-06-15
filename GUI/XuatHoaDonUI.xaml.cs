@@ -87,7 +87,7 @@ namespace GUI
         private void rbTraDu_Checked(object sender, RoutedEventArgs e)
         {
             CbSoDotThanhToan.IsEnabled = false;
-            txtSoTienTraMoiDot.Text = "0";
+            txtSoTienTraMoiDot.Text = txtTongTien.Text;
         }
 
         private void rbTraGop_Checked(object sender, RoutedEventArgs e)

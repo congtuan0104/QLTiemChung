@@ -74,7 +74,26 @@ namespace GUI
 
         private void btnCapNhat_Click(object sender, RoutedEventArgs e)
         {
-
+            if (tbKhamSangLoc.Text == "")
+            {
+                MessageBox.Show("Bạn chưa nhập lại  thông tin khám sàng lọc", "Thông báo",
+                    MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            if (tbKhamSauTiem.Text == "")
+            {
+                MessageBox.Show("Bạn chưa nhập lại  thông tin khám sau tiêm", "Thông báo",
+                    MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            int mahs = Int32.Parse(txtMaHS.Text);
+            string NgayHen = dpNgayHen.SelectedDate.ToString();
+            if (hstcBussiness.CapNhatThongTinHSTC(mahs, tbKhamSangLoc.Text, tbKhamSauTiem.Text,NgayHen))
+            {
+                MessageBox.Show("Cập nhật hồ sơ thành công", "Thông báo", MessageBoxButton.OK);
+            }
+            else
+            {
+                MessageBox.Show("Cập nhật hồ sơ thất bại", "Thông báo", MessageBoxButton.OK);
+            }    
         }
 
         private void btnXuatHoaDon_Click(object sender, RoutedEventArgs e)

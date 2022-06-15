@@ -26,5 +26,9 @@ namespace BUS
         {
             return hstc.XoaHSTC_DB(maHS);
         }
+        public bool CapNhatThongTinHSTC(int MaHS,string KQSangLoc,string KQSauTiem,string NgayHen)
+        {
+            return hstc.CapNhatHoSoTiemChung_DB(MaHS, KQSangLoc, KQSauTiem,NgayHen);
+        }
     }
 }
