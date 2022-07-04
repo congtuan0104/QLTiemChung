@@ -53,6 +53,7 @@
     <Compile Include="PHIEUDANGKY_DAO.cs" />
     <Compile Include="PhieuDatMua_DAO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TaiKhoan_DAO.cs" />
     <Compile Include="TrungTam_DAO.cs" />
     <Compile Include="Vaccine_DAO.cs" />
   </ItemGroup>

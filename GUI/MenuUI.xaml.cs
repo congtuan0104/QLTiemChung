@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using DTO;
 
 namespace GUI
 {
@@ -22,6 +23,8 @@ namespace GUI
         public MenuUI()
         {
             InitializeComponent();
+            txtHoTen.Text = TaiKhoan.Name;
+            txtVaiTro.Text = TaiKhoan.Role;
         }
 
         private void btnHSKH_Click(object sender, RoutedEventArgs e)

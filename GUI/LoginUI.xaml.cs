@@ -12,7 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using BUS;
+using DTO;
 namespace GUI
 {
     /// <summary>
@@ -20,6 +21,7 @@ namespace GUI
     /// </summary>
     public partial class LoginUI : Window
     {
+        LoginBUS lg = new LoginBUS();
         public LoginUI()
         {
             InitializeComponent();
@@ -28,15 +30,33 @@ namespace GUI
         private void btnLoggin_Click(object sender, RoutedEventArgs e)
         {
             // Đăng nhập
+            
             if(tbUsername.Text == "" && tbPass.Password == "")
             {
-                MenuUI menuUI = new MenuUI();                
-                menuUI.Show();
-                this.Close();
+                MessageBox.Show("Đăng nhập thất bại");
+                return;
+                
+            }
+
+            lg.DangNhap(tbUsername.Text, tbPass.Password);
+
+            if(TaiKhoan.Username == null)
+            {
+                MessageBox.Show("Đăng nhập thất bại");
                 return;
             }
-            MessageBox.Show("Đăng nhập thất bại");
+            
+            if(TaiKhoan.Role == "Khách hàng")
+            {
+                MessageBox.Show("Chức năng đang bảo trì");
+                return;
+            }
+
+            MenuUI menuUI = new MenuUI();
+            menuUI.Show();
+            this.Close();
             return;
+
         }
 
         private void btnClose_Click(object sender, RoutedEventArgs e)
