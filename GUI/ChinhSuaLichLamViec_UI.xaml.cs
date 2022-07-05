@@ -166,11 +166,13 @@ namespace GUI
 
             if (Ca != "")
             {
+                //MessageBox.Show("CA CO LOI");
                 dieukien = dieukien + "and Ca = N'" + Ca + "' ";
 
             };
             if (MaNV != "")
             {
+                //essageBox.Show("MA NV CO LOI");
                 dieukien = dieukien + "and MaNV = " + MaNV;
             };
 
@@ -178,12 +180,15 @@ namespace GUI
             //MessageBox.Show(dieukien);
 
             List<LICHLAMVIEC> lichLamViec = lichLamViecBussiness.layLichLamViec_1NhanVien(dieukien);
+            dgvLichLamViec.ItemsSource = null;
             dgvLichLamViec.ItemsSource = lichLamViec;
-            dgvLichLamViec.Items.Refresh();
+            //dgvLichLamViec.Items.Refresh();
 
             List<PHIEUDANGKY> phieuDangKy = phieuDangKyBussiness.layPhieuDangKy_1NhanVien(dieukien);
+            dgvPhieuDangKy.ItemsSource = null;
             dgvPhieuDangKy.ItemsSource = phieuDangKy;
-            dgvPhieuDangKy.Items.Refresh();
+            //dgvPhieuDangKy.Items.Refresh();
+            return;
         }
 
         private void btn_XoaPhieuDangKy_Click(object sender, RoutedEventArgs e)

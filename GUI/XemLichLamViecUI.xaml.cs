@@ -111,8 +111,9 @@ namespace GUI
             //MessageBox.Show(dieukien);
             //this.Close();
             List<LICHLAMVIEC> lichLamViec = lichLamViecBussiness.layLichLamViec_1NhanVien(dieukien);
+            dgvLichLamViec.ItemsSource = null;
             dgvLichLamViec.ItemsSource = lichLamViec;
-            dgvLichLamViec.Items.Refresh();
+            //dgvLichLamViec.Items.Refresh();
         }
 
 
