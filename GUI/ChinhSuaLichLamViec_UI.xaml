@@ -9,10 +9,10 @@
         WindowStartupLocation="CenterScreen"
         Title="ChinhSuaLichLamViec_UI" Height="480" Width="800">
     <Grid>
-        <Label Content="CHỈNH SỬA LỊCH LÀM VIỆC" HorizontalAlignment="Left" Margin="224,26,0,0" VerticalAlignment="Top" Height="38" Width="341" FontFamily="Times New Roman" FontSize="24" FontWeight="Bold" Foreground="Red"/>
+        <Label Content="CHỈNH SỬA LỊCH LÀM VIỆC" HorizontalAlignment="Left" Margin="224,10,0,0" VerticalAlignment="Top" Height="38" Width="341" FontFamily="Times New Roman" FontSize="24" FontWeight="Bold" Foreground="Red"/>
         <DataGrid x:Name="dgvLichLamViec" 
                   HorizontalAlignment="Left" 
-                  Height="235" Margin="59,112,0,0" 
+                  Height="235" Margin="61,83,0,0" 
                   VerticalAlignment="Top" 
                   Width="297" 
                   FontSize="16"
@@ -20,7 +20,7 @@
                   SelectionMode="Single"
                   SelectionUnit="FullRow"
                   IsReadOnly="True"
-                  AutoGenerateColumns="False" SelectionChanged="dgvLichLamViec_SelectionChanged">
+                  AutoGenerateColumns="False" SelectionChanged="dgvLichLamViec_SelectionChanged" Background="#FFB0F1E4">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Mã NV"
                                     Binding="{Binding MaNV}"></DataGridTextColumn>
@@ -30,24 +30,24 @@
                                     Binding="{Binding Ngay, StringFormat='dd-MM-yyyy'}"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <DatePicker x:Name="datePicker_ChonNgay" HorizontalAlignment="Left" Margin="164,366,0,0" VerticalAlignment="Top" Width="97"/>
-        <TextBlock HorizontalAlignment="Left" Margin="59,369,0,0" TextWrapping="Wrap" Text="CHỌN NGÀY" VerticalAlignment="Top" Height="23" Width="86" FontSize="14"/>
-        <TextBlock HorizontalAlignment="Left" Margin="302,367,0,0" TextWrapping="Wrap" Text="CHỌN CA" VerticalAlignment="Top" Height="21" Width="67" FontSize="14"/>
-        <TextBlock HorizontalAlignment="Left" Margin="552,372,0,0" TextWrapping="Wrap" Text="NHÂN VIÊN" VerticalAlignment="Top" Height="18" Width="79" FontSize="14"/>
-        <TextBox x:Name="textbox_NhanVien" HorizontalAlignment="Left" Height="23" Margin="658,369,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="103" FontWeight="Bold" FontSize="16"/>
-        <ComboBox x:Name="combobox_ChonCa" HorizontalAlignment="Left" Margin="408,366,0,0" VerticalAlignment="Top" Width="69">
+        <DatePicker x:Name="datePicker_ChonNgay" HorizontalAlignment="Left" Margin="164,349,0,0" VerticalAlignment="Top" Width="97" Height="26" FontSize="14" Background="#FFF7CBCB"/>
+        <TextBlock HorizontalAlignment="Left" Margin="59,352,0,0" TextWrapping="Wrap" Text="CHỌN NGÀY" VerticalAlignment="Top" Height="23" Width="86" FontSize="14" FontWeight="Bold"/>
+        <TextBlock HorizontalAlignment="Left" Margin="564,353,0,0" TextWrapping="Wrap" Text="CHỌN CA" VerticalAlignment="Top" Height="21" Width="67" FontSize="14" FontWeight="Bold"/>
+        <TextBlock HorizontalAlignment="Left" Margin="318,355,0,0" TextWrapping="Wrap" Text="NHÂN VIÊN" VerticalAlignment="Top" Height="18" Width="79" FontSize="14" FontWeight="Bold"/>
+        <TextBox x:Name="textbox_NhanVien" HorizontalAlignment="Left" Height="23" Margin="423,352,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="54" FontWeight="Bold" FontSize="14" Background="#FFEDBFBF"/>
+        <ComboBox x:Name="combobox_ChonCa" HorizontalAlignment="Left" Margin="670,352,0,0" VerticalAlignment="Top" Width="69" Height="26" FontSize="14" Background="#FFF3C5C5">
             <ComboBoxItem Content="Sáng"/>
             <ComboBoxItem Content="Tối"/>
             <ComboBoxItem Content="Chiều"/>
+            <ComboBoxItem Content=""/>
         </ComboBox>
-        <Button x:Name="btn_XoaKhoiLich" Content="XÓA KHỎI LỊCH" HorizontalAlignment="Left" Margin="339,404,0,0" VerticalAlignment="Top" Width="138" Height="27" FontWeight="Bold" Click="btn_XoaKhoiLich_Click"/>
-        <Button x:Name="btn_ThemVaoLich" Content="THÊM VÀO LỊCH" HorizontalAlignment="Left" Margin="30,404,0,0" VerticalAlignment="Top" Width="143" Height="27" FontWeight="Bold" RenderTransformOrigin="1.786,0.119" Click="btn_ThemVaoLich_Click"/>
-        <Button Content="XÁC NHẬN" HorizontalAlignment="Left" Margin="502,404,0,0" VerticalAlignment="Top" Width="129" Height="27" FontWeight="Bold" />
-        <TextBlock HorizontalAlignment="Left" Margin="59,84,0,0" TextWrapping="Wrap" Text="LỊCH LÀM VIỆC" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
+        <Button x:Name="btn_XoaKhoiLich" Content="XÓA LỊCH" HorizontalAlignment="Left" Margin="198,403,0,0" VerticalAlignment="Top" Width="115" Height="27" FontWeight="Bold" Click="btn_XoaKhoiLich_Click"/>
+        <Button x:Name="btn_ThemVaoLich" Content="THÊM LỊCH" HorizontalAlignment="Left" Margin="61,403,0,0" VerticalAlignment="Top" Width="115" Height="27" FontWeight="Bold" RenderTransformOrigin="1.786,0.119" Click="btn_ThemVaoLich_Click"/>
+        <TextBlock HorizontalAlignment="Left" Margin="61,55,0,0" TextWrapping="Wrap" Text="LỊCH LÀM VIỆC" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
         <DataGrid x:Name="dgvPhieuDangKy" 
                   HorizontalAlignment="Left" 
                   Height="235" 
-                  Margin="435,112,0,0" 
+                  Margin="437,83,0,0" 
                   VerticalAlignment="Top" 
                   Width="302" 
                   FontSize="16"
@@ -55,7 +55,7 @@
                   SelectionMode="Single"
                   SelectionUnit="FullRow"
                   IsReadOnly="True"
-                  AutoGenerateColumns="False">
+                  AutoGenerateColumns="False" Background="#FFFDF5A9">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Mã NV"
                                     Binding="{Binding MaNV}"></DataGridTextColumn>
@@ -65,8 +65,9 @@
                                     Binding="{Binding Ngay, StringFormat='dd-MM-yyyy'}"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <TextBlock HorizontalAlignment="Left" Margin="614,88,0,0" TextWrapping="Wrap" Text="PHIẾU ĐĂNG KÝ" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
-        <Button x:Name="btnDong" Content="QUAY LẠI" HorizontalAlignment="Left" Margin="658,404,0,0" VerticalAlignment="Top" Width="103" Height="27" FontWeight="Bold" Click="btnDong_Click" RenderTransformOrigin="-0.901,0.227"/>
-        <Button Content="HỦY" HorizontalAlignment="Left" Margin="189,404,0,0" VerticalAlignment="Top" Width="125" Height="27" FontWeight="Bold" />
+        <TextBlock HorizontalAlignment="Left" Margin="616,59,0,0" TextWrapping="Wrap" Text="PHIẾU ĐĂNG KÝ" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
+        <Button x:Name="btnDong" Content="QUAY LẠI" HorizontalAlignment="Left" Margin="624,403,0,0" VerticalAlignment="Top" Width="115" Height="27" FontWeight="Bold" Click="btnDong_Click" RenderTransformOrigin="-0.901,0.227"/>
+        <Button x:Name="btn_DoiChieu" Content="ĐỐI CHIẾU" HorizontalAlignment="Left" Margin="343,403,0,0" VerticalAlignment="Top" Width="115" Height="27" FontWeight="Bold" RenderTransformOrigin="1.786,0.119" Click="btn_DoiChieu_Click" />
+        <Button x:Name="btn_XoaPhieuDangKy" Content="XÓA PHIẾU" HorizontalAlignment="Left" Margin="485,403,0,0" VerticalAlignment="Top" Width="115" Height="27" FontWeight="Bold" RenderTransformOrigin="-0.901,0.227" Click="btn_XoaPhieuDangKy_Click"/>
     </Grid>
 </Window>

@@ -27,7 +27,18 @@ namespace GUI
         public XemLichLamViecUI()
         {
             InitializeComponent();
-            //btnDong.IsEnabled = false;
+            if(TaiKhoan.Role =="Khách hàng")
+            {
+                this.Close();
+            }
+            if(TaiKhoan.Role == "Bộ phận điều hành")
+            {
+                btnChinhSua.IsEnabled = true;
+            }
+            else
+            {
+                btnChinhSua.IsEnabled = false;
+            }
             
             HienThiLichLamViec();
         }

@@ -9,19 +9,44 @@
         WindowStartupLocation="CenterScreen"
         Title="Lịch làm việc" Height="480" Width="800">
     <Grid>
-        <Label Content="ĐĂNG KÝ LỊCH LÀM VIỆC" HorizontalAlignment="Left" Margin="240,28,0,0" VerticalAlignment="Top" Height="38" Width="318" FontFamily="Times New Roman" FontSize="24" FontWeight="Bold" Foreground="Red"/>
-        <DataGrid x:Name="dgvPhieuDangKy" HorizontalAlignment="Left" Height="255" Margin="125,105,0,0" VerticalAlignment="Top" Width="270" FontSize="18"/>
-        <DatePicker HorizontalAlignment="Left" Margin="591,144,0,0" VerticalAlignment="Top" Width="102"/>
-        <TextBlock HorizontalAlignment="Left" Margin="461,148,0,0" TextWrapping="Wrap" Text="CHỌN NGÀY" VerticalAlignment="Top" Height="23" Width="86" FontSize="14"/>
-        <TextBlock HorizontalAlignment="Left" Margin="461,180,0,0" TextWrapping="Wrap" Text="CHỌN CA" VerticalAlignment="Top" Height="21" Width="67" FontSize="14"/>
-        <ComboBox HorizontalAlignment="Left" Margin="591,180,0,0" VerticalAlignment="Top" Width="102"/>
-        <Button x:Name="btnThem" Content="THÊM" HorizontalAlignment="Left" Margin="51,397,0,0" VerticalAlignment="Top" Width="125" Height="31"/>
-        <Button x:Name="btnHuy" Content="HỦY" HorizontalAlignment="Left" Margin="196,397,0,0" VerticalAlignment="Top" Width="125" Height="31"/>
-        <Button x:Name="btnHuyTatCa" Content="HỦY TẤT CẢ" HorizontalAlignment="Left" Margin="337,397,0,0" VerticalAlignment="Top" Width="125" Height="31"/>
-        <Button x:Name="btnXacNhan" Content="XÁC NHẬN" HorizontalAlignment="Left" Margin="486,397,0,0" VerticalAlignment="Top" Width="125" Height="31" FontWeight="Bold" FontSize="14" RenderTransformOrigin="0.752,0.435"/>
-        <Button x:Name="btnQuayLai" Content="QUAY LẠI" HorizontalAlignment="Left" Margin="632,397,0,0" VerticalAlignment="Top" Width="125" Height="31" FontWeight="Bold" FontSize="14" RenderTransformOrigin="0.752,0.435" Click="btnQuayLai_Click"/>
-        <TextBlock HorizontalAlignment="Left" Margin="461,120,0,0" TextWrapping="Wrap" Text="MÃ NHÂN VIÊN" VerticalAlignment="Top" Height="23" Width="105" FontSize="14"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="591,120,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="102"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Label Content="ĐĂNG KÝ LỊCH LÀM VIỆC" HorizontalAlignment="Left" Margin="238,10,0,0" VerticalAlignment="Top" Height="38" Width="318" FontFamily="Times New Roman" FontSize="24" FontWeight="Bold" Foreground="Red"/>
+        <DataGrid x:Name="dgvPhieuDangKy" 
+                  HorizontalAlignment="Left" 
+                  Height="255" 
+                  Margin="55,82,0,0" 
+                  VerticalAlignment="Top" 
+                  Width="344" FontSize="18"
+                  CanUserAddRows="False"
+                  SelectionMode="Single"
+                  SelectionUnit="FullRow"
+                  IsReadOnly="True"
+                  AutoGenerateColumns="False" Background="#FFB0F1E4" SelectionChanged="dgvPhieuDangKy_SelectionChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Mã NV"
+                                    Binding="{Binding MaNV}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Ca"
+                                    Binding="{Binding Ca}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Ngày"
+                                    Binding="{Binding Ngay, StringFormat='dd-MM-yyyy'}"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <DatePicker x:Name="datePicker_Ngay" HorizontalAlignment="Left" Margin="596,127,0,0" VerticalAlignment="Top" Width="102"/>
+        <TextBlock HorizontalAlignment="Left" Margin="466,131,0,0" TextWrapping="Wrap" Text="CHỌN NGÀY" VerticalAlignment="Top" Height="23" Width="86" FontSize="14"/>
+        <TextBlock HorizontalAlignment="Left" Margin="466,163,0,0" TextWrapping="Wrap" Text="CHỌN CA" VerticalAlignment="Top" Height="21" Width="67" FontSize="14"/>
+        <ComboBox x:Name="comboBox_Ca" HorizontalAlignment="Left" Margin="596,163,0,0" VerticalAlignment="Top" Width="102">
+            <ComboBoxItem Content="Sáng"/>
+            <ComboBoxItem Content="Tối"/>
+            <ComboBoxItem Content="Chiều"/>
+        </ComboBox>
+        <Button x:Name="btnThem" Content="THÊM" HorizontalAlignment="Left" Margin="53,378,0,0" VerticalAlignment="Top" Width="125" Height="31" Click="btnThem_Click"/>
+        <Button x:Name="btnXoa" Content="XÓA" HorizontalAlignment="Left" Margin="238,378,0,0" VerticalAlignment="Top" Width="125" Height="31" Click="btnXoa_Click"/>
+        <Button x:Name="btnHuyTatCa" Content="XÓA TẤT CẢ" HorizontalAlignment="Left" Margin="445,378,0,0" VerticalAlignment="Top" Width="125" Height="31" Click="btnHuyTatCa_Click"/>
+        <Button x:Name="btnQuayLai" Content="QUAY LẠI" HorizontalAlignment="Left" Margin="634,378,0,0" VerticalAlignment="Top" Width="125" Height="31" FontWeight="Bold" FontSize="14" RenderTransformOrigin="0.752,0.435" Click="btnQuayLai_Click"/>
+        <TextBlock HorizontalAlignment="Left" Margin="465,97,0,0" TextWrapping="Wrap" Text="MÃ NHÂN VIÊN" VerticalAlignment="Top" Height="23" Width="105" FontSize="14"/>
+        <TextBox x:Name="textBox_MaNV" HorizontalAlignment="Left" Height="23" Margin="596,93,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="102"/>
 
     </Grid>
 </Window>

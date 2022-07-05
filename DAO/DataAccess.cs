@@ -13,7 +13,7 @@ namespace DAO
     {
         public SqlConnection conec = null;
 
-        string strconec = @"Data Source=CONGTUAN\CONGTUAN;Initial Catalog=TIEMCHUNG;Integrated Security=True";
+        string strconec = @"Data Source=DESKTOP-F3EC84V\SQLEXPRESS;Initial Catalog=TIEMCHUNG;Integrated Security=True";
 
         public void MoKetNoi()
         {
