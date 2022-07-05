@@ -69,6 +69,7 @@ namespace GUI
                 if (ghBussiness.KiemTraKHCoNGH(KH_Selected.MaKH)){
                     ghBussiness.XoaNGH(KH_Selected.MaKH);
                 }
+                MessageBox.Show("Xoá hồ sơ thành công");
                 HienThiDSKH();
             }
             return;
@@ -82,7 +83,7 @@ namespace GUI
             string SDT = tbSDT.Text;
             if(Hoten == "" && SDT == "")
             {
-                MessageBox.Show("Vui lòng nhập thông tin trước khi tìm kiếm");
+                MessageBox.Show("Thông tin tìm kiếm không hợp lệ");
                 return;
             }
             

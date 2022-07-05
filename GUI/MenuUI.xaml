@@ -82,6 +82,22 @@
                 VerticalAlignment="Top"
                 Height="40"
                 Click="btnDangXuat_Click" />
+        <TextBlock x:Name="txtHoTen"
+                   HorizontalAlignment="Left"
+                   Margin="658,39,0,0"
+                   Text="Name"
+                   TextWrapping="Wrap"
+                   VerticalAlignment="Top"
+                   Width="100"
+                   TextAlignment="Right" />
+        <TextBlock x:Name="txtVaiTro"
+                   HorizontalAlignment="Left"
+                   Margin="658,58,0,0"
+                   Text="Role"
+                   TextWrapping="Wrap"
+                   VerticalAlignment="Top"
+                   Width="100"
+                   TextAlignment="Right" />
     </Grid>
 
 </Window>

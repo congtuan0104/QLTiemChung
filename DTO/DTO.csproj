@@ -46,6 +46,7 @@
     <Compile Include="DonDatHang.cs" />
     <Compile Include="GoiVaccine.cs" />
     <Compile Include="PHIEUDANGKY.cs" />
+    <Compile Include="TaiKhoan.cs" />
     <Compile Include="TrungTam.cs" />
     <Compile Include="Vaccine.cs" />
     <Compile Include="GiamHo.cs" />
