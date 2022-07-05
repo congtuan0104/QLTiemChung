@@ -100,9 +100,10 @@
                   VerticalAlignment="Top"
                   AutoGenerateColumns="False"
                   CanUserAddRows="False"
-                  Width="442"
+                  Width="460"
                   CellEditEnding="ThayDoiSoLuong">
             <DataGrid.Columns>
+                
                 <DataGridTextColumn IsReadOnly="True"
                                     Header="Tên vaccine"
                                     Binding="{Binding TenVaccine, UpdateSourceTrigger=LostFocus}"></DataGridTextColumn>

@@ -14,5 +14,7 @@ namespace BUS
         {
             return CTPDM.XemChiTietPhieu_DB(Maphieu);
         }
+       
+        
     }
 }

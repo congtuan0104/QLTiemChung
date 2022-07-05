@@ -122,7 +122,8 @@
                   VerticalAlignment="Top"
                   Padding="5"
                   Style="{DynamicResource MaterialDesignComboBox}"
-                  Width="160">
+                  Width="160"
+                  SelectionChanged="cbbTinhTrang_SelectionChanged">
             <ComboBoxItem IsSelected="True">Tất cả</ComboBoxItem>
             <ComboBoxItem>Không được duyệt</ComboBoxItem>
             <ComboBoxItem>Chưa duyệt</ComboBoxItem>

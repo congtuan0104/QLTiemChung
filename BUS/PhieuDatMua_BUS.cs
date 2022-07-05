@@ -11,6 +11,7 @@ namespace BUS
     public class PhieuDatMua_BUS
     {
         PhieuDatMua_DAO DDH = new PhieuDatMua_DAO();
+        
         public List<PhieuDatMua> LayDSDonDatHang()
         {
             return DDH.LayDSDonDatHang_DB();
@@ -33,14 +34,26 @@ namespace BUS
             return DDH.CapNhatTinhTrangPhieu_DB(Maphieu, TinhTrang);
         }
 
-        public void Insert_DonDatHang(DateTime NgayDat, Decimal TongTien)
+        public void ThemDonDatHang(DonDatHang DD)
         {
-            DDH.Insert_DonDatHang(NgayDat, TongTien);
+            DDH.ThemDonDatHang_DB(DD);
         }
 
         public bool XoaDonDatHang(int MaPhieu)
         {
             return DDH.XoaDonDatHang_DB(MaPhieu);
+        }
+        public List<PhieuDatMua> LayDSDonDatHangTheoTinhTrang(int TinhTrang)
+        {
+           return DDH.LayDSDonDatHangTheoTinhTrang_DB(TinhTrang);
+        }
+        public bool ThemPhieuDatMuaVaccine(PhieuDatMua pdm)
+        {
+            return DDH.ThemPhieuDatMuaVaccine_DB(pdm);
+        }
+        public bool ThemChiTietPhieuDatMuaVaccine(CTPhieuDatMua CT)
+        {
+            return DDH.ThemChiTietPhieuDatMuaVaccine_DB(CT);
         }
 
 
