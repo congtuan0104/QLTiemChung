@@ -26,5 +26,15 @@ namespace BUS
         {
             return llv.themLichLamViec(llv_moi);
         }
+
+        public bool XoaLichLamViec(LICHLAMVIEC llv_cu)
+        {
+            return llv.xoaLichLamViec(llv_cu);
+        }
+
+        public List<LICHLAMVIEC> KiemTraTonTai(LICHLAMVIEC llv_chon)
+        {
+            return llv.kiemTraTonTai(llv_chon);
+        }
     }
 }

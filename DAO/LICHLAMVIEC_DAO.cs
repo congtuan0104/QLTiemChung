@@ -40,7 +40,7 @@ namespace DAO
             MoKetNoi();
             SqlCommand command = new SqlCommand();
             command.CommandType = CommandType.Text;
-            command.CommandText = "select MaNV, Ca, Ngay from LICHLAMVIEC "+dieukien;
+            command.CommandText = "select MaNV, Ca, Ngay from LICHLAMVIEC "+ dieukien;
             command.Connection = conec;
             SqlDataReader reader = command.ExecuteReader();
 
@@ -68,14 +68,48 @@ namespace DAO
             command.CommandType = CommandType.Text;
             command.CommandText = sql;
             command.Connection = conec;
-
             command.Parameters.Add("@manv", SqlDbType.Int).Value = llv.MaNV;
-            
             command.Parameters.Add("@ca", SqlDbType.NVarChar).Value = llv.Ca;
-            
-
             int kq = command.ExecuteNonQuery();
             return kq > 0;
+        }
+
+        public bool xoaLichLamViec(LICHLAMVIEC llv)
+        {
+            MoKetNoi();
+            string sql = "delete from LICHLAMVIEC where MaNV = " + llv.MaNV.ToString() +
+                " and Ngay = '" + llv.Ngay.ToString("yyyy-MM-dd") + "' and Ca = N'" + llv.Ca + "';";
+            SqlCommand command = new SqlCommand();
+            command.CommandType = CommandType.Text;
+            command.CommandText = sql;
+            command.Connection = conec;
+            int kq = command.ExecuteNonQuery();
+            return kq > 0;
+        }
+
+        public List<LICHLAMVIEC> kiemTraTonTai(LICHLAMVIEC llv)
+        {
+            MoKetNoi();
+            string sql = "select MaNV, Ca, Ngay from LICHLAMVIEC where MaNV = " + llv.MaNV.ToString() +
+                " and Ngay = '" + llv.Ngay.ToString("yyyy-MM-dd") + "' and Ca = N'" + llv.Ca + "';";
+            SqlCommand command = new SqlCommand();
+            command.CommandType = CommandType.Text;
+            command.CommandText = sql;
+            command.Connection = conec;
+            SqlDataReader reader = command.ExecuteReader();
+
+            DS_LICHLAMVIEC.Clear();
+            while (reader.Read())
+            {
+                LICHLAMVIEC lich = new LICHLAMVIEC();
+                lich.MaNV = reader.GetInt32(0);
+                lich.Ca = reader.GetString(1);
+                lich.Ngay = reader.GetDateTime(2);
+
+                DS_LICHLAMVIEC.Add(lich);
+            }
+            reader.Close();
+            return DS_LICHLAMVIEC;
         }
     }
 }
