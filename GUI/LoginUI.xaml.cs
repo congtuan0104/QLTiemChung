@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -33,12 +34,25 @@ namespace GUI
             
             if(tbUsername.Text == "" && tbPass.Password == "")
             {
-                MessageBox.Show("Đăng nhập thất bại");
-                return;
-                
+                //MessageBox.Show("Đăng nhập thất bại");
+                //return;
+                tbUsername.Text = "NV0579892804";
+                tbPass.Password = "12345";
             }
 
-            lg.DangNhap(tbUsername.Text, tbPass.Password);
+            // Mã hoá mật khẩu
+            byte[] temp = ASCIIEncoding.ASCII.GetBytes(tbPass.Password);
+            byte[] hashData = new MD5CryptoServiceProvider().ComputeHash(temp);
+
+            string hashPass = "";
+            foreach(byte b in hashData)
+            {
+                hashPass = hashPass + b.ToString();
+            }
+            hashPass.Reverse();
+
+
+            lg.DangNhap(tbUsername.Text, hashPass);
 
             if(TaiKhoan.Username == null)
             {

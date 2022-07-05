@@ -147,22 +147,21 @@ namespace DAO
 
             MoKetNoi();
             string sql = "insert into PHIEUDATMUAVACCINE(MaKH,TinhTrang,NgayDat) values" +
-                " (@Makh,0,'" + pdm.NgayDat.ToString("yyyy-MM-dd") + "')";
+                " (@Makh,0,@Ngaydat)";
             SqlCommand command = new SqlCommand();
             command.CommandType = CommandType.Text;
             command.CommandText = sql;
             command.Connection = conec;
 
             command.Parameters.Add("@Makh", SqlDbType.Int).Value = pdm.MaKH;
-           
-
-
+            command.Parameters.Add("@Ngaydat", SqlDbType.Date).Value = pdm.NgayDat;
 
 
             int kq = command.ExecuteNonQuery();
 
             return kq > 0;
         }
+
         public List<PhieuDatMua> LayDSDonDatHangTheoTinhTrang_DB(int TinhTrang)
         {
             
@@ -187,31 +186,7 @@ namespace DAO
             reader.Close();
             return DS_DDH;
         }
-        public bool ThemChiTietPhieuDatMuaVaccine_DB(CTPhieuDatMua CT)
-        {
-
-            MoKetNoi();
-            string sql = "insert into CT_PHIEUDATMUAVACCINE(MaPhieu,MaDV_Vaccine,SoLuong,ThanhTien) values" +
-                " (IDENT_CURRENT('dbo.PHIEUDATMUAVACCINE'),@Madv_vaccine,@soluong,@thanhtien)";
-            SqlCommand command = new SqlCommand();
-            command.CommandType = CommandType.Text;
-            command.CommandText = sql;
-            command.Connection = conec;
-
-            command.Parameters.Add("@Madv_vaccine", SqlDbType.Int).Value = CT.MaVaccine;
-            command.Parameters.Add("@soluong", SqlDbType.Int).Value = CT.SoLuong;
-            command.Parameters.Add("@thanhtien", SqlDbType.Decimal).Value = CT.ThanhTien;
-            
-
-
-
-
-            int kq = command.ExecuteNonQuery();
-
-            return kq > 0;
-        }
-
-
+        
 
     }
 }

@@ -73,6 +73,7 @@ namespace GUI
             // Đặt mua vaccine
             DatMuaVaccineUI muaVaccineUI = new DatMuaVaccineUI();
             muaVaccineUI.ShowDialog();
+            HienThiDSDH();
         }
 
         private void btnHuy_Click(object sender, RoutedEventArgs e)

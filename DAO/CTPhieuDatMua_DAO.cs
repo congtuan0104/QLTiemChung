@@ -41,6 +41,28 @@ namespace DAO
             return CT;
 
         }
-       
+
+
+        public bool ThemChiTietPhieuDatMuaVaccine_DB(CTPhieuDatMua CT)
+        {
+
+            MoKetNoi();
+            string sql = "insert into CT_PHIEUDATMUAVACCINE(MaPhieu,MaDV_Vaccine,SoLuong,ThanhTien) values" +
+                " (IDENT_CURRENT('dbo.PHIEUDATMUAVACCINE'),@Madv_vaccine,@soluong,@thanhtien)";
+            SqlCommand command = new SqlCommand();
+            command.CommandType = CommandType.Text;
+            command.CommandText = sql;
+            command.Connection = conec;
+
+            command.Parameters.Add("@Madv_vaccine", SqlDbType.Int).Value = CT.MaVaccine;
+            command.Parameters.Add("@soluong", SqlDbType.Int).Value = CT.SoLuong;
+            command.Parameters.Add("@thanhtien", SqlDbType.Decimal).Value = CT.ThanhTien;
+
+
+            int kq = command.ExecuteNonQuery();
+
+            return kq > 0;
+        }
+
     }
 }

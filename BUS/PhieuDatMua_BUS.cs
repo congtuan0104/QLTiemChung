@@ -51,24 +51,6 @@ namespace BUS
         {
             return DDH.ThemPhieuDatMuaVaccine_DB(pdm);
         }
-        public bool ThemChiTietPhieuDatMuaVaccine(CTPhieuDatMua CT)
-        {
-            return DDH.ThemChiTietPhieuDatMuaVaccine_DB(CT);
-        }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     }
 }

@@ -25,6 +25,7 @@ namespace GUI
         HSKH_BUS HSKH_BUS = new HSKH_BUS();
         List<CTPhieuDatMua> CHITIETPhieuDatMua = new List<CTPhieuDatMua>();
         PhieuDatMua_BUS pdm = new PhieuDatMua_BUS();
+        CTPhieuDatMua_BUS ctb = new CTPhieuDatMua_BUS();
 
         public DatMuaVaccineUI()
         {
@@ -46,57 +47,49 @@ namespace GUI
                 ct.SoLuong = 0;
                 ct.ThanhTien = 0;
                 CHITIETPhieuDatMua.Add(ct);
-               
+
             }
             dgvDSVaccine.ItemsSource = CHITIETPhieuDatMua;
             dgvDSVaccine.Items.Refresh();
         }
-     
+
         private void btnMua_Click(object sender, RoutedEventArgs e)
         {
-          
+
             // Tạo phiếu đặt mua vaccine
-            if(txtHoTen.Text == "")
+            if (txtHoTen.Text == "")
             {
                 MessageBox.Show("Chưa có thông tin khách hàng");
                 return;
             }
-            
-            
-            if (float.Parse(txtTongTien.Text)==0)
+
+
+            if (float.Parse(txtTongTien.Text) == 0)
             {
                 MessageBox.Show("Vui lòng chọn vaccine muốn đặt");
                 return;
             }
-            else
 
+            PhieuDatMua pdmua = new PhieuDatMua();
+            pdmua.NgayDat = DateTime.Parse(txtNgayDat.Text);
+            pdmua.MaKH = Int32.Parse(tbMaKH.Text);
+            pdm.ThemPhieuDatMuaVaccine(pdmua);
+
+            for (int i = 0; i < CHITIETPhieuDatMua.Count; i++)
             {
-
-                PhieuDatMua pdmua = new PhieuDatMua();
-                pdmua.NgayDat = DateTime.Parse(txtNgayDat.Text);
-                pdmua.MaKH = Int32.Parse(tbMaKH.Text);
-                pdm.ThemPhieuDatMuaVaccine(pdmua);
-                decimal TongTien = 0;
-                for (int i = 0; i < CHITIETPhieuDatMua.Count; i++)
+                if (CHITIETPhieuDatMua[i].ThanhTien > 0 && CHITIETPhieuDatMua[i].SoLuong >= 1)
                 {
-                    if (CHITIETPhieuDatMua[i].ThanhTien > 0 && CHITIETPhieuDatMua[i].SoLuong >= 1)
-                    {
-                        pdm.ThemChiTietPhieuDatMuaVaccine(CHITIETPhieuDatMua[i]);
-                    }
-                    TongTien = TongTien + CHITIETPhieuDatMua[i].ThanhTien;
-
+                    ctb.ThemChiTietPhieuDatMuaVaccine(CHITIETPhieuDatMua[i]);
                 }
 
-                txtTongTien.Text = TongTien.ToString();
-
-
-
-
-                MessageBox.Show(" Đã Mua xong");
-                return;
             }
 
-           
+            MessageBox.Show("Tạo phiếu thành công");
+            this.Close();
+            return;
+
+
+
         }
 
         private void btnDong_Click(object sender, RoutedEventArgs e)
@@ -106,33 +99,29 @@ namespace GUI
 
         private void ThayDoiSoLuong(object sender, DataGridCellEditEndingEventArgs e)
         {
-           
-            
-                CTPhieuDatMua ct = e.Row.Item as CTPhieuDatMua;
-                if (ct.SoLuong < 0)
-                {
-                    MessageBox.Show("Số lượng không hợp lệ");
-                    e.Cancel = true;
-                    return;
-                }
+            CTPhieuDatMua ct = e.Row.Item as CTPhieuDatMua;
+            if (ct.SoLuong < 0)
+            {
+                MessageBox.Show("Số lượng không hợp lệ");
+                e.Cancel = true;
+                return;
+            }
 
-
-
-                ct.ThanhTien = ct.Gia * ct.SoLuong;
-                CHITIETPhieuDatMua[e.Row.GetIndex()] = ct;
-                dgvDSVaccine.ItemsSource = null;
-                dgvDSVaccine.ItemsSource = CHITIETPhieuDatMua;
+            ct.ThanhTien = ct.Gia * ct.SoLuong;
+            CHITIETPhieuDatMua[e.Row.GetIndex()] = ct;
+            dgvDSVaccine.ItemsSource = null;
+            dgvDSVaccine.ItemsSource = CHITIETPhieuDatMua;
 
             decimal TongTien = 0;
 
 
 
 
-            
+
 
             for (int i = 0; i < CHITIETPhieuDatMua.Count; i++)
             {
-              
+
                 TongTien = TongTien + CHITIETPhieuDatMua[i].ThanhTien;
 
             }
@@ -155,7 +144,7 @@ namespace GUI
                     txtHoTen.Text = "";
                     txtSDT.Text = "";
                     return;
-                }        
+                }
                 txtHoTen.Text = KH.TenKH;
                 txtSDT.Text = KH.SDT;
             }
