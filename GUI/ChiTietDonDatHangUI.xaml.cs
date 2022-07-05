@@ -96,8 +96,16 @@ namespace GUI
                 btnXacNhan.IsEnabled = false;
                 if (tinhTrang == 1)
                 {
-                    // Tạo đơn đặt hàng
+                    DonDatHang DDH = new DonDatHang();
+                    DDH.Ngaydat =DateTime.Parse( txtNgayDat.Text);
+                    DDH.TongTien = Decimal.Parse( txtTongTien.Text);
+                    pdmBus.ThemDonDatHang(DDH);
+                    
                 }
+                else if(tinhTrang ==-1)
+                {
+                    pdmBus.XoaDonDatHang(Int32.Parse( txtMaPhieu.Text));
+                }    
             }
             
             return;

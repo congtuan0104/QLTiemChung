@@ -11,7 +11,7 @@ using DTO;
 namespace DAO
 {
     public class PhieuDatMua_DAO : DataAccess
-    {
+    { List<CTPhieuDatMua> CT_PDM = new List<CTPhieuDatMua>();
         List<PhieuDatMua> DS_DDH = new List<PhieuDatMua>();
         public List<PhieuDatMua> LayDSDonDatHang_DB()
         {
@@ -107,15 +107,26 @@ namespace DAO
             return kq > 0;
         }
 
-        public void Insert_DonDatHang(DateTime NgayDat, Decimal TongTien)
+        public bool ThemDonDatHang_DB(DonDatHang ddh)
         {
             MoKetNoi();
+            
+        
+            string sql = "insert into DonDatHang(TongTien,NgayDat)" +
+               " values(@tongtien,'" + ddh.Ngaydat.ToString("yyyy-MM-dd") + "')";
             SqlCommand command = new SqlCommand();
             command.CommandType = CommandType.Text;
-            command.CommandText = "INSERT INTO DONDATHANG(NgayDat,TongTien) VALUES  " + "(" + NgayDat + "," + TongTien + ")";
-
+            command.CommandText = sql;
             command.Connection = conec;
-            command.ExecuteNonQuery();
+            
+           
+          
+            command.Parameters.Add("@tongtien", SqlDbType.Decimal).Value = ddh.TongTien;
+
+            int kq = command.ExecuteNonQuery();
+            
+                return kq > 0;
+
         }
 
 
@@ -131,6 +142,51 @@ namespace DAO
             int kq = command.ExecuteNonQuery();
             return kq > 0;
         }
+        public bool ThemPhieuDatMuaVaccine_DB(PhieuDatMua pdm)
+        {
+
+            MoKetNoi();
+            string sql = "insert into PHIEUDATMUAVACCINE(MaKH,TinhTrang,NgayDat) values" +
+                " (@Makh,0,@Ngaydat)";
+            SqlCommand command = new SqlCommand();
+            command.CommandType = CommandType.Text;
+            command.CommandText = sql;
+            command.Connection = conec;
+
+            command.Parameters.Add("@Makh", SqlDbType.Int).Value = pdm.MaKH;
+            command.Parameters.Add("@Ngaydat", SqlDbType.Date).Value = pdm.NgayDat;
+
+
+            int kq = command.ExecuteNonQuery();
+
+            return kq > 0;
+        }
+
+        public List<PhieuDatMua> LayDSDonDatHangTheoTinhTrang_DB(int TinhTrang)
+        {
+            
+            MoKetNoi();
+            SqlCommand command = new SqlCommand();
+            command.CommandType = CommandType.Text;
+            command.CommandText = "SELECT MaPhieu,MaKH,NgayDat, TinhTrang " +
+                "FROM PHIEUDATMUAVACCINE Where DaXoa IS NULL  and TinhTrang="+TinhTrang;
+            command.Connection = conec;
+            SqlDataReader reader = command.ExecuteReader();
+
+            DS_DDH.Clear();
+            while (reader.Read())
+            {
+                PhieuDatMua PDM = new PhieuDatMua();
+                PDM.MaPhieu = reader.GetInt32(0);
+                PDM.MaKH = reader.GetInt32(1);
+                PDM.NgayDat = reader.GetDateTime(2);
+                PDM.TinhTrang = reader.GetInt32(3);
+                DS_DDH.Add(PDM);
+            }
+            reader.Close();
+            return DS_DDH;
+        }
+        
 
     }
 }

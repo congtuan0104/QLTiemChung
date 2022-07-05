@@ -27,6 +27,7 @@ namespace GUI
         {
             InitializeComponent();
             HienThiDSDH();
+            
         }
         private void HienThiDSDH()
         {
@@ -34,6 +35,7 @@ namespace GUI
             List<PhieuDatMua> dsPDM = pdm.LayDSDonDatHang();
             dgvDDH.ItemsSource = dsPDM;
             dgvDDH.Items.Refresh();
+            
         }
 
         private void btnTimKiem_Click(object sender, RoutedEventArgs e)
@@ -71,6 +73,7 @@ namespace GUI
             // Đặt mua vaccine
             DatMuaVaccineUI muaVaccineUI = new DatMuaVaccineUI();
             muaVaccineUI.ShowDialog();
+            HienThiDSDH();
         }
 
         private void btnHuy_Click(object sender, RoutedEventArgs e)
@@ -109,7 +112,39 @@ namespace GUI
             btnHuy.IsEnabled = true;
             return;
         }
+        
+
+        private void cbbTinhTrang_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+           
+            if(cbbTinhTrang.SelectedIndex==1)
+            {
+                List<PhieuDatMua> dsPDM = pdm.LayDSDonDatHangTheoTinhTrang(-1);
+                dgvDDH.ItemsSource = dsPDM;
+                dgvDDH.Items.Refresh();
 
 
+            } 
+            else if (cbbTinhTrang.SelectedIndex == 2)
+            {
+                List<PhieuDatMua> dsPDM = pdm.LayDSDonDatHangTheoTinhTrang(0);
+                dgvDDH.ItemsSource = dsPDM;
+                dgvDDH.Items.Refresh();
+
+
+            }
+            else if(cbbTinhTrang.SelectedIndex==3)
+            {
+
+                List<PhieuDatMua> dsPDM = pdm.LayDSDonDatHangTheoTinhTrang(1);
+                dgvDDH.ItemsSource = dsPDM;
+                dgvDDH.Items.Refresh();
+            }
+            else
+            {
+                HienThiDSDH();
+            } 
+                
+        }
     }
 }
