@@ -37,25 +37,27 @@ namespace GUI
         private void HienThiThongTinHoaDon(int MaHS)
         {
             // Hiển thị thông tin hóa đơn 
+            
+            
             HoaDon hoadon = hoadonBussiness.LayThongTinHoaDon(MaHS);
             txtMaHoaDon.Text = hoadon.MaHD.ToString();
             txtTongTien.Text = hoadon.TongTien.ToString();
             txtConLai.Text = hoadon.ConLai.ToString();
             txtSoDotThanhToan.Text = hoadon.SoDotThanhToan.ToString();
             txtSoTienTraMoiDot.Text = hoadon.TienTra_1Dot.ToString();
-            if(hoadon.SoDotThanhToan>1)
+            if (Decimal.Parse(txtConLai.Text) == 0)
+            {
+                btnThanhToan.IsEnabled = false;
+            }
+            if (hoadon.SoDotThanhToan>1)
             {
                 txtHinhThucThanhToan.Text = "Trả góp";
             }    
             else
             {
                 txtHinhThucThanhToan.Text = "Thanh toán hết";
-                btnThanhToan.IsEnabled=false;
             }
-            if (Decimal.Parse(txtConLai.Text) == 0)
-            {
-                btnThanhToan.IsEnabled = false;
-            }
+           
 
         }
         private void btnThanhToan_Click(object sender, RoutedEventArgs e)
@@ -63,10 +65,20 @@ namespace GUI
             int MaHD=Int32.Parse(txtMaHoaDon.Text);
             decimal ChuaThanhToan= Decimal.Parse(txtConLai.Text);
             decimal TienTra1Dot =Decimal.Parse(txtSoTienTraMoiDot.Text);
+            decimal temp;
             if (hoadonBussiness.CapNhatHoaDon(MaHD))
             {
                 MessageBox.Show("Thanh toán thành công", "Thông báo", MessageBoxButton.OK);
-                txtConLai.Text = (ChuaThanhToan - TienTra1Dot).ToString();
+                temp = ChuaThanhToan - TienTra1Dot;
+                txtConLai.Text = temp.ToString();
+                if (temp < 1)
+                {
+                    txtConLai.Text = "0.0000";
+                }
+                if (Decimal.Parse(txtConLai.Text) == 0)
+                {
+                    btnThanhToan.IsEnabled = false;
+                }
             }
             else
             {

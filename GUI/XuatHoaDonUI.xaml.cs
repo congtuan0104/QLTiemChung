@@ -48,27 +48,6 @@ namespace GUI
             else
             {
                 rbTraDu.IsChecked = true;
-                if (CbSoDotThanhToan.IsEnabled == true)
-                {
-                    string text = CbSoDotThanhToan.Text;
-                    if (text == "2")
-                    {
-                        tongtien = Decimal.Parse(txtTongTien.Text);
-                        txtSoTienTraMoiDot.Text = (tongtien / 2).ToString();
-                    }
-                    if (text == "3")
-                    {
-                        tongtien = Decimal.Parse(txtTongTien.Text);
-                        txtSoTienTraMoiDot.Text = (tongtien / 3).ToString();
-                    }
-                    if (text == "4")
-                    {
-                        tongtien = Decimal.Parse(txtTongTien.Text);
-                        txtSoTienTraMoiDot.Text = (tongtien / 4).ToString();
-                    }
-
-
-                }
             }
 
         }

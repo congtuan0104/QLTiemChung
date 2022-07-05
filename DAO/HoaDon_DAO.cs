@@ -89,7 +89,7 @@ namespace DAO
         public bool CapNhatHoaDon(int MaHD)
         {
             MoKetNoi();
-            string sql = "update HOADON set ConLai=ConLai-TienTra_1Dot" +
+            string sql = "update HOADON set ConLai= ConLai-TienTra_1Dot" +
                 " where MaHD = " + MaHD;
             SqlCommand command = new SqlCommand();
             command.CommandType = CommandType.Text;
