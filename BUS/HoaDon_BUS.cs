@@ -18,9 +18,9 @@ namespace BUS
         {
             return hdDSA.XemHoaDon_DB(MaHS);
         }
-        public bool CapNhatHoaDon(int MaHS)
+        public bool CapNhatHoaDon(int MaHD)
         {
-            return hdDSA.CapNhatHoaDon(MaHS);
+            return hdDSA.CapNhatHoaDon(MaHD);
         }
         public bool ThemHoaDon(HoaDon Hdon,int MaHS)
         {

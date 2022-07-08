@@ -30,5 +30,9 @@ namespace BUS
         {
             return hstc.CapNhatHoSoTiemChung_DB(hs);
         }
+        public bool ThemHSTC(HSTiemChung HSTC)
+        {
+            return hstc.ThemHSTC_DB(HSTC);
+        }
     }
 }

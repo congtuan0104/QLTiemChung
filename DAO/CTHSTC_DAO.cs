@@ -36,5 +36,23 @@ namespace DAO
             reader.Close();
             return DS_DVDK;
         }
+        public bool ThemChiTietHSTC_DB(int MaDV)
+        {
+
+            MoKetNoi();
+            string sql = "insert into CT_HOSOTIEMCHUNG(MaHS,MaDV) values" +
+                " (IDENT_CURRENT('dbo.HOSOTIEMCHUNG'),@MaDV)";
+            SqlCommand command = new SqlCommand();
+            command.CommandType = CommandType.Text;
+            command.CommandText = sql;
+            command.Connection = conec;
+
+            command.Parameters.Add("@MaDV", SqlDbType.Int).Value = MaDV;
+
+
+            int kq = command.ExecuteNonQuery();
+
+            return kq > 0;
+        }
     }
 }

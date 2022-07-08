@@ -16,5 +16,9 @@ namespace BUS
         {
             return cths.LayToanBoDVDK_DB(MaHS);
         }
+        public bool ThemChiTietHSTC(int MaDV)
+        {
+            return cths.ThemChiTietHSTC_DB(MaDV);
+        }
     }
 }

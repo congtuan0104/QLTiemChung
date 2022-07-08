@@ -33,9 +33,8 @@ namespace DAO
                 hstc.MaNV = reader.GetInt32(3);
                 hstc.NgayLapHS = reader.GetDateTime(4);
                 hstc.NgayHenTiem = reader.GetDateTime(5);
-                hstc.KQ_KhamSangLoc = reader.GetString(6);
-                hstc.KQ_KhamSauTiem = reader.GetString(7);
-
+                hstc.KQ_KhamSangLoc = reader != null ? reader.GetString(6) : "";
+                hstc.KQ_KhamSauTiem = reader != null ? reader.GetString(7) : "";
                 DS_HSTC.Add(hstc);
             }
             reader.Close();
@@ -96,6 +95,26 @@ namespace DAO
             command.CommandType = CommandType.Text;
             command.CommandText = sql;
             command.Connection = conec;
+            int kq = command.ExecuteNonQuery();
+            return kq > 0;
+        }
+        public bool ThemHSTC_DB(HSTiemChung HSTC)
+        {
+
+            MoKetNoi();
+            string sql = "insert into HOSOTIEMCHUNG(MATT, MAKH, MANV, NGAYDANGKY, NGAYTIEM, KQ_KhamTruocTiem, KQ_KhamSauTiem)" +
+                " values(@matt, @makh, @tkID, @ngaydangky, @ngaytiem, N'', N'')";
+            SqlCommand command = new SqlCommand();
+            command.CommandType = CommandType.Text;
+            command.CommandText = sql;
+            command.Connection = conec;
+
+            command.Parameters.Add("@matt", SqlDbType.Int).Value = HSTC.MaTT;
+            command.Parameters.Add("@makh", SqlDbType.Int).Value = HSTC.MaKH;
+            command.Parameters.Add("@tkID", SqlDbType.Int).Value = TaiKhoan.UserID ;
+            command.Parameters.Add("@ngaydangky", SqlDbType.Date).Value = HSTC.NgayLapHS;
+            command.Parameters.Add("@ngaytiem", SqlDbType.Date).Value = HSTC.NgayHenTiem;
+
             int kq = command.ExecuteNonQuery();
             return kq > 0;
         }

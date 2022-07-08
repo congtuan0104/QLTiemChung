@@ -36,5 +36,27 @@ namespace DAO
             reader.Close();
             return dsGoiVaccine;
         }
+        public GoiVaccine XemThongTinGoiVaccine(int maGoiVaccine)
+        {
+            MoKetNoi();
+            SqlCommand command = new SqlCommand();
+            command.CommandType = CommandType.Text;
+            command.CommandText = "select MaDV_GoiVaccine, TenGoi, MoTa, SoLuongTon" +
+                " FROM goivaccine WHERE madv_goivaccine = " + maGoiVaccine;
+            command.Connection = conec;
+            SqlDataReader reader = command.ExecuteReader();
+
+            GoiVaccine gvc = new GoiVaccine();
+            if (reader.Read())
+            {
+                gvc.MaGoiVaccine = reader.GetInt32(0);
+                gvc.TenGoiVaccine = reader.GetString(1);
+                gvc.MoTa = reader.GetString(2);
+                gvc.SoLuongTon = reader.GetInt32(3);
+            }
+
+            reader.Close();
+            return gvc;
+        }
     }
 }

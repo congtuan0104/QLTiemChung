@@ -37,5 +37,27 @@ namespace DAO
             reader.Close();
             return dsVaccine;
         }
+        public Vaccine XemThongTinVaccine(int maVaccine)
+        {
+            MoKetNoi();
+            SqlCommand command = new SqlCommand();
+            command.CommandType = CommandType.Text;
+            command.CommandText = "select MaDV_Vaccine, TenVaccine, NhaSX, MoTa, SoLuongTon" +
+                " FROM vaccine WHERE madv_vaccine =" + maVaccine;
+            command.Connection = conec;
+            SqlDataReader reader = command.ExecuteReader();
+
+            Vaccine vc = new Vaccine();
+            if (reader.Read())
+            {
+                vc.MaVaccine = reader.GetInt32(0);
+                vc.TenVaccine = reader.GetString(1);
+                vc.NhaSanXuat = reader.GetString(2);
+                vc.MoTa = reader.GetString(3);
+                vc.SoLuongTon = reader.GetInt32(4);
+            }
+            reader.Close();
+            return vc;
+        }
     }
 }

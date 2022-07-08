@@ -16,5 +16,12 @@ namespace BUS
         {
             return vca.LayDSGoiVaccine_DB();
         }
+        public bool KiemTraSLGoiVaccine(int maGoiVaccine, int sl)
+        {
+            GoiVaccine gv = vca.XemThongTinGoiVaccine(maGoiVaccine);
+            if (gv.SoLuongTon >= sl)
+                return true;
+            return false;
+        }
     }
 }

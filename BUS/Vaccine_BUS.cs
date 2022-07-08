@@ -16,5 +16,12 @@ namespace BUS
         {
             return vca.LayDSVaccine_DB();
         }
+        public bool KiemTraSLVaccine(int MaVaccine, int sl)
+        {
+            Vaccine v = vca.XemThongTinVaccine(MaVaccine);
+            if (v.SoLuongTon >= sl)
+                return true;
+            return false;
+        }
     }
 }
